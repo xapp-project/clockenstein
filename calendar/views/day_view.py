@@ -8,7 +8,7 @@ from xapp.util import l10n
 
 _ = l10n("clockenstein")
 
-from formatting import capitalize_first
+from formatting import capitalize_first, format_time, on_clock_format_changed
 from views.colors import apply_tinted_event_color
 from views.month_view import _event_has_ended
 
@@ -78,8 +78,9 @@ class DayView(Gtk.Box):
         self.gutter = Gtk.Fixed()
         self.gutter.set_size_request(52, DAY_HEIGHT)
         body.pack_start(self.gutter, False, False, 0)
+        self._hour_labels = []
         for h in range(24):
-            lbl = Gtk.Label(label=f"{h:02d}:00")
+            lbl = Gtk.Label(label=format_time(datetime.time(h, 0)))
             lbl.set_size_request(52, 20)
             lbl.set_xalign(1)
             lbl.set_yalign(0.5)
@@ -87,6 +88,8 @@ class DayView(Gtk.Box):
             # Centre the label on the same coordinate used by the grid line and
             # by events starting exactly on the hour.
             self.gutter.put(lbl, 0, max(0, _minute_to_y(h * 60) - 10))
+            self._hour_labels.append((lbl, h))
+        on_clock_format_changed(self._refresh_time_format)
         self.now_label = Gtk.Label()
         self.now_label.set_size_request(52, 20)
         self.now_label.set_xalign(1)
@@ -218,10 +221,15 @@ class DayView(Gtk.Box):
         if visible:
             now = datetime.datetime.now()
             minutes = now.hour * 60 + now.minute
-            self.now_label.set_text(now.strftime("%H:%M"))
+            self.now_label.set_text(format_time(now))
             self.gutter.move(self.now_label, 0, _minute_to_y(minutes) - 10)
         self.background.queue_draw()
         return True
+
+    def _refresh_time_format(self):
+        for lbl, h in self._hour_labels:
+            lbl.set_text(format_time(datetime.time(h, 0)))
+        self._update_now_line()
 
     def _position_event_widgets(self, _layer, allocation):
         for item in self._positioned_events:

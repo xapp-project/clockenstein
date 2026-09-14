@@ -8,7 +8,7 @@ from xapp.util import l10n
 
 _ = l10n("clockenstein")
 
-from formatting import WEEKDAY_NAMES
+from formatting import WEEKDAY_NAMES, format_time, on_clock_format_changed
 from views.colors import apply_tinted_event_color
 from views.month_view import _event_has_ended, _event_tooltip
 from views.day_view import (ALL_DAY_EVENT_MARGIN, ALL_DAY_HEIGHT,
@@ -85,13 +85,15 @@ class WeekView(Gtk.Box):
         self.gutter = Gtk.Fixed()
         self.gutter.set_size_request(52, DAY_END_MINUTE // 60 * HOUR_HEIGHT)
         body.pack_start(self.gutter, False, False, 0)
+        self._hour_labels = []
         for h in range(START_HOUR, END_HOUR):
-            lbl = Gtk.Label(label=f"{h:02d}:00")
+            lbl = Gtk.Label(label=format_time(datetime.time(h, 0)))
             lbl.set_size_request(52, 20)
             lbl.set_xalign(1)
             lbl.set_yalign(0.5)
             lbl.get_style_context().add_class("clockenstein-time-label")
             self.gutter.put(lbl, 0, max(0, _minute_to_y(h * 60) - 10))
+            self._hour_labels.append((lbl, h))
         self.now_label = Gtk.Label()
         self.now_label.set_size_request(52, 20)
         self.now_label.set_xalign(1)
@@ -108,13 +110,15 @@ class WeekView(Gtk.Box):
         self.right_gutter = Gtk.Fixed()
         self.right_gutter.set_size_request(52, DAY_END_MINUTE // 60 * HOUR_HEIGHT)
         body.pack_end(self.right_gutter, False, False, 0)
+        self._right_hour_labels = []
         for hour in range(START_HOUR, END_HOUR):
-            label = Gtk.Label(label=f"{hour:02d}:00")
+            label = Gtk.Label(label=format_time(datetime.time(hour, 0)))
             label.set_size_request(52, 20)
             label.set_xalign(0)
             label.set_yalign(0.5)
             label.get_style_context().add_class("clockenstein-time-label")
             self.right_gutter.put(label, 0, max(0, _minute_to_y(hour * 60) - 10))
+            self._right_hour_labels.append((label, hour))
         self.right_now_label = Gtk.Label()
         self.right_now_label.set_size_request(52, 20)
         self.right_now_label.set_xalign(0)
@@ -122,6 +126,7 @@ class WeekView(Gtk.Box):
         self.right_now_label.get_style_context().add_class("clockenstein-now-label")
         self.right_gutter.put(self.right_now_label, 0, 0)
 
+        on_clock_format_changed(self._refresh_time_format)
         GLib.timeout_add_seconds(30, self._update_now_line)
 
     def update(self, current_date: datetime.date, events: list[dict], selected_date=None):
@@ -200,7 +205,7 @@ class WeekView(Gtk.Box):
         self.now_label.set_visible(self._shows_today)
         self.right_now_label.set_visible(self._shows_today)
         if self._shows_today:
-            text = now.strftime("%H:%M")
+            text = format_time(now)
             self.now_label.set_text(text)
             self.right_now_label.set_text(text)
             y = _minute_to_y(minutes) - 10
@@ -211,6 +216,13 @@ class WeekView(Gtk.Box):
         for column in self.all_day_overlays:
             column.queue_draw()
         return True
+
+    def _refresh_time_format(self):
+        for lbl, h in self._hour_labels:
+            lbl.set_text(format_time(datetime.time(h, 0)))
+        for lbl, h in self._right_hour_labels:
+            lbl.set_text(format_time(datetime.time(h, 0)))
+        self._update_now_line()
 
 
 class _DayColumn(Gtk.Overlay):

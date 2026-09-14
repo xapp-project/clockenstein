@@ -11,7 +11,7 @@ _ = l10n("clockenstein")
 from event_dialog import EventDialog
 from backends.google import LIMITED_RANGE, NORMAL_RANGE, RESTRICTED_RANGE
 from dbus import BUS_INTERFACE, BUS_NAME, BUS_PATH, notify_changed
-from formatting import capitalize_first, format_time
+from formatting import capitalize_first, format_time, on_clock_format_changed
 from store import CalendarManager
 from views.colors import apply_tinted_event_color
 from views.month_view import MonthView
@@ -43,6 +43,7 @@ class MainWindow(Gtk.Window):
         self._refreshing = False
         self._build_ui()
         self._subscribe_to_daemon()
+        on_clock_format_changed(self._update_views)
         geometry = Gdk.Geometry()
         geometry.min_width = 640
         geometry.min_height = 460
