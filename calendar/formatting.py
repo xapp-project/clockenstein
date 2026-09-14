@@ -26,11 +26,17 @@ def _find_clock_format_setting():
 
 
 _clock_settings, _clock_key, _clock_kind = _find_clock_format_setting()
+
+# The app's own override (Menu > Time Format): "system", "12h" or "24h".
+# Lets the user force a format outright, and covers desktops that don't
+# expose a 12/24-hour setting for us to detect at all.
+_app_settings = Gio.Settings.new("org.x.clockenstein.calendar")
+
 _clock_format_listeners = []
 
 
 def on_clock_format_changed(callback):
-    """Register a callback invoked whenever the system 12/24-hour setting changes."""
+    """Register a callback invoked whenever the effective 12/24-hour setting changes."""
     _clock_format_listeners.append(callback)
 
 
@@ -41,13 +47,14 @@ def _notify_clock_format_listeners(*_args):
 
 if _clock_settings is not None:
     _clock_settings.connect(f"changed::{_clock_key}", _notify_clock_format_listeners)
+_app_settings.connect("changed::clock-format", _notify_clock_format_listeners)
 
 
 def capitalize_first(value):
     return value[:1].upper() + value[1:]
 
 
-def uses_12_hour_clock():
+def _uses_system_12_hour_clock():
     if _clock_settings is not None:
         if _clock_kind == "bool":
             return not _clock_settings.get_boolean(_clock_key)
@@ -55,6 +62,15 @@ def uses_12_hour_clock():
 
     pattern = locale.nl_langinfo(locale.T_FMT)
     return "%I" in pattern or "%r" in pattern
+
+
+def uses_12_hour_clock():
+    override = _app_settings.get_string("clock-format")
+    if override == "12h":
+        return True
+    if override == "24h":
+        return False
+    return _uses_system_12_hour_clock()
 
 
 def format_time(value):

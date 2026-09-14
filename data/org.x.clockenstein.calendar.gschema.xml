@@ -20,5 +20,14 @@
         Supported values are clockenstein and goa.
       </description>
     </key>
+    <key name="clock-format" type="s">
+      <default>'system'</default>
+      <summary>Time format</summary>
+      <description>
+        How to display event times. Supported values are system (follow the
+        desktop's 12/24-hour setting, falling back to the locale if the
+        desktop exposes none), 12h and 24h.
+      </description>
+    </key>
   </schema>
 </schemalist>

@@ -88,6 +88,8 @@ class MainWindow(Gtk.Window):
         calendars_item.connect("activate", self._manage_calendars)
         menu.append(calendars_item)
         menu.append(Gtk.SeparatorMenuItem())
+        menu.append(self._build_clock_format_item())
+        menu.append(Gtk.SeparatorMenuItem())
         about_item = Gtk.MenuItem(label=_("About"))
         about_item.connect("activate", self._show_about)
         menu.append(about_item)
@@ -204,6 +206,26 @@ class MainWindow(Gtk.Window):
         self.status_label.get_style_context().add_class("clockenstein-status")
         outer.pack_start(self.status_label, False, False, 0)
         return outer
+
+    def _build_clock_format_item(self):
+        item = Gtk.MenuItem(label=_("Time Format"))
+        submenu = Gtk.Menu()
+        item.set_submenu(submenu)
+        current = self.settings.get_string("clock-format")
+        group = None
+        for value, label in (("system", _("Use System Setting")),
+                             ("12h", _("12-hour")),
+                             ("24h", _("24-hour"))):
+            radio = Gtk.RadioMenuItem.new_with_label_from_widget(group, label)
+            group = radio
+            radio.set_active(value == current)
+            radio.connect("toggled", self._on_clock_format_selected, value)
+            submenu.append(radio)
+        return item
+
+    def _on_clock_format_selected(self, item, value):
+        if item.get_active():
+            self.settings.set_string("clock-format", value)
 
     def _show_about(self, _item):
         dialog = Gtk.AboutDialog(transient_for=self, modal=True)
