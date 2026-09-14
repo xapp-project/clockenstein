@@ -314,8 +314,12 @@ def _component_to_dict(component) -> dict:
         date_start, date_end = dtstart, dtend - datetime.timedelta(days=1)
         time_start = time_end = None
     else:
+        # dtstart/dtend carry whatever timezone the source recorded (e.g. a
+        # Nextcloud event stored in UTC). Convert to local wall-clock time
+        # before dropping tzinfo, otherwise the displayed time is wrong.
+        dtstart, dtend = dtstart.astimezone(), dtend.astimezone()
         date_start, date_end = dtstart.date(), dtend.date()
-        time_start, time_end = dtstart.time().replace(tzinfo=None), dtend.time().replace(tzinfo=None)
+        time_start, time_end = dtstart.time(), dtend.time()
     return {"uid": str(component.get("uid", "")), "summary": str(component.get("summary", "")),
             "location": str(component.get("location", "")), "description": str(component.get("description", "")),
             "all_day": all_day, "date_start": date_start, "date_end": date_end,

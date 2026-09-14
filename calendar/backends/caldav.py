@@ -64,7 +64,7 @@ class CalDAVBackend:
             raise CalDAVUnavailable(_("A username and password are required"))
         if progress:
             progress(_("Contacting CalDAV server…"))
-        client, calendars = self._open(url, username, password)
+        client, calendars, url = self._discover(url, username, password)
         account_id = hashlib.sha256(f"{url}\0{username}".encode()).hexdigest()[:20]
         account = next((a for a in self.accounts if a["id"] == account_id), None)
         if account is None:
@@ -170,7 +170,9 @@ class CalDAVBackend:
                     self._configured_accounts.discard(account_id)
                     raise CalDAVUnavailable(_("Password not found in the keyring"))
                 self._configured_accounts.add(account_id)
-                client, remote = self._open(account["url"], account["username"], password)
+                client, remote, resolved_url = self._discover(
+                    account["url"], account["username"], password)
+                account["url"] = resolved_url
                 self._clients[account_id] = client
                 self._calendars[account_id] = {str(c.url): c for c in remote}
                 account["calendars"] = self._merge_calendars(account.get("calendars", []), remote)
@@ -269,7 +271,9 @@ class CalDAVBackend:
                 password = self._lookup_password(account_id)
                 if not account or not password:
                     raise CalDAVUnavailable(_("Password not found in the keyring"))
-                client, remote = self._open(account["url"], account["username"], password)
+                client, remote, resolved_url = self._discover(
+                    account["url"], account["username"], password)
+                account["url"] = resolved_url
                 self._clients[account_id] = client
                 self._calendars[account_id] = {str(item.url): item for item in remote}
                 self._errors.pop(account_id, None)
@@ -293,6 +297,30 @@ class CalDAVBackend:
         account["events"].append({"calendar_id": calendar_id, "url": url,
                                   "ical": _without_alarms(payload)})
         self._save()
+
+    def _discover(self, url, username, password):
+        # Nextcloud (and ownCloud) serve calendars under remote.php/dav/, not
+        # at the bare server address. A PROPFIND against the bare address
+        # often succeeds with zero calendars instead of raising, which used
+        # to look like a silent no-op. Retry with the conventional path and
+        # only give up with a clear error if that also comes up empty.
+        candidates = [url]
+        if "remote.php" not in url:
+            candidates.append(url.rstrip("/") + "/remote.php/dav/")
+        last_error = None
+        for candidate in candidates:
+            try:
+                client, calendars = self._open(candidate, username, password)
+            except Exception as exc:
+                last_error = exc
+                continue
+            if calendars:
+                return client, calendars, candidate
+            last_error = CalDAVUnavailable(
+                _("Connected, but no calendars were found at this address. "
+                  "If this is a Nextcloud or ownCloud server, make sure the "
+                  "URL includes remote.php/dav/."))
+        raise last_error
 
     @staticmethod
     def _open(url, username, password):

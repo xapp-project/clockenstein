@@ -599,10 +599,13 @@ def google_event_to_dict(raw, calendar, account, online):
         date_end = datetime.date.fromisoformat(end.get("date", start["date"])) - datetime.timedelta(days=1)
         time_start = time_end = None
     else:
-        start_dt = _parse_datetime(start.get("dateTime"))
-        end_dt = _parse_datetime(end.get("dateTime", start.get("dateTime")))
+        # Google returns dateTime with the event's own UTC offset, which may
+        # not match the system timezone. Convert to local wall-clock time
+        # before dropping tzinfo, otherwise the displayed time is wrong.
+        start_dt = _parse_datetime(start.get("dateTime")).astimezone()
+        end_dt = _parse_datetime(end.get("dateTime", start.get("dateTime"))).astimezone()
         date_start, date_end = start_dt.date(), end_dt.date()
-        time_start, time_end = start_dt.time().replace(tzinfo=None), end_dt.time().replace(tzinfo=None)
+        time_start, time_end = start_dt.time(), end_dt.time()
     writable = calendar.get("access_role") in ("writer", "owner")
     event_type = raw.get("eventType", "default")
     return {"uid": raw.get("id", ""), "summary": raw.get("summary") or _("Untitled"),
@@ -654,7 +657,7 @@ def _raw_start_date(raw):
     if "date" in start:
         return datetime.date.fromisoformat(start["date"])
     if "dateTime" in start:
-        return _parse_datetime(start["dateTime"]).date()
+        return _parse_datetime(start["dateTime"]).astimezone().date()
     return None
 
 
@@ -663,7 +666,7 @@ def _raw_end_date(raw):
     if "date" in end:
         return datetime.date.fromisoformat(end["date"]) - datetime.timedelta(days=1)
     if "dateTime" in end:
-        return _parse_datetime(end["dateTime"]).date()
+        return _parse_datetime(end["dateTime"]).astimezone().date()
     return _raw_start_date(raw)
 
 
