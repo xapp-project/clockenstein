@@ -4,6 +4,8 @@ import re
 import uuid
 import caldav
 from caldav.elements.ical import CalendarColor
+import requests
+from caldav.lib import error as caldav_error
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -56,7 +58,7 @@ class CalDAVBackend(RemoteBackend):
             raise CalDAVUnavailable(_("A username and password are required"))
         if progress:
             progress(_("Contacting CalDAV server…"))
-        client, calendars = self._open(url, username, password)
+        client, calendars, url = self._discover(url, username, password)
         account_id = hashlib.sha256(f"{url}\0{username}".encode()).hexdigest()[:20]
         account = {"id": account_id, "url": url, "username": username,
                    "name": f"{username} — {urlparse(url).hostname or url}"}
@@ -93,7 +95,7 @@ class CalDAVBackend(RemoteBackend):
                     self._configured_accounts.discard(account_id)
                     raise CalDAVUnavailable(_("Password not found in the keyring"))
                 self._configured_accounts.add(account_id)
-                client, remote = self._open(account["url"], account["username"], password)
+                client, remote, _url = self._discover(account["url"], account["username"], password)
                 self._clients[account_id] = client
                 self._calendars[account_id] = {str(remote_calendar.url): remote_calendar for remote_calendar in remote}
                 self.database.update_calendar_list(self.provider, account_id, self._get_calendar_metadata(remote, account_id))
@@ -200,7 +202,7 @@ class CalDAVBackend(RemoteBackend):
                 password = self._lookup_password(account_id)
                 if not account or not password:
                     raise CalDAVUnavailable(_("Password not found in the keyring"))
-                client, remote = self._open(account["url"], account["username"], password)
+                client, remote, _url = self._discover(account["url"], account["username"], password)
                 self._clients[account_id] = client
                 self._calendars[account_id] = {str(item.url): item for item in remote}
                 self._errors.pop(account_id, None)
@@ -234,6 +236,46 @@ class CalDAVBackend(RemoteBackend):
             event["_caldav_url"] = url
             result.append(event)
         return result
+
+    def _discover(self, url, username, password):
+        # Nextcloud keeps its calendars under remote.php/dav/. If the address
+        # does not have it, try adding it.
+        candidates = [url]
+        if "remote.php" not in url:
+            candidates.append(url.rstrip("/") + "/remote.php/dav/")
+        errors = []
+        for candidate in candidates:
+            try:
+                client, calendars = self._open(candidate, username, password)
+            except Exception as exc:
+                errors.append(exc)
+                continue
+            if calendars:
+                return client, calendars, candidate
+            errors.append(CalDAVUnavailable(
+                _("Connected, but no calendars were found at this address. "
+                  "If this is a Nextcloud or ownCloud server, make sure the "
+                  "URL includes remote.php/dav/.")))
+        # A wrong password is the most useful thing to tell the user.
+        failure = next((e for e in errors if isinstance(e, caldav_error.AuthorizationError)),
+                       errors[-1])
+        raise self._explain_error(failure)
+
+    @staticmethod
+    def _explain_error(exc):
+        if isinstance(exc, CalDAVUnavailable):
+            return exc
+        if isinstance(exc, caldav_error.AuthorizationError):
+            return CalDAVUnavailable(_("The server did not accept the username or password."))
+        if isinstance(exc, requests.Timeout):
+            return CalDAVUnavailable(_("The server took too long to answer."))
+        if isinstance(exc, requests.exceptions.SSLError):
+            return CalDAVUnavailable(_("Could not make a secure connection to the server."))
+        if isinstance(exc, requests.ConnectionError):
+            return CalDAVUnavailable(_("Could not reach the server. Check the address."))
+        if isinstance(exc, caldav_error.NotFoundError):
+            return CalDAVUnavailable(_("The server address was not found. Check the URL."))
+        return CalDAVUnavailable(str(exc) or exc.__class__.__name__)
 
     @classmethod
     def _open(cls, url, username, password):

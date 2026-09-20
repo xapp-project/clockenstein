@@ -1045,6 +1045,22 @@ class MainWindow(Gtk.Window):
         return False
 
     @run_idle
+    def _caldav_connection_failed(self, error):
+        self._set_refreshing(False)
+        self._set_status(error)
+        dialog = Gtk.MessageDialog(
+            transient_for=self,
+            modal=True,
+            message_type=Gtk.MessageType.ERROR,
+            buttons=Gtk.ButtonsType.CLOSE,
+            text=_("Could not connect to the CalDAV server"),
+        )
+        dialog.format_secondary_text(error)
+        dialog.run()
+        dialog.destroy()
+        return False
+
+    @run_idle
     def _connection_progress(self, message):
         self._set_status(message)
 
@@ -1078,6 +1094,10 @@ class MainWindow(Gtk.Window):
             account_id = self.store.caldav.connect(
                 url, username, password, self._connection_progress
             )
+        except Exception as exc:
+            self._caldav_connection_failed(str(exc))
+            return
+        try:
             self._connection_progress(_("Requesting initial synchronization…"))
             self._call_daemon("RefreshAccount", GLib.Variant(
                 "(ss)", ("caldav", account_id)
