@@ -111,67 +111,46 @@ We sync it every 15 minutes for a range of 2 years.
 When we navigate outside the range, in the case of Google no events are shown, in the case of
 CalDav we sync extra ranges from the remote.
 
-## Dependencies
-
-### Runtime Dependencies
-
-```text
-gir1.2-gtk-3.0
-gir1.2-gsound-1.0
-gir1.2-secret-1
-python3
-python3-babel
-python3-caldav
-python3-gi
-python3-google-auth-httplib2
-python3-google-auth-oauthlib
-python3-googleapi
-python3-icalendar
-python3-pycurl
-python3-requests
-python3-rich
-python3-setproctitle
-python3-xapp
-```
-
-### Build Dependencies
-
-```text
-gettext
-gir1.2-gtk-3.0
-libglib2.0-dev-bin
-meson
-python3
-python3-babel
-python3-caldav
-python3-gi
-python3-google-auth-httplib2
-python3-google-auth-oauthlib
-python3-googleapi
-python3-icalendar
-python3-pycurl
-python3-requests
-python3-setproctitle
-python3-xapp
-```
-
 ## Building from source
 
-### For Debian distributions (Mint, Ubuntu, etc.)
+### For Mint with mint-dev-tools
 
 ```bash
-sudo apt build-dep --mark-auto .
-dpkg-buildpackage
+# Install mint-dev-tools
+apt install mint-dev-tools
+# Remove any previous versions
+apt remove 'clockenstein*'
+# Build and install from github
+mint-build -i -g https://github.com/xapp-project/clockenstein.git
 ```
 
-This creates packages for clockenstein in the parent directory.
-After installing them, run `clockenstein-calendar` or `clockenstein-clocks`,
-or open Calendar or Clocks from the application menu.
+### For Debian distributions (Mint, Ubuntu, etc.) with dpkg-buildpackage
 
-### For other distributions
+```bash
+# Get the source code..
+git clone https://github.com/xapp-project/clockenstein.git
+# Go in..
+cd clockenstein
+# Install the build dependencies..
+sudo apt build-dep --mark-auto .
+# Remove any previously built packages
+rm -f ../clockenstein*.deb
+# Build
+dpkg-buildpackage
+# Install
+sudo apt install ../clockenstein*.deb
+```
 
-Clockenstein uses the Meson build system. Install the equivalent build and runtime
-dependencies for your distribution. For example:
+### For other distributions with meson
+
+```bash
+# Get the source code..
+git clone https://github.com/xapp-project/clockenstein.git
+# Go in..
+cd clockenstein
+```
+
+Install the build and runtime dependencies for your distribution. For example:
 
 ```bash
 # Fedora: sudo dnf install meson ninja-build python3 gettext
@@ -179,7 +158,45 @@ dependencies for your distribution. For example:
 # openSUSE: sudo zypper install meson ninja python3 gettext-tools
 ```
 
-### Build and install
+The dependencies are listed below (using debian pkg names, names may be different in your distribution). Install all of them.
+
+#### Dependencies for building and runtime
+
+```text
+gir1.2-gsound-1.0
+gir1.2-gtk-3.0
+python3
+python3-babel
+python3-caldav
+python3-gi
+python3-google-auth-httplib2
+python3-google-auth-oauthlib
+python3-googleapi
+python3-icalendar
+python3-pycurl
+python3-requests
+python3-setproctitle
+python3-xapp
+```
+
+#### Dependencies for building
+
+```text
+gettext
+libglib2.0-dev or libgio-2.0-dev
+meson
+pkg-config
+```
+
+#### Dependencies for runtime
+
+```text
+gir1.2-secret-1
+python3-rich
+xapp-symbolic-icons
+```
+
+#### Build and install
 
 ```bash
 meson setup build --prefix=/usr/local
@@ -187,7 +204,7 @@ meson compile -C build
 sudo meson install -C build
 ```
 
-### Uninstall
+#### Uninstall
 
 To remove a Meson installation while retaining the build directory:
 
