@@ -11,6 +11,24 @@ agent_dir = join_paths(clockenstein_dir, 'agent')
 sounds_dir = join_paths(clockenstein_dir, 'sounds')
 systemd_user_unit_dir = join_paths(prefix, 'lib', 'systemd', 'user')
 
+python3 = import('python').find_installation('/usr/bin/python3')
+python_module_dir = python3.get_install_dir()
+
+# Debian uses different Python layouts for /usr and /usr/local. Meson uses
+# the packaged-system layout, even with a /usr/local prefix. For Python's
+# default installation prefix, use its default module directory instead.
+python_default_paths = run_command(
+  python3, '-c',
+  'import sysconfig; print(sysconfig.get_path("data")); print(sysconfig.get_path("purelib"))',
+  check: true,
+).stdout().strip().split('\n')
+python_default_prefix = python_default_paths[0]
+python_default_module_dir = python_default_paths[1]
+if prefix == python_default_prefix
+  python_module_dir = python_default_module_dir
+endif
+python_module_dir = join_paths(python_module_dir, 'clockenstein')
+
 install_data(
   'calendar/calendar_app.py',
   'calendar/dbus.py',
@@ -35,14 +53,14 @@ install_data(
   'clockenstein/formatting.py',
   'clockenstein/logging.py',
   'clockenstein/networking.py',
-  install_dir: join_paths(prefix, 'lib', 'python3', 'dist-packages', 'clockenstein'),
+  install_dir: python_module_dir,
 )
 configure_file(
   input: 'clockenstein/alarms.py',
   output: 'alarms.py',
   configuration: {'datadir': join_paths(prefix, datadir)},
   install: true,
-  install_dir: join_paths(prefix, 'lib', 'python3', 'dist-packages', 'clockenstein'),
+  install_dir: python_module_dir,
 )
 install_data('data/notification.oga', install_dir: sounds_dir)
 
@@ -179,7 +197,6 @@ install_data(
 subdir('data')
 subdir('po')
 
-python3 = find_program('/usr/bin/python3')
 test(
   'unit-tests',
   python3,
