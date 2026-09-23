@@ -238,44 +238,14 @@ class CalDAVBackend(RemoteBackend):
         return result
 
     def _discover(self, url, username, password):
-        # Nextcloud keeps its calendars under remote.php/dav/. If the address
-        # does not have it, try adding it.
-        candidates = [url]
-        if "remote.php" not in url:
-            candidates.append(url.rstrip("/") + "/remote.php/dav/")
-        errors = []
-        for candidate in candidates:
-            try:
-                client, calendars = self._open(candidate, username, password)
-            except Exception as exc:
-                errors.append(exc)
-                continue
-            if calendars:
-                return client, calendars, candidate
-            errors.append(CalDAVUnavailable(
-                _("Connected, but no calendars were found at this address. "
-                  "If this is a Nextcloud or ownCloud server, make sure the "
-                  "URL includes remote.php/dav/.")))
-        # A wrong password is the most useful thing to tell the user.
-        failure = next((e for e in errors if isinstance(e, caldav_error.AuthorizationError)),
-                       errors[-1])
-        raise self._explain_error(failure)
-
-    @staticmethod
-    def _explain_error(exc):
-        if isinstance(exc, CalDAVUnavailable):
-            return exc
-        if isinstance(exc, caldav_error.AuthorizationError):
-            return CalDAVUnavailable(_("The server did not accept the username or password."))
-        if isinstance(exc, requests.Timeout):
-            return CalDAVUnavailable(_("The server took too long to answer."))
-        if isinstance(exc, requests.exceptions.SSLError):
-            return CalDAVUnavailable(_("Could not make a secure connection to the server."))
-        if isinstance(exc, requests.ConnectionError):
-            return CalDAVUnavailable(_("Could not reach the server. Check the address."))
-        if isinstance(exc, caldav_error.NotFoundError):
-            return CalDAVUnavailable(_("The server address was not found. Check the URL."))
-        return CalDAVUnavailable(str(exc) or exc.__class__.__name__)
+        try:
+            client, calendars = self._open(url, username, password)
+            if not calendars and not "remote.php/dav" in url:
+                url = url.rstrip("/") + "/remote.php/dav/"
+                client, calendars = self._open(url, username, password)
+        except Exception as exc:
+            raise CalDAVUnavailable(str(exc) or exc.__class__.__name__)
+        return client, calendars, url
 
     @classmethod
     def _open(cls, url, username, password):

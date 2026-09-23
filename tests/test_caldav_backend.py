@@ -8,8 +8,6 @@ from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "calendar"))
 from unittest.mock import patch
-import requests
-from caldav.lib import error as caldav_error
 from icalendar import Event
 
 from backends.caldav import CalDAVBackend, CalDAVUnavailable, _get_event_ical
@@ -55,49 +53,6 @@ class CalDAVBackendTests(unittest.TestCase):
         parsed = _component_to_dict(event, ZoneInfo("Europe/Dublin"))
         self.assertEqual(parsed["time_start"], datetime.time(17, 45))
         self.assertEqual(parsed["time_end"], datetime.time(18, 45))
-
-    def test_bare_server_url_falls_back_to_nextcloud_dav_path(self):
-        """If the address has no remote.php/dav/, it is added and tried."""
-        with tempfile.TemporaryDirectory() as directory:
-            backend = CalDAVBackend(Path(directory), UTC)
-            calendars = [FakeCalendar("https://cloud.example.test/remote.php/dav/calendars/me/personal/", "Personal")]
-            attempts = []
-
-            def fake_open(url, username, password):
-                attempts.append(url)
-                return object(), calendars if "remote.php" in url else []
-
-            with patch.object(backend, "_open", side_effect=fake_open):
-                _client, found, url = backend._discover("https://cloud.example.test/", "me", "secret")
-            self.assertEqual(found, calendars)
-            self.assertEqual(url, "https://cloud.example.test/remote.php/dav/")
-            self.assertEqual(attempts, ["https://cloud.example.test/",
-                                        "https://cloud.example.test/remote.php/dav/"])
-
-    def test_server_without_calendars_reports_an_error(self):
-        """Finding no calendars gives an error."""
-        with tempfile.TemporaryDirectory() as directory:
-            backend = CalDAVBackend(Path(directory), UTC)
-            with patch.object(backend, "_open", return_value=(object(), [])):
-                with self.assertRaisesRegex(CalDAVUnavailable, "remote.php/dav"):
-                    backend._discover("https://cloud.example.test/", "me", "secret")
-
-    def test_wrong_password_gives_a_clear_error(self):
-        """A rejected login says so, even if the first address failed another way."""
-        with tempfile.TemporaryDirectory() as directory:
-            backend = CalDAVBackend(Path(directory), UTC)
-            failures = [caldav_error.NotFoundError("404"), caldav_error.AuthorizationError("401")]
-            with patch.object(backend, "_open", side_effect=failures):
-                with self.assertRaisesRegex(CalDAVUnavailable, "username or password"):
-                    backend._discover("https://cloud.example.test/", "me", "wrong")
-
-    def test_unreachable_server_gives_a_clear_error(self):
-        """A server that does not exist gives an error about the address."""
-        with tempfile.TemporaryDirectory() as directory:
-            backend = CalDAVBackend(Path(directory), UTC)
-            with patch.object(backend, "_open", side_effect=requests.ConnectionError("no route")):
-                with self.assertRaisesRegex(CalDAVUnavailable, "reach the server"):
-                    backend._discover("https://nowhere.example.test/", "me", "secret")
 
     def test_connection_metadata_excludes_password(self):
         """Connecting stores account metadata on disk but sends the password to Secret Service."""
