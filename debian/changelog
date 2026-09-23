@@ -1,3 +1,26 @@
+clockenstein (2.0.1) adrien; urgency=medium
+
+  [ Clement Lefebvre ]
+  * Update README
+  * Calendar: Keep showing synchronization until it finishes
+  * Calendar: Keep the event dialog responsive while saving online
+  * networking: Avoid connection delays when IPV4 or IPv6 is unreachable
+  * l10n: Update POT
+  * readme: Clarify build instructions
+  * build: Fix Python module installation under /usr/local
+  * CalDAV: Use calendar colors provided by the server
+  * Calendar: Allow changing remote calendar colors locally
+  * caldav: Simplify previous commit
+  * l10n: Update POT
+
+  [ Butterfly ]
+  * control: update build depends (#3)
+
+  [ corbin ]
+  * caldav: Gracefully handle Nextcloud URLs and connection errors
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 23 Sep 2026 13:47:56 +0100
+
 clockenstein (2.0.0) adrien; urgency=medium
 
   * Take timezones into consideration

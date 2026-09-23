@@ -1,4 +1,4 @@
-project('clockenstein', version : '2.0.0', meson_version : '>= 0.59.0')
+project('clockenstein', version : '2.0.1', meson_version : '>= 0.59.0')
 
 prefix = get_option('prefix')
 datadir = get_option('datadir')
