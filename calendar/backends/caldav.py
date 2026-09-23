@@ -1,7 +1,9 @@
 import datetime
 import hashlib
+import re
 import uuid
 import caldav
+from caldav.elements.ical import CalendarColor
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -59,7 +61,8 @@ class CalDAVBackend(RemoteBackend):
         account = {"id": account_id, "url": url, "username": username,
                    "name": f"{username} — {urlparse(url).hostname or url}"}
         self._store_password(account_id, username, password)
-        self.database.connect_account(self.provider, account, self._get_calendar_metadata(calendars, account_id))
+        metadata = self._get_calendar_metadata(calendars, account_id, use_server_colors=True)
+        self.database.connect_account(self.provider, account, metadata)
         self._configured_accounts.add(account_id)
         self._clients[account_id] = client
         self._calendars[account_id] = {str(remote_calendar.url): remote_calendar for remote_calendar in calendars}
@@ -270,7 +273,7 @@ class CalDAVBackend(RemoteBackend):
         from gi.repository import Secret
         Secret.password_clear_sync(cls._get_password_schema(), {"account": account_id}, None)
 
-    def _get_calendar_metadata(self, remote, account_id):
+    def _get_calendar_metadata(self, remote, account_id, use_server_colors=False):
         previous = {calendar["id"]: calendar for calendar in
                     self.database.get_calendars(self.provider, account_id)}
         result = []
@@ -281,8 +284,21 @@ class CalDAVBackend(RemoteBackend):
                 name = calendar.name or old.get("name") or _("Calendar")
             except Exception:
                 name = old.get("name") or _("Calendar")
+            color = old.get("color", self._color(calendar_id))
+            if use_server_colors:
+                try:
+                    server_color = calendar.get_property(CalendarColor())
+                    if server_color:
+                        server_color = server_color.strip()
+                        if re.fullmatch(r"#[0-9a-fA-F]{6}(?:[0-9a-fA-F]{2})?", server_color):
+                            # Servers may append alpha; calendar colors are opaque.
+                            color = server_color[:7]
+                except Exception:
+                    # Color is optional. Keep the saved or generated color if
+                    # the server cannot provide this property during setup.
+                    pass
             result.append({"id": calendar_id, "name": str(name),
-                           "color": old.get("color", self._color(calendar_id)), "writable": True})
+                           "color": color, "writable": True})
         return result
 
     @staticmethod
