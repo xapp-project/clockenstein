@@ -10,7 +10,11 @@ Clock and Calendar applications for Linux desktops.
 - Google calendars
 - CalDAV calendars (Nextcloud, Memotoo, etc)
 
-Remote calendars are read-only when disconnected or offline.
+Remote events are read-only when disconnected or offline.
+
+Remote calendar colors are imported when setting up the account, when available.
+In the Calendars dialog, you can change them locally, even while offline. This
+doesn't change the colors on the server, and later syncs don't change your colors.
 
 Recurring CalDAV events share the same UID for all their instances. So
 in Clockenstein, these are read-only to prevent CRUD operations from

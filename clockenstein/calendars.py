@@ -95,9 +95,11 @@ class CalendarDatabase:
                 connection.execute("DELETE FROM calendars WHERE provider=? AND account_id=? AND id=?",
                            (provider, account_id, row["id"]))
         for calendar in calendars:
+            # Use the supplied color for new calendars only. Existing colors
+            # belong to local preferences, not remote sync metadata.
             connection.execute("""INSERT INTO calendars VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT (provider, account_id, id) DO UPDATE SET
-                    name=excluded.name, color=excluded.color, writable=excluded.writable,
+                    name=excluded.name, writable=excluded.writable,
                     is_primary=excluded.is_primary, revision=excluded.revision""",
                        (provider, account_id, calendar["id"], calendar.get("name", calendar["id"]),
                         calendar.get("color", "#4285f4"), calendar.get("visible", True),

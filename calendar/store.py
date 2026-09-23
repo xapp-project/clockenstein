@@ -152,6 +152,9 @@ class CalendarManager:
     def update_local_calendar(self, calendar_id, name, color):
         return self.local.update_calendar(calendar_id, name, color)
 
+    def set_remote_calendar_color(self, provider, calendar_id, color, account_id):
+        self._get_backend(provider).set_color(calendar_id, color, account_id)
+
     def set_visible(self, provider, calendar_id, visible, account_id=None):
         self._get_backend(provider).set_visible(calendar_id, visible, account_id)
 

@@ -644,15 +644,15 @@ class MainWindow(Gtk.Window):
                             widget.set_sensitive(False)
                     actions = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
                     actions.set_halign(Gtk.Align.START)
+                    edit = Gtk.Button.new_from_icon_name(
+                        "xsi-document-edit-symbolic", Gtk.IconSize.MENU
+                    )
+                    edit.set_relief(Gtk.ReliefStyle.NONE)
+                    edit.set_tooltip_text(_("Edit"))
+                    edit.connect("clicked", self._edit_calendar, calendar_info, box,
+                                 box.get_toplevel())
+                    actions.pack_start(edit, False, False, 0)
                     if calendar_info["provider"] == "local":
-                        edit = Gtk.Button.new_from_icon_name(
-                            "xsi-document-edit-symbolic", Gtk.IconSize.MENU
-                        )
-                        edit.set_relief(Gtk.ReliefStyle.NONE)
-                        edit.set_tooltip_text(_("Edit"))
-                        edit.connect("clicked", self._edit_local_calendar, calendar_info, box,
-                                     box.get_toplevel())
-                        actions.pack_start(edit, False, False, 0)
                         remove = Gtk.Button.new_from_icon_name(
                             "xsi-edit-delete-symbolic", Gtk.IconSize.MENU
                         )
@@ -807,30 +807,51 @@ class MainWindow(Gtk.Window):
         popover.popdown()
         dialog.response(response)
 
-    def _edit_local_calendar(self, _button, calendar_info, calendar_box, parent):
+    def _edit_calendar(self, _button, calendar_info, calendar_box, parent):
+        is_local = calendar_info["provider"] == "local"
         dialog = Gtk.Dialog(title=_("Edit Calendar"), transient_for=parent, modal=True)
         dialog.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL, _("Save"), Gtk.ResponseType.OK)
+        dialog.get_widget_for_response(Gtk.ResponseType.OK).get_style_context().add_class("suggested-action")
         box = dialog.get_content_area()
         box.set_spacing(8)
         box.set_border_width(12)
         name = Gtk.Entry()
         name.set_text(calendar_info["name"])
+        name.set_sensitive(is_local)
+        box.pack_start(Gtk.Label(label=_("Name"), xalign=0), False, False, 0)
+        box.pack_start(name, False, False, 0)
         color = Gtk.ColorButton()
         rgba = Gdk.RGBA()
         rgba.parse(calendar_info.get("color", DEFAULT_COLOR))
         color.set_rgba(rgba)
-        box.pack_start(Gtk.Label(label=_("Name"), xalign=0), False, False, 0)
-        box.pack_start(name, False, False, 0)
         box.pack_start(Gtk.Label(label=_("Color"), xalign=0), False, False, 0)
         box.pack_start(color, False, False, 0)
+        error = Gtk.Label(xalign=0, wrap=True, max_width_chars=40)
+        error.set_no_show_all(True)
+        box.pack_start(error, False, False, 0)
         box.show_all()
-        if dialog.run() == Gtk.ResponseType.OK and name.get_text().strip():
-            self.store.update_local_calendar(
-                calendar_info["id"], name.get_text().strip(), color.get_rgba().to_string()
-            )
+        while dialog.run() == Gtk.ResponseType.OK:
+            if is_local and not name.get_text().strip():
+                continue
+            selected_color = color.get_rgba().to_string()
+            try:
+                if is_local:
+                    self.store.update_local_calendar(
+                        calendar_info["id"], name.get_text().strip(), selected_color,
+                    )
+                else:
+                    self.store.set_remote_calendar_color(
+                        calendar_info["provider"], calendar_info["id"], selected_color,
+                        calendar_info["account_id"],
+                    )
+            except Exception as exc:
+                error.set_text(str(exc))
+                error.show()
+                continue
             self._fill_calendar_box(calendar_box)
             self._update_views()
             notify_changed()
+            break
         dialog.destroy()
 
     def _remove_local_calendar(self, _button, calendar_info, calendar_box, parent):

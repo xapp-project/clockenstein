@@ -30,6 +30,9 @@ class RemoteBackend:
     def set_reminders(self, calendar_id, enabled, account_id=None):
         self.database.update_calendar(self.provider, account_id, calendar_id, reminders=bool(enabled))
 
+    def set_color(self, calendar_id, color, account_id):
+        self.database.update_calendar(self.provider, account_id, calendar_id, color=color)
+
     def clear_calendar_events(self, calendar_id, account_id):
         self.database.clear_events(self.provider, account_id, calendar_id)
 
