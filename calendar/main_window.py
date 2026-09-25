@@ -1255,7 +1255,8 @@ class MainWindow(Gtk.Window):
                          self._week_selected_date if self._active_view == "Week" else
                          self.current_date)
         dialog = EventDialog(self, store=self.store, default_date=default_date or selected_date,
-                             calendar_options=calendars, time_format=self.time_format)
+                             calendar_options=calendars, time_format=self.time_format,
+                             settings=self.settings)
         if dialog.run() == Gtk.ResponseType.OK:
             notify_changed()
             self._refresh(refresh_remote=False)

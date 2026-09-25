@@ -37,6 +37,11 @@
       <default>750</default>
       <range min="460" max="32768"/>
     </key>
+    <key name="last-calendar-used" type="s">
+      <default>''</default>
+      <summary>Calendar preselected for new events</summary>
+      <description>Provider, account and calendar id of the calendar last chosen when creating an event.</description>
+    </key>
     <key name="google-oauth-provider" type="s">
       <default>'clockenstein'</default>
       <summary>Google authorization provider</summary>

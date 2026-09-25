@@ -8,11 +8,14 @@ from gi.repository import Gtk, Pango
 from xapp.threading import run_async, run_idle
 from xapp.util import l10n
 from clockenstein import DEFAULT_COLOR
+from clockenstein.misc import get_calendar_key
 
 _ = l10n("clockenstein")
 
 from store import CalendarManager
 from backends.google import google_event_fits_sync_range
+
+LAST_CALENDAR_KEY = "last-calendar-used"
 
 
 def _uses_12_hour_clock(time_format):
@@ -92,6 +95,7 @@ class EventDialog(Gtk.Dialog):
         event: Optional[dict] = None,
         default_date: Optional[datetime.date] = None,
         time_format="locale",
+        settings=None,
     ):
         is_new = event is None
         editable = is_new or bool(event.get("editable", True))
@@ -111,6 +115,7 @@ class EventDialog(Gtk.Dialog):
         self._saved = False
         self._destroyed = False
         self.calendar_options = calendar_options
+        self.settings = settings
 
         self.set_default_size(420, -1)
         self.add_button(_("Cancel") if editable else _("Close"), Gtk.ResponseType.CANCEL)
@@ -193,10 +198,13 @@ class EventDialog(Gtk.Dialog):
         text_cell = Gtk.CellRendererText()
         self.calendar_combo.pack_start(text_cell, True)
         self.calendar_combo.add_attribute(text_cell, "text", 1)
+        if self.is_new and self.settings is not None:
+            wanted = self.settings.get_string(LAST_CALENDAR_KEY)
+        else:
+            wanted = get_calendar_key(self.event)
         active_calendar = 0
         for index, calendar in enumerate(self.calendar_options):
-            calendar_id = calendar.get("id", calendar.get("calendar_id"))
-            if calendar_id == self.event.get("calendar_id"):
+            if get_calendar_key(calendar) == wanted:
                 active_calendar = index
                 break
         self.calendar_combo.set_active(active_calendar)
@@ -354,8 +362,15 @@ class EventDialog(Gtk.Dialog):
         if self._saving:
             _dialog.stop_emission_by_name("response")
         elif response == Gtk.ResponseType.OK and not self._saved:
-            if not self._save():
+            if self._save():
+                self._remember_calendar()
+            else:
                 _dialog.stop_emission_by_name("response")
+
+    def _remember_calendar(self):
+        if self.is_new and self.settings is not None:
+            calendar = self.calendar_options[self.calendar_combo.get_active()]
+            self.settings.set_string(LAST_CALENDAR_KEY, get_calendar_key(calendar))
 
     def _on_delete_event(self, _dialog, _event):
         # Closing the dialog cannot cancel a request already sent to the server.
@@ -453,6 +468,7 @@ class EventDialog(Gtk.Dialog):
             self.status_label.set_text(_("Error: %s") % error)
             return
         self._saved = True
+        self._remember_calendar()
         self.response(Gtk.ResponseType.OK)
 
     def _on_delete(self, _btn):

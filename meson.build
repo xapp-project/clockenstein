@@ -52,6 +52,7 @@ install_data(
   'clockenstein/drawing.py',
   'clockenstein/formatting.py',
   'clockenstein/logging.py',
+  'clockenstein/misc.py',
   'clockenstein/networking.py',
   install_dir: python_module_dir,
 )
