@@ -507,18 +507,18 @@ def google_event_fits_sync_range(calendar, date_start, date_end, today=None):
 def event_dict_to_google(data, timezone):
     body = {"summary": data.get("summary", ""), "location": data.get("location", ""),
             "description": data.get("description", "")}
+    # Updates are sent with patch, which merges, so the fields of the other
+    # start/end shape must be cleared explicitly.
     if data.get("all_day", True):
-        body["start"] = {"date": data["date_start"].isoformat()}
-        body["end"] = {"date": (data.get("date_end", data["date_start"]) + datetime.timedelta(days=1)).isoformat()}
+        end_date = data.get("date_end", data["date_start"]) + datetime.timedelta(days=1)
+        body["start"] = {"date": data["date_start"].isoformat(), "dateTime": None, "timeZone": None}
+        body["end"] = {"date": end_date.isoformat(), "dateTime": None, "timeZone": None}
     else:
         start = datetime.datetime.combine(data["date_start"], data["time_start"], timezone)
         end = datetime.datetime.combine(data.get("date_end", data["date_start"]), data["time_end"], timezone)
-        body["start"] = {"dateTime": start.isoformat()}
-        body["end"] = {"dateTime": end.isoformat()}
         timezone_name = getattr(timezone, "key", None)
-        if timezone_name:
-            body["start"]["timeZone"] = timezone_name
-            body["end"]["timeZone"] = timezone_name
+        body["start"] = {"dateTime": start.isoformat(), "date": None, "timeZone": timezone_name}
+        body["end"] = {"dateTime": end.isoformat(), "date": None, "timeZone": timezone_name}
     return body
 
 
