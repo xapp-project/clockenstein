@@ -425,6 +425,8 @@ def _get_due_notifications(events, since, until, minutes, timezone):
         return []
     due = []
     for event in events:
+        if event.get("all_day"):
+            continue
         start = _get_event_start(event, timezone)
         trigger = start - datetime.timedelta(minutes=minutes)
         if since < trigger <= until:
