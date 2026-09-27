@@ -33,7 +33,7 @@ Architecture: all
 Depends:
  ${misc:Depends},
  gir1.2-secret-1,
- init-system-helpers,
+ init-system-helpers (>= 1.66~),
  python3,
  python3-caldav,
  python3-gi,
@@ -60,6 +60,7 @@ Depends:
  clockenstein-daemon (= ${binary:Version}),
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
+ init-system-helpers (>= 1.66~),
  python3,
  python3-gi,
  python3-gi-cairo,
