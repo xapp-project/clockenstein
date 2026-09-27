@@ -51,9 +51,9 @@ Depends:
  python3-xapp (>= 3.0.0),
  tzdata,
 Recommends:
+ clockenstein-notification-agent,
  gnome-keyring,
 Suggests:
- clockenstein-notification-agent,
  gir1.2-goa-1.0,
  gnome-online-accounts-gtk,
 Description: Background service for Clockenstein
