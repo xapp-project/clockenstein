@@ -32,6 +32,7 @@ Package: clockenstein-daemon
 Architecture: all
 Depends:
  ${misc:Depends},
+ default-dbus-session-bus | dbus-session-bus,
  gir1.2-glib-2.0,
  gir1.2-secret-1,
  init-system-helpers (>= 1.66~),
@@ -61,6 +62,7 @@ Architecture: all
 Depends:
  ${misc:Depends},
  clockenstein-daemon (= ${binary:Version}),
+ default-dbus-session-bus | dbus-session-bus,
  gir1.2-glib-2.0,
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
@@ -81,6 +83,7 @@ Architecture: all
 Depends:
  ${misc:Depends},
  clockenstein-daemon (= ${binary:Version}),
+ default-dbus-session-bus | dbus-session-bus,
  gir1.2-glib-2.0,
  gir1.2-gtk-3.0,
  gir1.2-pango-1.0,
@@ -100,6 +103,7 @@ Architecture: all
 Depends:
  ${misc:Depends},
  clockenstein-daemon (= ${binary:Version}),
+ default-dbus-session-bus | dbus-session-bus,
  gir1.2-glib-2.0,
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
