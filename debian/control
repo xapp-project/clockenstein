@@ -52,6 +52,8 @@ Depends:
  tzdata,
 Suggests:
  clockenstein-notification-agent,
+ gir1.2-goa-1.0,
+ gnome-online-accounts-gtk,
 Description: Background service for Clockenstein
  Clockenstein Daemon syncs online calendars, schedules event reminders and
  alarms, and provides the D-Bus service used by desktop clients.
