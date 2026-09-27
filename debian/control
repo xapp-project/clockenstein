@@ -5,8 +5,10 @@ Maintainer: Clement Lefebvre <root@linuxmint.com>
 Build-Depends:
  debhelper-compat (= 13),
  gettext,
+ gir1.2-glib-2.0,
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
+ gir1.2-pango-1.0,
  libglib2.0-bin,
  meson (>= 0.59.0),
  python3,
@@ -16,11 +18,13 @@ Build-Depends:
  python3-google-auth-httplib2,
  python3-google-auth-oauthlib,
  python3-googleapi,
+ python3-httplib2,
  python3-icalendar,
  python3-pycurl,
  python3-requests,
  python3-setproctitle,
  python3-xapp (>= 3.0.0),
+ tzdata,
 Standards-Version: 4.6.2
 Rules-Requires-Root: no
 
