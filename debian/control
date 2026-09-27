@@ -20,7 +20,7 @@ Build-Depends:
  python3-pycurl,
  python3-requests,
  python3-setproctitle,
- python3-xapp,
+ python3-xapp (>= 3.0.0),
 Standards-Version: 4.6.2
 Rules-Requires-Root: no
 
@@ -41,7 +41,7 @@ Depends:
  python3-requests,
  python3-rich,
  python3-setproctitle,
- python3-xapp,
+ python3-xapp (>= 3.0.0),
 Suggests:
  clockenstein-notification-agent,
 Description: Background service for Clockenstein
@@ -59,7 +59,7 @@ Depends:
  python3,
  python3-gi,
  python3-setproctitle,
- python3-xapp,
+ python3-xapp (>= 3.0.0),
  xapp-symbolic-icons,
 Description: Desktop notification agent for Clockenstein
  The Clockenstein notification agent displays event reminders and alarms
@@ -75,7 +75,7 @@ Depends:
  python3-babel,
  python3-gi,
  python3-setproctitle,
- python3-xapp,
+ python3-xapp (>= 3.0.0),
  xapp-symbolic-icons,
 Description: Calendar application with local, Google and CalDAV support
  Clockenstein Calendar lets you manage multiple calendars. It supports local
@@ -91,7 +91,7 @@ Depends:
  python3,
  python3-gi,
  python3-setproctitle,
- python3-xapp,
+ python3-xapp (>= 3.0.0),
  xapp-symbolic-icons,
 Description: Clock application with alarms
  Clockenstein Clocks lets you create one-off and repeating alarms.
