@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Clement Lefebvre <root@linuxmint.com>
 Build-Depends:
  debhelper-compat (= 13),
+ dh-sequence-python3,
  gettext,
  gir1.2-glib-2.0 <!nocheck>,
  gir1.2-gsound-1.0 <!nocheck>,
@@ -34,6 +35,7 @@ Package: clockenstein-daemon
 Architecture: all
 Depends:
  ${misc:Depends},
+ ${python3:Depends},
  default-dbus-session-bus | dbus-session-bus,
  gir1.2-glib-2.0,
  gir1.2-secret-1,
@@ -67,6 +69,7 @@ Package: clockenstein-notification-agent
 Architecture: all
 Depends:
  ${misc:Depends},
+ ${python3:Depends},
  clockenstein-daemon (= ${binary:Version}),
  default-dbus-session-bus | dbus-session-bus,
  gir1.2-glib-2.0,
@@ -88,6 +91,7 @@ Package: clockenstein-calendar
 Architecture: all
 Depends:
  ${misc:Depends},
+ ${python3:Depends},
  clockenstein-daemon (= ${binary:Version}),
  default-dbus-session-bus | dbus-session-bus,
  gir1.2-glib-2.0,
@@ -108,6 +112,7 @@ Package: clockenstein-clocks
 Architecture: all
 Depends:
  ${misc:Depends},
+ ${python3:Depends},
  clockenstein-daemon (= ${binary:Version}),
  default-dbus-session-bus | dbus-session-bus,
  gir1.2-glib-2.0,
