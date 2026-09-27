@@ -32,6 +32,7 @@ Package: clockenstein-daemon
 Architecture: all
 Depends:
  ${misc:Depends},
+ gir1.2-glib-2.0,
  gir1.2-secret-1,
  init-system-helpers (>= 1.66~),
  python3,
@@ -40,12 +41,14 @@ Depends:
  python3-google-auth-httplib2,
  python3-google-auth-oauthlib,
  python3-googleapi,
+ python3-httplib2,
  python3-icalendar,
  python3-pycurl,
  python3-requests,
  python3-rich,
  python3-setproctitle,
  python3-xapp (>= 3.0.0),
+ tzdata,
 Suggests:
  clockenstein-notification-agent,
 Description: Background service for Clockenstein
@@ -58,8 +61,10 @@ Architecture: all
 Depends:
  ${misc:Depends},
  clockenstein-daemon (= ${binary:Version}),
+ gir1.2-glib-2.0,
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
+ gir1.2-pango-1.0,
  init-system-helpers (>= 1.66~),
  python3,
  python3-gi,
@@ -76,7 +81,9 @@ Architecture: all
 Depends:
  ${misc:Depends},
  clockenstein-daemon (= ${binary:Version}),
+ gir1.2-glib-2.0,
  gir1.2-gtk-3.0,
+ gir1.2-pango-1.0,
  python3,
  python3-babel,
  python3-gi,
@@ -93,6 +100,7 @@ Architecture: all
 Depends:
  ${misc:Depends},
  clockenstein-daemon (= ${binary:Version}),
+ gir1.2-glib-2.0,
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
  python3,
