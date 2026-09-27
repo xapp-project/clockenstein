@@ -57,7 +57,7 @@ Package: clockenstein-notification-agent
 Architecture: all
 Depends:
  ${misc:Depends},
- clockenstein-daemon,
+ clockenstein-daemon (= ${binary:Version}),
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
  python3,
@@ -74,7 +74,7 @@ Package: clockenstein-calendar
 Architecture: all
 Depends:
  ${misc:Depends},
- clockenstein-daemon,
+ clockenstein-daemon (= ${binary:Version}),
  gir1.2-gtk-3.0,
  python3,
  python3-babel,
@@ -91,7 +91,7 @@ Package: clockenstein-clocks
 Architecture: all
 Depends:
  ${misc:Depends},
- clockenstein-daemon,
+ clockenstein-daemon (= ${binary:Version}),
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
  python3,
