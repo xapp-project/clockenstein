@@ -27,6 +27,7 @@ Build-Depends:
  python3-xapp (>= 3.0.0) <!nocheck>,
  tzdata <!nocheck>,
 Standards-Version: 4.6.2
+Homepage: https://github.com/xapp-project/clockenstein
 Rules-Requires-Root: no
 
 Package: clockenstein-daemon
