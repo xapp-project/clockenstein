@@ -166,9 +166,13 @@ The dependencies are listed below (using debian pkg names, names may be differen
 
 #### Dependencies for building and runtime
 
+The build only needs these to run the tests (`meson test`).
+
 ```text
+gir1.2-glib-2.0
 gir1.2-gsound-1.0
 gir1.2-gtk-3.0
+gir1.2-pango-1.0
 python3
 python3-babel
 python3-caldav
@@ -176,28 +180,40 @@ python3-gi
 python3-google-auth-httplib2
 python3-google-auth-oauthlib
 python3-googleapi
+python3-httplib2
 python3-icalendar
 python3-pycurl
 python3-requests
 python3-setproctitle
-python3-xapp
+python3-xapp (>= 3.0.0)
+tzdata
 ```
 
 #### Dependencies for building
 
 ```text
 gettext
-libglib2.0-dev or libgio-2.0-dev
+gtk-update-icon-cache
+libglib2.0-bin (for glib-compile-schemas)
 meson
-pkg-config
 ```
 
 #### Dependencies for runtime
 
 ```text
 gir1.2-secret-1
+python3-gi-cairo
 python3-rich
 xapp-symbolic-icons
+```
+
+A D-Bus session bus and a systemd user session are also required.
+
+Optional:
+
+```text
+gnome-keyring (or another Secret Service provider, to store CalDAV passwords)
+gir1.2-goa-1.0 and gnome-online-accounts-gtk (to use Google accounts from Online Accounts)
 ```
 
 #### Build and install
