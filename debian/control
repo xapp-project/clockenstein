@@ -9,6 +9,7 @@ Build-Depends:
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
  gir1.2-pango-1.0,
+ gtk-update-icon-cache,
  libglib2.0-bin,
  meson (>= 0.59.0),
  python3,
