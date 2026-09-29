@@ -4,47 +4,62 @@ Priority: optional
 Maintainer: Clement Lefebvre <root@linuxmint.com>
 Build-Depends:
  debhelper-compat (= 13),
+ dh-sequence-python3,
  gettext,
- gir1.2-gsound-1.0,
- gir1.2-gtk-3.0,
- libglib2.0-dev | libgio-2.0-dev,
+ gir1.2-glib-2.0 <!nocheck>,
+ gir1.2-gsound-1.0 <!nocheck>,
+ gir1.2-gtk-3.0 <!nocheck>,
+ gir1.2-pango-1.0 <!nocheck>,
+ gtk-update-icon-cache,
+ libglib2.0-bin,
  meson (>= 0.59.0),
- pkg-config,
  python3,
- python3-babel,
- python3-caldav,
- python3-gi,
- python3-google-auth-httplib2,
- python3-google-auth-oauthlib,
- python3-googleapi,
- python3-icalendar,
- python3-pycurl,
- python3-requests,
- python3-setproctitle,
- python3-xapp,
+ python3-babel <!nocheck>,
+ python3-caldav <!nocheck>,
+ python3-gi <!nocheck>,
+ python3-google-auth-httplib2 <!nocheck>,
+ python3-google-auth-oauthlib <!nocheck>,
+ python3-googleapi <!nocheck>,
+ python3-httplib2 <!nocheck>,
+ python3-icalendar <!nocheck>,
+ python3-pycurl <!nocheck>,
+ python3-requests <!nocheck>,
+ python3-setproctitle <!nocheck>,
+ python3-xapp (>= 3.0.0) <!nocheck>,
+ tzdata <!nocheck>,
 Standards-Version: 4.6.2
+Homepage: https://github.com/xapp-project/clockenstein
 Rules-Requires-Root: no
 
 Package: clockenstein-daemon
 Architecture: all
 Depends:
  ${misc:Depends},
+ ${python3:Depends},
+ default-dbus-session-bus | dbus-session-bus,
+ gir1.2-glib-2.0,
  gir1.2-secret-1,
- init-system-helpers,
+ init-system-helpers (>= 1.66~),
  python3,
  python3-caldav,
  python3-gi,
  python3-google-auth-httplib2,
  python3-google-auth-oauthlib,
  python3-googleapi,
+ python3-httplib2,
  python3-icalendar,
  python3-pycurl,
  python3-requests,
  python3-rich,
  python3-setproctitle,
- python3-xapp,
-Suggests:
+ python3-xapp (>= 3.0.0),
+ tzdata,
+Recommends:
  clockenstein-notification-agent,
+ gnome-keyring,
+Suggests:
+ gir1.2-goa-1.0,
+ gnome-online-accounts-gtk,
 Description: Background service for Clockenstein
  Clockenstein Daemon syncs online calendars, schedules event reminders and
  alarms, and provides the D-Bus service used by desktop clients.
@@ -54,13 +69,19 @@ Package: clockenstein-notification-agent
 Architecture: all
 Depends:
  ${misc:Depends},
- clockenstein-daemon,
+ ${python3:Depends},
+ clockenstein-daemon (= ${binary:Version}),
+ default-dbus-session-bus | dbus-session-bus,
+ gir1.2-glib-2.0,
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
+ gir1.2-pango-1.0,
+ init-system-helpers (>= 1.66~),
  python3,
  python3-gi,
+ python3-gi-cairo,
  python3-setproctitle,
- python3-xapp,
+ python3-xapp (>= 3.0.0),
  xapp-symbolic-icons,
 Description: Desktop notification agent for Clockenstein
  The Clockenstein notification agent displays event reminders and alarms
@@ -70,13 +91,18 @@ Package: clockenstein-calendar
 Architecture: all
 Depends:
  ${misc:Depends},
- clockenstein-daemon,
+ ${python3:Depends},
+ clockenstein-daemon (= ${binary:Version}),
+ default-dbus-session-bus | dbus-session-bus,
+ gir1.2-glib-2.0,
  gir1.2-gtk-3.0,
+ gir1.2-pango-1.0,
  python3,
  python3-babel,
  python3-gi,
+ python3-gi-cairo,
  python3-setproctitle,
- python3-xapp,
+ python3-xapp (>= 3.0.0),
  xapp-symbolic-icons,
 Description: Calendar application with local, Google and CalDAV support
  Clockenstein Calendar lets you manage multiple calendars. It supports local
@@ -86,13 +112,17 @@ Package: clockenstein-clocks
 Architecture: all
 Depends:
  ${misc:Depends},
- clockenstein-daemon,
+ ${python3:Depends},
+ clockenstein-daemon (= ${binary:Version}),
+ default-dbus-session-bus | dbus-session-bus,
+ gir1.2-glib-2.0,
  gir1.2-gsound-1.0,
  gir1.2-gtk-3.0,
  python3,
+ python3-babel,
  python3-gi,
  python3-setproctitle,
- python3-xapp,
+ python3-xapp (>= 3.0.0),
  xapp-symbolic-icons,
 Description: Clock application with alarms
  Clockenstein Clocks lets you create one-off and repeating alarms.
