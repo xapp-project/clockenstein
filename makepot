@@ -5,6 +5,11 @@ xgettext --language=Desktop \
     data/org.x.clockenstein.Calendar.desktop.in \
     data/org.x.clockenstein.Clocks.desktop.in
 
+xgettext --join-existing \
+    --output=clockenstein.pot \
+    data/org.x.clockenstein.Calendar.metainfo.xml.in \
+    data/org.x.clockenstein.Clocks.metainfo.xml.in
+
 xgettext --language=Python \
     --join-existing \
     --from-code=UTF-8 \

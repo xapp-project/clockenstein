@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.x.clockenstein.Calendar</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <developer id="com.linuxmint">
+    <name translate="no">Linux Mint</name>
+  </developer>
+  <name>Calendar</name>
+  <summary>Manage your events and appointments</summary>
+  <description>
+    <p>Clockenstein Calendar lets you manage multiple calendars. It supports local calendars, Google Calendars and CalDAV (Nextcloud, Memotoo etc.).</p>
+  </description>
+  <launchable type="desktop-id">org.x.clockenstein.Calendar.desktop</launchable>
+  <url type="homepage">https://github.com/xapp-project/clockenstein</url>
+  <url type="bugtracker">https://github.com/xapp-project/clockenstein/issues</url>
+  <content_rating type="oars-1.1" />
+</component>

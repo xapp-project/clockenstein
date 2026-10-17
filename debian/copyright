@@ -13,11 +13,21 @@ Comment: Same file as stereo/dialog-warning.oga from sound-theme-freedesktop,
  which comes from the Borealis sound theme. Its CREDITS file lists
  "License: CC-BY-SA" and the Debian package documents it as CC-BY-SA-3.0.
 
+Files: data/*.metainfo.xml.in
+Copyright: 2026 Clockenstein contributors
+License: CC0-1.0
+
 License: GPL-3
  SPDX "GPL-3.0-only": https://spdx.org/licenses/GPL-3.0-only.html
  .
  On Debian systems, the complete text of the GNU General Public License version 3
  can be found in `/usr/share/common-licenses/GPL-3`.
+
+License: CC0-1.0
+ SPDX "CC0-1.0": https://spdx.org/licenses/CC0-1.0.html
+ .
+ On Debian systems, the complete text of the Creative Commons CC0 1.0
+ Universal license can be found in `/usr/share/common-licenses/CC0-1.0`.
 
 License: CC-BY-SA-3.0
  SPDX "CC-BY-SA-3.0": https://spdx.org/licenses/CC-BY-SA-3.0.html
