@@ -125,4 +125,6 @@ Depends:
  python3-xapp (>= 3.0.0),
  xapp-symbolic-icons,
 Description: Clock application with alarms
- Clockenstein Clocks lets you create one-off and repeating alarms.
+ Clockenstein Clocks lets you create one-off and repeating alarms, each
+ with its own label and sound. Alarms ring even when the application is
+ closed, since they are handled by the Clockenstein background service.
