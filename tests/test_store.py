@@ -453,6 +453,22 @@ class GoogleMappingTests(unittest.TestCase):
                                      "date_end": datetime.date(2026, 8, 25)}, UTC)
         self.assertEqual(body["end"]["date"], "2026-08-26")
 
+    def test_google_event_writes_clear_the_unused_start_shape(self):
+        """Patching between all-day and timed must null the other shape's fields."""
+        all_day = event_dict_to_google({"summary": "Day", "all_day": True,
+                                        "date_start": datetime.date(2026, 8, 22),
+                                        "date_end": datetime.date(2026, 8, 22)}, UTC)
+        timed = event_dict_to_google({"summary": "Hour", "all_day": False,
+                                      "date_start": datetime.date(2026, 8, 22),
+                                      "date_end": datetime.date(2026, 8, 22),
+                                      "time_start": datetime.time(9, 0),
+                                      "time_end": datetime.time(10, 0)}, UTC)
+        for body in (all_day["start"], all_day["end"]):
+            self.assertIsNone(body["dateTime"])
+            self.assertIsNone(body["timeZone"])
+        for body in (timed["start"], timed["end"]):
+            self.assertIsNone(body["date"])
+
     def test_google_event_writes_do_not_include_reminders(self):
         """Clockenstein leaves Google reminder behavior to Google."""
         body = event_dict_to_google({"summary": "Quiet", "all_day": True,
