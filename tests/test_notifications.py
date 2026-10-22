@@ -63,10 +63,11 @@ class NotificationSchedulerTests(unittest.TestCase):
         daemon.timezone = ZoneInfo("UTC")
         event = {"uid": "one", "date_start": datetime.date(2026, 10, 13),
                  "date_end": datetime.date(2026, 10, 14), "all_day": False,
-                 "time_start": datetime.time.min, "time_end": datetime.time.min}
-        _uid, _color, _summary, all_day, start, end, _modified = daemon._get_event_tuple(event)
+                 "time_start": datetime.time.min, "time_end": datetime.time.min, "modified": 1234}
+        _uid, _color, _summary, all_day, start, end, modified = daemon._get_event_tuple(event)
         self.assertTrue(all_day)
         self.assertEqual(end - start, 24 * 60 * 60)
+        self.assertEqual(modified, 1234)
         midnight = datetime.datetime.combine(event["date_start"], datetime.time.min, daemon.timezone)
         self.assertEqual(DAEMON._get_due_notifications(
             [event], midnight - datetime.timedelta(minutes=20), midnight, 15, daemon.timezone), [])

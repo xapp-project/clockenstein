@@ -30,9 +30,22 @@ class LocalStoreTests(unittest.TestCase):
         event = Event()
         event.add("dtstart", datetime.datetime(2026, 9, 16, 23, tzinfo=UTC))
         event.add("duration", datetime.timedelta(hours=2))
+        event.add("dtstamp", datetime.datetime(2026, 9, 14, tzinfo=UTC))
+        event.add("last-modified", datetime.datetime(2026, 9, 15, tzinfo=UTC))
         parsed = _component_to_dict(event, UTC)
         self.assertEqual(parsed["date_end"], datetime.date(2026, 9, 17))
         self.assertEqual(parsed["time_end"], datetime.time(1))
+        self.assertEqual(parsed["modified"], int(datetime.datetime(2026, 9, 15, tzinfo=UTC).timestamp()))
+
+    def test_date_valued_modification_stamps_are_ignored(self):
+        event = Event()
+        event.add("dtstart", datetime.date(2026, 9, 16))
+        self.assertIsNone(_component_to_dict(event, UTC)["modified"])
+        event.add("last-modified", datetime.date(2026, 9, 15))
+        self.assertIsNone(_component_to_dict(event, UTC)["modified"])
+        event.add("dtstamp", datetime.datetime(2026, 9, 14, tzinfo=UTC))
+        self.assertEqual(_component_to_dict(event, UTC)["modified"],
+                         int(datetime.datetime(2026, 9, 14, tzinfo=UTC).timestamp()))
 
     def test_unnamed_local_zone_retains_dst_rules(self):
         with patch("store.GLib.TimeZone.new_local") as zone, \
@@ -488,7 +501,7 @@ class GoogleMappingTests(unittest.TestCase):
         self.assertNotIn("notification_minutes", event)
 
     def test_google_timed_event_is_converted_to_the_computer_timezone(self):
-        raw = {"id": "g1", "summary": "Remote",
+        raw = {"id": "g1", "summary": "Remote", "updated": "2026-09-08T10:15:30.123Z",
                "start": {"dateTime": "2026-09-09T16:45:00Z"},
                "end": {"dateTime": "2026-09-09T17:45:00Z"}}
         calendar = {"id": "primary", "name": "Personal", "color": "#123456",
@@ -498,6 +511,8 @@ class GoogleMappingTests(unittest.TestCase):
         )
         self.assertEqual(event["time_start"], datetime.time(17, 45))
         self.assertEqual(event["time_end"], datetime.time(18, 45))
+        self.assertEqual(event["modified"],
+                         int(datetime.datetime(2026, 9, 8, 10, 15, 30, tzinfo=UTC).timestamp()))
 
     def test_google_timed_event_uses_the_computer_timezone_on_write(self):
         data = {"summary": "Local", "all_day": False,

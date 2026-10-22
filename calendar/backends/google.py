@@ -477,7 +477,9 @@ def google_event_to_dict(raw, calendar, account, online, timezone):
         time_start, time_end = start_dt.time().replace(tzinfo=None), end_dt.time().replace(tzinfo=None)
     writable = calendar.get("writable", calendar.get("access_role") in ("writer", "owner"))
     event_type = raw.get("eventType", "default")
+    updated = raw.get("updated")
     return {"uid": raw.get("id", ""), "summary": raw.get("summary") or _("Untitled"),
+            "modified": int(_parse_datetime(updated).timestamp()) if updated else None,
             "location": raw.get("location", ""), "description": raw.get("description", ""),
             "all_day": all_day, "date_start": date_start, "date_end": date_end,
             "time_start": time_start, "time_end": time_end, "provider": "google",

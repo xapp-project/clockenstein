@@ -243,7 +243,7 @@ class ClockensteinDaemon:
         uid = get_calendar_key(event) + ":" + event["uid"]
         return (uid, event.get("calendar_color", DEFAULT_COLOR),
                 event.get("summary", ""), all_day,
-                int(start.timestamp()), int(end.timestamp()), 0)
+                int(start.timestamp()), int(end.timestamp()), event.get("modified") or 0)
 
     def _refresh_timeout(self):
         self.refresh_ticks += 1

@@ -9,6 +9,9 @@ from pathlib import Path
 from clockenstein.misc import get_event_last_day
 
 
+SCHEMA_VERSION = 1
+
+
 class CalendarDatabase:
     """Shared calendar records. Each write changes only the records it owns."""
 
@@ -37,11 +40,23 @@ class CalendarDatabase:
                 location TEXT NOT NULL, description TEXT NOT NULL,
                 all_day INTEGER NOT NULL, start TEXT NOT NULL, end TEXT NOT NULL,
                 editable INTEGER NOT NULL, event_type TEXT NOT NULL, remote_url TEXT,
+                modified INTEGER NOT NULL DEFAULT 0,
                 PRIMARY KEY (provider, account_id, calendar_id, event_key),
                 FOREIGN KEY (provider, account_id, calendar_id)
                     REFERENCES calendars(provider, account_id, id) ON DELETE CASCADE)""")
             connection.execute("CREATE INDEX IF NOT EXISTS events_uid ON events(provider, account_id, uid)")
+            self._migrate(connection)
         self.path.chmod(0o600)
+
+    @staticmethod
+    def _migrate(connection):
+        version = connection.execute("PRAGMA user_version").fetchone()[0]
+        if version < 1:
+            columns = {row["name"] for row in connection.execute("PRAGMA table_info(events)")}
+            if "modified" not in columns:
+                connection.execute("ALTER TABLE events ADD COLUMN modified INTEGER NOT NULL DEFAULT 0")
+        if version < SCHEMA_VERSION:
+            connection.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
 
     @contextmanager
     def connection(self, write=False):
@@ -221,17 +236,21 @@ class CalendarDatabase:
                 if not event["all_day"]:
                     value = datetime.datetime.combine(value, event[f"time_{field}"], timezone)
             dates.append(value.isoformat())
-        connection.execute("""INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        modified = event.get("modified") or int(datetime.datetime.now(datetime.timezone.utc).timestamp())
+        connection.execute("""INSERT INTO events (provider, account_id, calendar_id, event_key, uid,
+                summary, location, description, all_day, start, end, editable, event_type,
+                remote_url, modified)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT (provider, account_id, calendar_id, event_key) DO UPDATE SET
                 uid=excluded.uid, summary=excluded.summary, location=excluded.location,
                 description=excluded.description, all_day=excluded.all_day, start=excluded.start,
                 end=excluded.end, editable=excluded.editable, event_type=excluded.event_type,
-                remote_url=excluded.remote_url""",
+                remote_url=excluded.remote_url, modified=excluded.modified""",
                    (provider, account_id, calendar_id, event.get("event_key", event["uid"]),
                     event["uid"], event.get("summary", ""), event.get("location", ""),
                     event.get("description", ""), event["all_day"], *dates,
                     event.get("editable", True), event.get("event_type", "default"),
-                    event.get("_caldav_url")))
+                    event.get("_caldav_url"), modified))
 
     def save_event(self, provider, account_id, calendar_id, event, timezone, source_id=None):
         with self.connection(write=True) as connection:

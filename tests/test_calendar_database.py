@@ -11,7 +11,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "calendar"))
 
-from clockenstein.calendars import CalendarDatabase
+from clockenstein.calendars import SCHEMA_VERSION, CalendarDatabase
 from clockenstein.misc import get_event_last_day
 from backends.google import GoogleBackend
 from backends.caldav import CalDAVBackend, _get_event_ical
@@ -44,6 +44,29 @@ class CalendarDatabaseTests(unittest.TestCase):
         self.client.connect_account("google", {"id": "account", "name": "Account"},
                                     [{"id": "work", "name": "Work"}, {"id": "home"}])
         self.daemon = CalendarDatabase(self.path)
+
+    def test_existing_database_gains_modified_column(self):
+        self.client.save_event("google", "account", "work", event("old"), UTC)
+        connection = sqlite3.connect(self.client.path)
+        connection.execute("ALTER TABLE events DROP COLUMN modified")
+        connection.execute("PRAGMA user_version = 0")
+        connection.close()
+        database = CalendarDatabase(self.path)
+        database.save_event("google", "account", "work", event("new"), UTC)
+        database.save_event("google", "account", "work", {**event("synced"), "modified": 1234}, UTC)
+        events = {e["uid"]: e for e in database.get_events("google", UTC)}
+        self.assertEqual(events["old"]["modified"], 0)
+        self.assertGreater(events["new"]["modified"], 0)
+        self.assertEqual(events["synced"]["modified"], 1234)
+
+    def test_newer_schema_version_is_kept(self):
+        connection = sqlite3.connect(self.client.path)
+        connection.execute(f"PRAGMA user_version = {SCHEMA_VERSION + 1}")
+        connection.close()
+        CalendarDatabase(self.path)
+        connection = sqlite3.connect(self.client.path)
+        self.assertEqual(connection.execute("PRAGMA user_version").fetchone()[0], SCHEMA_VERSION + 1)
+        connection.close()
 
     def test_sync_preserves_preferences_and_other_accounts(self):
         snapshot = self.daemon.get_calendars("google", "account")[0]

@@ -212,6 +212,18 @@ def _apply_data(component: Event, data: dict, timezone: datetime.tzinfo):
             date_end, data.get("time_end") or datetime.time(10), timezone))
 
 
+def _get_modified(component):
+    stamps = []
+    for name in ("last-modified", "dtstamp"):
+        value = getattr(component.get(name), "dt", None)
+        if isinstance(value, datetime.datetime):
+            try:
+                stamps.append(int(value.timestamp()))
+            except (OverflowError, OSError, ValueError):
+                pass
+    return max(stamps, default=None)
+
+
 def _component_to_dict(component, timezone: datetime.tzinfo) -> dict:
     start_value = component.get("dtstart").dt
     all_day = isinstance(start_value, datetime.date) and not isinstance(start_value, datetime.datetime)
@@ -237,4 +249,5 @@ def _component_to_dict(component, timezone: datetime.tzinfo) -> dict:
             "location": str(component.get("location", "")), "description": str(component.get("description", "")),
             "all_day": all_day, "date_start": date_start, "date_end": date_end,
             "time_start": time_start, "time_end": time_end,
+            "modified": _get_modified(component),
             "_start": source_start, "_end": source_end}
