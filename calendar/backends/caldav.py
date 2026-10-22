@@ -9,6 +9,9 @@ from caldav.lib import error as caldav_error
 from pathlib import Path
 from urllib.parse import urlparse
 
+import gi
+gi.require_version("Secret", "1")
+from gi.repository import Secret
 from icalendar import Calendar, Event
 from xapp.util import l10n
 from backends.remote import RemoteBackend
@@ -260,15 +263,11 @@ class CalDAVBackend(RemoteBackend):
 
     @classmethod
     def _get_password_schema(cls):
-        import gi
-        gi.require_version("Secret", "1")
-        from gi.repository import Secret
         return Secret.Schema.new(cls.SECRET_SCHEMA, Secret.SchemaFlags.NONE,
                                  {"account": Secret.SchemaAttributeType.STRING})
 
     @classmethod
     def _store_password(cls, account_id, username, password):
-        from gi.repository import Secret
         ok = Secret.password_store_sync(cls._get_password_schema(), {"account": account_id},
                                         Secret.COLLECTION_DEFAULT,
                                         _("Calendar CalDAV password for %s") % username, password, None)
@@ -277,12 +276,10 @@ class CalDAVBackend(RemoteBackend):
 
     @classmethod
     def _lookup_password(cls, account_id):
-        from gi.repository import Secret
         return Secret.password_lookup_sync(cls._get_password_schema(), {"account": account_id}, None)
 
     @classmethod
     def _clear_password(cls, account_id):
-        from gi.repository import Secret
         Secret.password_clear_sync(cls._get_password_schema(), {"account": account_id}, None)
 
     def _get_calendar_metadata(self, remote, account_id, use_server_colors=False):
