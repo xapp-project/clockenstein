@@ -1,5 +1,6 @@
 usr/bin/clockenstein-clocks
 usr/share/applications/org.x.clockenstein.Clocks.desktop
+usr/share/metainfo/org.x.clockenstein.Clocks.metainfo.xml
 usr/share/clockenstein/clocks/clocks_app.py
 usr/share/clockenstein/clocks/style.css
 usr/share/icons/hicolor/scalable/apps/clockenstein-clocks.svg

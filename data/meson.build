@@ -31,3 +31,21 @@ i18n.merge_file(
   install: true,
   install_dir: join_paths(get_option('datadir'), 'applications'),
 )
+
+i18n.merge_file(
+  input: 'org.x.clockenstein.Calendar.metainfo.xml.in',
+  output: 'org.x.clockenstein.Calendar.metainfo.xml',
+  type: 'xml',
+  po_dir: join_paths(meson.project_source_root(), 'po'),
+  install: true,
+  install_dir: join_paths(get_option('datadir'), 'metainfo'),
+)
+
+i18n.merge_file(
+  input: 'org.x.clockenstein.Clocks.metainfo.xml.in',
+  output: 'org.x.clockenstein.Clocks.metainfo.xml',
+  type: 'xml',
+  po_dir: join_paths(meson.project_source_root(), 'po'),
+  install: true,
+  install_dir: join_paths(get_option('datadir'), 'metainfo'),
+)
