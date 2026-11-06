@@ -39,30 +39,43 @@ def _command_line(application, command_line):
     arguments = [arg.decode() if isinstance(arg, bytes) else arg
                  for arg in command_line.get_arguments()]
     requested_date = None
+    requested_event = None
     index = 1
     while index < len(arguments):
         argument = arguments[index]
         if argument.startswith("--date="):
             value = argument.partition("=")[2]
+            try:
+                requested_date = datetime.date.fromisoformat(value)
+            except ValueError:
+                command_line.printerr(f"Invalid date: {value}\n")
+                return 2
         elif argument == "--date":
             if index + 1 >= len(arguments):
                 command_line.printerr("The --date option requires a date.\n")
                 return 2
             index += 1
-            value = arguments[index]
-        else:
+            try:
+                requested_date = datetime.date.fromisoformat(arguments[index])
+            except ValueError:
+                command_line.printerr(f"Invalid date: {arguments[index]}\n")
+                return 2
+        elif argument.startswith("--event="):
+            requested_event = argument.partition("=")[2]
+        elif argument == "--event":
+            if index + 1 >= len(arguments):
+                command_line.printerr("The --event option requires an event id.\n")
+                return 2
             index += 1
-            continue
-        try:
-            requested_date = datetime.date.fromisoformat(value)
-        except ValueError:
-            command_line.printerr(f"Invalid date: {value}\n")
-            return 2
+            requested_event = arguments[index]
         index += 1
 
     application.activate()
     window = application.get_windows()[0]
-    if requested_date is not None:
+    if requested_event is not None:
+        # The Cinnamon applet passes the event id it got from the daemon.
+        window.open_event(requested_event)
+    elif requested_date is not None:
         window.focus_date(requested_date)
     window.present()
     return 0

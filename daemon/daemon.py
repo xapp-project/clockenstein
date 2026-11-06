@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from clockenstein import BUS_INTERFACE, BUS_NAME, BUS_PATH, DEFAULT_COLOR, SETTINGS_SCHEMA
 from clockenstein.alarms import AlarmStore, due_alarms
 from clockenstein.logging import Logger
-from clockenstein.misc import get_calendar_key, get_event_last_day, is_event_all_day
+from clockenstein.misc import get_event_last_day, get_event_uid, is_event_all_day
 from backends.google import LIMITED_RANGE, NORMAL_RANGE, RESTRICTED_RANGE
 from store import CalendarManager, local_timezone, watch_timezone_changes
 
@@ -240,7 +240,7 @@ class ClockensteinDaemon:
             end = datetime.datetime.combine(
                 event.get("date_end", event["date_start"]), end_time, self.timezone
             )
-        uid = get_calendar_key(event) + ":" + event["uid"]
+        uid = get_event_uid(event)
         return (uid, event.get("calendar_color", DEFAULT_COLOR),
                 event.get("summary", ""), all_day,
                 int(start.timestamp()), int(end.timestamp()), event.get("modified") or 0)
@@ -282,7 +282,7 @@ class ClockensteinDaemon:
     def _emit_reminder(self, event):
         if not self.connection:
             return
-        uid = get_calendar_key(event) + ":" + event["uid"]
+        uid = get_event_uid(event)
         parameters = GLib.Variant(
             "(ssssssxb)",
             (uid, event.get("summary", ""), event.get("location", ""),
