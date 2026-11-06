@@ -1,10 +1,11 @@
 import datetime
 import locale
+import re
 from typing import Optional
 
 import gi
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Pango
+from gi.repository import GLib, Gtk, Pango
 from xapp.threading import run_async, run_idle
 from xapp.util import l10n
 from clockenstein import DEFAULT_COLOR
@@ -16,6 +17,58 @@ from store import CalendarManager
 from backends.google import google_event_fits_sync_range
 
 LAST_CALENDAR_KEY = "last-calendar-used"
+
+# Regex that pulls out and lists clickable links from the notes.
+# "www." host, a mail address, or a bare url.
+# "cake.It" and "3.50" are exclucded with uppercase and numbers
+# A file name like "readme.md" gets caught though.
+LINK_PATTERN = re.compile(r"""
+    (?:
+        (?:https?|ftp)://[^\s<>"'`]+
+      | www\.[^\s<>"'`]+
+      | mailto:[^\s<>"'`]+
+      | [\w.+%-]+@[\w-]+\.[\w.-]*[\w]
+      | (?-i:(?<![\w.@/-])
+        [a-z0-9][a-z0-9-]*(?:\.[a-z0-9][a-z0-9-]*)*\.[a-z]{2,}
+        (?:[/?#][^\s<>"'`]*)?)
+    )
+""", re.VERBOSE | re.IGNORECASE)
+# Trailing punctuation and unmatched closing brackets belong to the prose.
+_TRAILING = ".,;:!?\'\"\u00ab\u00bb"
+_BRACKETS = {")": "(", "]": "[", "}": "{", ">": "<"}
+
+
+def _trim_link(text):
+    while text:
+        last = text[-1]
+        if last in _TRAILING:
+            text = text[:-1]
+        elif last in _BRACKETS and text.count(_BRACKETS[last]) < text.count(last):
+            text = text[:-1]
+        else:
+            break
+    return text
+
+
+def _link_uri(label):
+    """The label as a uri a browser or mail program can open."""
+    lowered = label.lower()
+    if "://" in label or lowered.startswith("mailto:"):
+        return label
+    return ("mailto:" if "@" in label else "https://") + label
+
+
+def find_links(text):
+    """The links in *text*, as (label, uri) pairs, in order of appearance."""
+    found = []
+    seen = set()
+    for match in LINK_PATTERN.finditer(text or ""):
+        label = _trim_link(match.group(0))
+        if not label or label.lower() in seen:
+            continue
+        seen.add(label.lower())
+        found.append((label, _link_uri(label)))
+    return found
 
 
 def _uses_12_hour_clock(time_format):
@@ -96,8 +149,14 @@ class EventDialog(Gtk.Dialog):
         default_date: Optional[datetime.date] = None,
         time_format="locale",
         settings=None,
+        duplicate_from: Optional[dict] = None,
     ):
-        is_new = event is None
+        is_new = event is None or duplicate_from is not None
+        if duplicate_from is not None:
+            # A new event pre-filled from this one.
+            event = dict(duplicate_from)
+            event.pop("uid", None)
+            event["editable"] = True
         editable = is_new or bool(event.get("editable", True))
         super().__init__(
             title=_("New Event") if is_new else (_("Event Details")),
@@ -109,6 +168,8 @@ class EventDialog(Gtk.Dialog):
         self.is_new = is_new
         self.editable = editable
         self.use_12_hour = _uses_12_hour_clock(time_format)
+        self.time_format = time_format
+        self._duplicating = duplicate_from is not None
         self._populating = True
         self._adjusting_end = False
         self._saving = False
@@ -124,6 +185,17 @@ class EventDialog(Gtk.Dialog):
             del_btn.get_style_context().add_class("destructive-action")
             del_btn.connect("clicked", self._on_delete)
             self.get_action_area().pack_start(del_btn, False, False, 0)
+        if not is_new:
+            dup_btn = Gtk.Button.new_from_icon_name("xsi-edit-copy-symbolic",
+                                                    Gtk.IconSize.BUTTON)
+            if not editable:
+                # Read-only event: the copy is the only change possible,
+                # so hint it like Save.
+                dup_btn.get_style_context().add_class("suggested-action")
+            dup_btn.set_tooltip_text(_("Open a new editable copy of this event"))
+            dup_btn.connect("clicked", self._on_duplicate)
+            self.get_action_area().pack_start(dup_btn, False, False, 0)
+            self.duplicate_button = dup_btn
         if editable:
             save_btn = self.add_button(_("Save"), Gtk.ResponseType.OK)
             save_btn.get_style_context().add_class("suggested-action")
@@ -166,6 +238,7 @@ class EventDialog(Gtk.Dialog):
         self.form_grid = grid
         grid.set_column_spacing(12)
         grid.set_row_spacing(8)
+        grid.set_vexpand(True)
         box.pack_start(grid, True, True, 0)
 
         def lbl(text):
@@ -198,7 +271,10 @@ class EventDialog(Gtk.Dialog):
         text_cell = Gtk.CellRendererText()
         self.calendar_combo.pack_start(text_cell, True)
         self.calendar_combo.add_attribute(text_cell, "text", 1)
-        if self.is_new and self.settings is not None:
+        if self._duplicating:
+            # A duplicate starts on the original's calendar.
+            wanted = get_calendar_key(self.event)
+        elif self.is_new and self.settings is not None:
             wanted = self.settings.get_string(LAST_CALENDAR_KEY)
         else:
             wanted = get_calendar_key(self.event)
@@ -254,7 +330,32 @@ class EventDialog(Gtk.Dialog):
         self.location_entry.set_placeholder_text(_("Optional"))
         grid.attach(self.location_entry, 1, 5, 2, 1)
 
-        grid.attach(lbl(_("Notes")), 0, 6, 1, 1)
+        # The label and links stay at the top; the notes take the spare height.
+        notes_side = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        notes_side.set_valign(Gtk.Align.START)
+        notes_side.pack_start(lbl(_("Notes")), False, False, 0)
+
+        self.links_button = Gtk.MenuButton()
+        self.links_button.set_relief(Gtk.ReliefStyle.NONE)
+        # No button padding, so the link lines up with the form labels.
+        self.links_button.get_style_context().add_class("clockenstein-inline-link")
+        self.links_button.set_halign(Gtk.Align.END)
+        self.links_button.set_tooltip_text(_("Show the links in the notes"))
+        link_label = Gtk.Label()
+        # Translators: opens a list of the links found in the event notes.
+        link_label.set_markup("<u><b>%s</b></u>" % GLib.markup_escape_text(_("(Links)")))
+        link_label.get_style_context().add_class("dim-label")
+        self.links_button.add(link_label)
+        # The button is held back from show_all below, so show the label now.
+        link_label.show()
+        self.links_popover = Gtk.Popover()
+        self.links_popover.set_position(Gtk.PositionType.BOTTOM)
+        self.links_button.set_popover(self.links_popover)
+        self.links_button.set_no_show_all(True)
+        self.links_button.set_visible(False)
+        notes_side.pack_start(self.links_button, False, False, 0)
+        grid.attach(notes_side, 0, 6, 1, 1)
+
         self.desc_view = Gtk.TextView()
         self.desc_view.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
         self.desc_view.set_left_margin(8)
@@ -262,10 +363,12 @@ class EventDialog(Gtk.Dialog):
         self.desc_view.set_top_margin(6)
         self.desc_view.set_bottom_margin(6)
         scroll = Gtk.ScrolledWindow()
-        scroll.set_size_request(-1, 72)
+        scroll.set_min_content_height(72)
         scroll.set_shadow_type(Gtk.ShadowType.IN)
+        scroll.set_vexpand(True)
         scroll.add(self.desc_view)
         grid.attach(scroll, 1, 6, 2, 1)
+        self.desc_view.get_buffer().connect("changed", self._on_notes_changed)
 
         self.status_label = Gtk.Label(label="")
         self.status_label.set_xalign(0)
@@ -277,11 +380,77 @@ class EventDialog(Gtk.Dialog):
 
         box.show_all()
 
+    def _on_notes_changed(self, buf, *_args):
+        links = find_links(buf.get_text(*buf.get_bounds(), True))
+        if links == getattr(self, "_notes_links", None):
+            return
+        self._notes_links = links
+        for child in self.links_popover.get_children():
+            self.links_popover.remove(child)
+        self.links_button.set_visible(bool(links))
+        if not links:
+            return
+
+        listing = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        listing.set_margin_top(6)
+        listing.set_margin_bottom(6)
+        listing.set_margin_start(6)
+        listing.set_margin_end(6)
+        for label, uri in links:
+            button = Gtk.LinkButton(uri=uri, label=label)
+            button.set_halign(Gtk.Align.FILL)
+            button.set_relief(Gtk.ReliefStyle.NONE)
+            button.set_tooltip_text(uri)
+            child = button.get_child()
+            if isinstance(child, Gtk.Label):
+                child.set_xalign(0.0)
+                child.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
+                child.set_max_width_chars(44)
+            button.connect("activate-link", self._on_link_opened)
+            listing.pack_start(button, False, False, 0)
+
+        # More links than fit on screen: scroll them.
+        if len(links) > 8:
+            scroller = Gtk.ScrolledWindow()
+            scroller.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+            scroller.set_min_content_height(260)
+            scroller.set_propagate_natural_height(True)
+            scroller.add(listing)
+            holder = scroller
+        else:
+            holder = listing
+        holder.show_all()
+        self.links_popover.add(holder)
+
+    def _on_link_opened(self, _button):
+        self.links_popover.popdown()
+        return False
+
+    def _build_duplicate(self):
+        """A new, editable event dialog pre-filled with this event's fields."""
+        source = dict(self.event)
+        source.pop("uid", None)
+        calendars = [calendar_info for calendar_info in self.store.get_writable_calendars()
+                     if calendar_info.get("visible", True)]
+        if not calendars:
+            calendars = self.calendar_options
+        return EventDialog(self.get_transient_for(), store=self.store,
+                           calendar_options=calendars, event=None,
+                           default_date=self.date_picker.get_date(),
+                           time_format=self.time_format, settings=self.settings,
+                           duplicate_from=source)
+
+    def _on_duplicate(self, _button):
+        dialog = self._build_duplicate()
+        dialog.run()
+        dialog.destroy()
+
     def _populate(self, default_date):
         event = self.event
         self.title_entry.set_text(event.get("summary", ""))
         self.location_entry.set_text(event.get("location", ""))
         self.desc_view.get_buffer().set_text(event.get("description", ""))
+        self._on_notes_changed(self.desc_view.get_buffer())
 
         all_day = event.get("all_day", True)
         self.allday_switch.set_active(all_day)
@@ -355,8 +524,11 @@ class EventDialog(Gtk.Dialog):
 
     def _set_form_sensitive(self, sensitive):
         for widget in (self.title_entry, self.allday_switch, self.date_picker, self.end_date_picker,
-                       self.start_time, self.end_time, self.location_entry, self.desc_view):
+                       self.start_time, self.end_time, self.location_entry):
             widget.set_sensitive(sensitive)
+        # The notes stay selectable so they can be copied; editable keeps
+        # the text read-only.
+        self.desc_view.set_editable(sensitive)
 
     def _on_response(self, _dialog, response):
         if self._saving:

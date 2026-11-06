@@ -11,6 +11,11 @@ def get_calendar_key(record):
                      record.get("id", record.get("calendar_id", ""))))
 
 
+def get_event_uid(event):
+    """The id the daemon hands to the applet for this event."""
+    return get_calendar_key(event) + ":" + event["uid"]
+
+
 def get_event_last_day(event):
     """Return the last local date an event occupies.
 

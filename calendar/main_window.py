@@ -17,7 +17,7 @@ from clockenstein import (AGENT_BUS_NAME, BUS_INTERFACE, BUS_NAME, BUS_PATH,
 from clockenstein.drawing import draw_centered_circle
 from clockenstein.formatting import (capitalize_first, format_time, resolve_first_weekday,
                         start_of_week)
-from clockenstein.misc import get_event_last_day, is_event_all_day
+from clockenstein.misc import get_event_last_day, get_event_uid, is_event_all_day
 from dbus import notify_changed
 from store import CalendarManager, local_timezone, watch_timezone_changes
 from views.colors import apply_tinted_event_color
@@ -57,6 +57,8 @@ class MainWindow(Gtk.Window):
         self._week_selected_date = self.today
         self._month_week_offset = 0
         self._month_scroll_delta = 0
+        # The day the side panel is showing, or None for what is coming up.
+        self._sidebar_date = None
         self._calendar_dialog_box = None
         saved_view = self.settings.get_string("calendar-default-view")
         view_names = {"month": "Month", "week": "Week", "day": "Day"}
@@ -273,7 +275,8 @@ class MainWindow(Gtk.Window):
         calendar_area.pack_start(self.stack, True, True, 0)
         self.month_view = MonthView(
             self.today, self._on_event_activated, self._new_event,
-            self._scroll_month, self._select_month_date, self.first_weekday, self.time_format
+            self._scroll_month, self._select_month_date, self.first_weekday, self.time_format,
+            on_overflow=self._on_day_overflow
         )
         self.week_view = WeekView(
             self.today, self.timezone, self._on_event_activated, self._new_event,
@@ -317,6 +320,8 @@ class MainWindow(Gtk.Window):
         self.upcoming_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
         upcoming_scroll.add(self.upcoming_box)
         outer.pack_start(upcoming_scroll, True, True, 0)
+        # The side panel listing today's and coming events.
+        self.upcoming_scroll = upcoming_scroll
         self.status_label = Gtk.Label()
         self.status_label.set_xalign(0)
         self.status_label.set_line_wrap(True)
@@ -367,13 +372,32 @@ class MainWindow(Gtk.Window):
         for child in self.visible_calendar_box.get_children():
             self.visible_calendar_box.remove(child)
         for calendar_info in self._get_sorted_calendars():
-            if calendar_info.get("visible", True):
-                label = self._calendar_label(calendar_info)
-                if not self._calendar_available(calendar_info):
-                    label.set_opacity(0.5)
-                self.visible_calendar_box.pack_start(label, False, False, 0)
+            row = Gtk.Button()
+            row.set_relief(Gtk.ReliefStyle.NONE)
+            row.get_style_context().add_class("clockenstein-calendar-row")
+            row.add(self._calendar_label(calendar_info, calendar_info.get("visible", True)))
+            row.set_tooltip_text(self._calendar_source_tooltip(calendar_info))
+            row.connect("clicked", self._on_calendar_row_clicked, calendar_info)
+            if not self._calendar_available(calendar_info):
+                row.set_opacity(0.5)
+            self.visible_calendar_box.pack_start(row, False, False, 0)
         self.visible_calendar_box.show_all()
         self._populate_upcoming(events)
+
+    @staticmethod
+    def _calendar_source_tooltip(calendar_info):
+        provider = calendar_info.get("provider", "local")
+        if provider == "local":
+            source = _("Local")
+        else:
+            source = "%s — %s" % ("Google" if provider == "google" else "CalDAV",
+                                  calendar_info.get("account_name",
+                                                    calendar_info.get("account_id", "")))
+        # Translators: second line of a calendar row's tooltip.
+        return source + "\n" + _("Click to toggle hide/show this calendar")
+
+    def _on_calendar_row_clicked(self, _button, calendar_info):
+        self._set_calendar_visible(calendar_info, not calendar_info.get("visible", True))
 
         states = self.store.google.get_account_states() + self.store.caldav.get_account_states()
         offline = [s for s in states if not s.get("online")]
@@ -427,6 +451,9 @@ class MainWindow(Gtk.Window):
     def _populate_upcoming(self, events):
         for child in self.upcoming_box.get_children():
             self.upcoming_box.remove(child)
+        if self._sidebar_date is not None:
+            self._populate_day_schedule(events, self._sidebar_date)
+            return
 
         now = datetime.datetime.now()
         today = now.date()
@@ -461,6 +488,44 @@ class MainWindow(Gtk.Window):
             empty.get_style_context().add_class("clockenstein-status")
             self.upcoming_box.pack_start(empty, False, False, 4)
         self.upcoming_box.show_all()
+
+    def _populate_day_schedule(self, events, date):
+        """One day of the side panel, for the day picked out of the month."""
+        heading = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        title = Gtk.Label(label=_("Today") if date == self.today
+                          else capitalize_first(date.strftime("%A %-d %B")), xalign=0)
+        title.set_ellipsize(Pango.EllipsizeMode.END)
+        title.get_style_context().add_class("clockenstein-section-label")
+        heading.pack_start(title, True, True, 0)
+        if date != self.today:
+            back = Gtk.Button()
+            back.set_relief(Gtk.ReliefStyle.NONE)
+            back.set_tooltip_text(_("Show Upcoming Events"))
+            label = Gtk.Label()
+            label.set_markup("<u>%s</u>" % GLib.markup_escape_text(_("Today")))
+            label.get_style_context().add_class("clockenstein-upcoming-detail")
+            back.add(label)
+            back.connect("clicked", self._show_upcoming_again)
+            heading.pack_end(back, False, False, 0)
+        self.upcoming_box.pack_start(heading, False, False, 0)
+
+        day_events = [event for event in events
+                      if event["date_start"] <= date <= event.get("date_end",
+                                                                  event["date_start"])]
+        day_events.sort(key=lambda event: (not event.get("all_day"),
+                                           event.get("time_start")
+                                           or datetime.time.min))
+        for event in day_events:
+            self.upcoming_box.pack_start(self._upcoming_row(event, False), False, False, 0)
+        if not day_events:
+            empty = Gtk.Label(label=_("Nothing on this day"), xalign=0)
+            empty.get_style_context().add_class("clockenstein-status")
+            self.upcoming_box.pack_start(empty, False, False, 4)
+        self.upcoming_box.show_all()
+
+    def _show_upcoming_again(self, _button):
+        self._sidebar_date = None
+        self._populate_upcoming(self._get_available_events())
 
     def _upcoming_row(self, event, show_date):
         button = Gtk.Button()
@@ -738,17 +803,20 @@ class MainWindow(Gtk.Window):
         return _("Not synced yet")
 
     @staticmethod
-    def _calendar_label(calendar_info):
+    def _calendar_label(calendar_info, visible=True):
         content = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         swatch = Gtk.DrawingArea()
         swatch.set_size_request(12, 12)
         rgba = Gdk.RGBA()
-        rgba.parse(calendar_info.get("color", DEFAULT_COLOR))
+        # A hidden calendar shows a grey swatch instead of its colour.
+        rgba.parse(calendar_info.get("color", DEFAULT_COLOR) if visible else "#808080")
         swatch.connect("draw", draw_centered_circle, rgba)
         content.pack_start(swatch, False, False, 0)
         name = Gtk.Label(label=calendar_info["name"])
         name.set_xalign(0)
         name.set_ellipsize(Pango.EllipsizeMode.END)
+        if not visible:
+            name.get_style_context().add_class("dim-label")
         content.pack_start(name, True, True, 0)
         return content
 
@@ -884,15 +952,19 @@ class MainWindow(Gtk.Window):
         self.status_label.set_visible(bool(message))
 
     def _calendar_switch_toggled(self, switch, _property, calendar_info):
-        visible = switch.get_active()
-        self.store.set_visible(calendar_info["provider"], calendar_info["id"], visible, calendar_info.get("account_id"))
+        self._set_calendar_visible(calendar_info, switch.get_active())
+
+    def _set_calendar_visible(self, calendar_info, visible):
+        self.store.set_visible(calendar_info["provider"], calendar_info["id"], visible,
+                               calendar_info.get("account_id"))
         if calendar_info["provider"] != "local":
-            # Remote calendars: Empty cache when hidden, refresh when shown
+            # Remote calendars: empty the cache when hidden, refresh when shown.
             if visible:
                 self._set_status(_("Refresh requested for %s…") % calendar_info["name"])
                 self._refresh_calendar_worker(calendar_info)
             else:
-                self.store.clear_calendar_events(calendar_info["provider"], calendar_info["id"], calendar_info["account_id"])
+                self.store.clear_calendar_events(calendar_info["provider"], calendar_info["id"],
+                                                 calendar_info["account_id"])
         self._update_views()
         notify_changed()
 
@@ -1141,6 +1213,7 @@ class MainWindow(Gtk.Window):
             self.current_date += datetime.timedelta(days=direction)
         self._month_selected_date = self.current_date
         self._week_selected_date = self.current_date
+        self._follow_month_selection()
         self._sync_mini_cal()
         self._refresh(refresh_caldav=self._caldav_navigation_needs_refresh())
 
@@ -1148,6 +1221,7 @@ class MainWindow(Gtk.Window):
         self.focus_date(self.today, refresh_caldav=False)
 
     def focus_date(self, date, refresh_remote=False, refresh_caldav=False):
+        self._sidebar_date = None
         self.current_date = date
         self._month_selected_date = date
         self._week_selected_date = date
@@ -1155,6 +1229,11 @@ class MainWindow(Gtk.Window):
         self._month_scroll_delta = 0
         self._sync_mini_cal()
         self._refresh(refresh_remote=refresh_remote, refresh_caldav=refresh_caldav)
+
+    def _follow_month_selection(self):
+        """Keep the side panel on the selected day in month view"""
+        if self._sidebar_date is not None:
+            self._sidebar_date = self._month_selected_date
 
     def _sync_mini_cal(self):
         self.mini_cal.set_date(self.current_date)
@@ -1181,11 +1260,34 @@ class MainWindow(Gtk.Window):
         self.current_date = self._month_selected_date
         self._set_month_grid_start(start)
         self._week_selected_date = self.current_date
+        self._follow_month_selection()
         self.mini_cal.set_date(self._month_selected_date)
         self._refresh(refresh_caldav=self._caldav_navigation_needs_refresh())
 
+    FLASH_TIMES = 3
+    FLASH_INTERVAL_MS = 180
+
+    def _on_day_overflow(self, _date):
+        # The day hides events under "+N more"; flash the side panel.
+        self._flash(self.upcoming_scroll)
+
+    def _flash(self, widget):
+        self._flash_step(widget.get_style_context(), 0)
+
+    def _flash_step(self, style, count):
+        if count >= self.FLASH_TIMES * 2:
+            style.remove_class("clockenstein-flash")
+            return False
+        if count % 2 == 0:
+            style.add_class("clockenstein-flash")
+        else:
+            style.remove_class("clockenstein-flash")
+        GLib.timeout_add(self.FLASH_INTERVAL_MS, self._flash_step, style, count + 1)
+        return False
+
     def _select_month_date(self, date):
         start, _end = self._get_month_date_range()
+        self._sidebar_date = date if self._active_view == "Month" else None
         self.current_date = date
         self._month_selected_date = date
         self._week_selected_date = date
@@ -1209,6 +1311,7 @@ class MainWindow(Gtk.Window):
                 other.set_active(False)
                 other.handler_unblock_by_func(self._on_view_toggle)
         self._active_view = name
+        self._sidebar_date = None
         self.settings.set_string("calendar-default-view", name.lower())
         self.stack.set_visible_child_name(name)
         self._refresh(refresh_remote=False)
@@ -1222,6 +1325,24 @@ class MainWindow(Gtk.Window):
             self.settings.set_int("calendar-window-width", width)
         if self.settings.get_int("calendar-window-height") != height:
             self.settings.set_int("calendar-window-height", height)
+
+    def _find_event_by_uid(self, uid):
+        """The cached event an applet id names, or None.
+
+        The applet only shows events the daemon delivered, so it is cached.
+        """
+        for event in self.store.get_events(include_hidden=True):
+            if get_event_uid(event) == uid:
+                return event
+        return None
+
+    def open_event(self, uid):
+        """Open the event window for an event id handed over by the applet."""
+        event = self._find_event_by_uid(uid)
+        if event is None:
+            return False
+        self._on_event_activated(event)
+        return True
 
     def _on_event_activated(self, event):
         calendars = self._get_editable_calendars(event)

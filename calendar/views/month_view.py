@@ -23,13 +23,15 @@ OVERFLOW_HEIGHT = 16
 
 class MonthView(Gtk.Box):
     def __init__(self, today: datetime.date, on_event: Callable, on_day: Callable,
-                 on_scroll=None, on_select=None, first_weekday=0, time_format="locale"):
+                 on_scroll=None, on_select=None, first_weekday=0, time_format="locale",
+                 on_overflow=None):
         super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         self.today    = today
         self.on_event = on_event
         self.on_day   = on_day
         self.on_scroll = on_scroll
         self.on_select = on_select
+        self.on_overflow = on_overflow
         self.selected_date = today
         self.first_weekday = first_weekday
         self.time_format = time_format
@@ -95,7 +97,7 @@ class MonthView(Gtk.Box):
         for row in range(6):
             for col in range(7):
                 cell = _DayCell(self.today, self.on_event, self.on_day,
-                                self.on_select)
+                                self.on_select, self.on_overflow)
                 self.grid.attach(cell, col, row, 1, 1)
                 self.cells.append(cell)
 
@@ -212,13 +214,15 @@ class MonthView(Gtk.Box):
 
 
 class _DayCell(Gtk.EventBox):
-    def __init__(self, today, on_event, on_day, on_select=None):
+    def __init__(self, today, on_event, on_day, on_select=None, on_overflow=None):
         super().__init__()
         self.today    = today
         self.on_event = on_event
         self.on_day   = on_day
         self.on_select = on_select
+        self.on_overflow = on_overflow
         self._date    = None
+        self._hidden  = []
         self.get_style_context().add_class("clockenstein-day-cell")
         self.connect("button-press-event", self._on_click)
 
@@ -257,6 +261,7 @@ class _DayCell(Gtk.EventBox):
         outer.pack_start(self.ev_box, True, True, 0)
 
     def set_event_space(self, pixels, hidden_events):
+        self._hidden = list(hidden_events)
         self.span_space.set_size_request(-1, pixels)
         for child in self.ev_box.get_children():
             self.ev_box.remove(child)
@@ -294,6 +299,9 @@ class _DayCell(Gtk.EventBox):
     def _on_click(self, _w, event):
         if event.button == 1 and self._date and self.on_select:
             self.on_select(self._date)
+        if event.button == 1 and self._date and self._hidden and self.on_overflow:
+            # Click on the cell, not a pill, and the day hides events.
+            self.on_overflow(self._date)
         if event.type == Gdk.EventType.DOUBLE_BUTTON_PRESS and self._date:
             self.on_day(self._date)
 
