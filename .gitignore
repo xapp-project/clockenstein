@@ -8,3 +8,4 @@ debian/clockenstein-calendar
 debian/clockenstein-daemon
 debian/clockenstein-notification-agent
 debian/clockenstein-clocks
+obj-*/
