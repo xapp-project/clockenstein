@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.x.clockenstein.Clocks</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <developer id="com.linuxmint">
+    <name translate="no">Linux Mint</name>
+  </developer>
+  <name>Clocks</name>
+  <summary>Set alarms</summary>
+  <description>
+    <p>Clockenstein Clocks lets you create one-off and repeating alarms, each with its own label and sound. Alarms ring even when the application is closed, since they are handled by the Clockenstein background service.</p>
+  </description>
+  <launchable type="desktop-id">org.x.clockenstein.Clocks.desktop</launchable>
+  <url type="homepage">https://github.com/xapp-project/clockenstein</url>
+  <url type="bugtracker">https://github.com/xapp-project/clockenstein/issues</url>
+  <content_rating type="oars-1.1" />
+</component>
