@@ -1,3 +1,20 @@
+clockenstein (2.0.3) adrien; urgency=medium
+
+  [ Michael Webster ]
+  * calendar: Present timed events with exactly a day span as all-day
+  * test_store.py: Add test missing from b5a238e45b all-day toggling
+  * calendar: Keep track of event modification times.
+  * caldav.py: Import Secret at the module level
+
+  [ Fabio Fantoni ]
+  * small improvements (#24)
+  * Add AppStream metainfo for Calendar and Clocks (#25)
+
+  [ Clement Lefebvre ]
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 10 Nov 2026 13:41:03 +0000
+
 clockenstein (2.0.2) adrien; urgency=medium
 
   [ Michael Webster ]
