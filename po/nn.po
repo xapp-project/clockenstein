@@ -1,0 +1,838 @@
+# Norwegian Nynorsk translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-09-23 13:47+0100\n"
+"PO-Revision-Date: 2026-09-24 18:44+0000\n"
+"Last-Translator: Simen Ryland Førde <Unknown>\n"
+"Language-Team: Norwegian Nynorsk <nn@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
+#: calendar/event_dialog.py:178 calendar/event_dialog.py:185
+#: calendar/main_window.py:35 calendar/main_window.py:193 calendar/store.py:60
+#: calendar/store.py:72 calendar/backends/caldav.py:296
+#: calendar/backends/caldav.py:298
+msgid "Calendar"
+msgstr "Kalender"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:3
+msgid "Manage your events and appointments"
+msgstr "Handter hendingane og avtalane dine"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:9
+msgid "calendar;event;appointment;Google;CalDAV;Nextcloud;"
+msgstr "kalender;hending;avtale;Google;CalDAV;Nextcloud;"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:2 clocks/clocks_app.py:116
+#: clocks/clocks_app.py:720
+msgid "Clocks"
+msgstr "Klokker"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:3
+msgid "Set alarms"
+msgstr "Set alarmar"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:9
+msgid "clock;alarm;wake;"
+msgstr "klokke;alarm;vekkje;"
+
+#: calendar/event_dialog.py:79 clocks/clocks_app.py:418
+msgid "AM"
+msgstr "AM"
+
+#: calendar/event_dialog.py:80 clocks/clocks_app.py:419
+msgid "PM"
+msgstr "PM"
+
+#: calendar/event_dialog.py:99
+msgid "New Event"
+msgstr "Ny hending"
+
+#: calendar/event_dialog.py:99
+msgid "Event Details"
+msgstr "Hendingsdetaljar"
+
+#: calendar/event_dialog.py:116 calendar/main_window.py:813
+#: calendar/main_window.py:951 calendar/main_window.py:987
+#: calendar/main_window.py:1069 clocks/clocks_app.py:361
+#: clocks/clocks_app.py:499
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: calendar/event_dialog.py:116 calendar/preferences.py:16
+msgid "Close"
+msgstr "Lukk"
+
+#: calendar/event_dialog.py:118 clocks/clocks_app.py:363
+msgid "Delete"
+msgstr "Slett"
+
+#: calendar/event_dialog.py:123 calendar/main_window.py:813
+#: clocks/clocks_app.py:365
+msgid "Save"
+msgstr "Lagre"
+
+#: calendar/event_dialog.py:139
+msgid "Birthday"
+msgstr "Fødselsdag"
+
+#: calendar/event_dialog.py:140
+msgid "Focus time"
+msgstr "Fokustid"
+
+#: calendar/event_dialog.py:141
+msgid "From Gmail"
+msgstr "Frå Gmail"
+
+#: calendar/event_dialog.py:142
+msgid "Out of office"
+msgstr "Ikkje på kontoret"
+
+#: calendar/event_dialog.py:143
+msgid "Working location"
+msgstr "Arbeidsstad"
+
+#: calendar/event_dialog.py:148
+#, python-format
+msgid "This type of event (%s) cannot be edited."
+msgstr "Denne typen hending (%s) kan ikkje redigerast."
+
+#: calendar/event_dialog.py:172
+msgid "Title"
+msgstr "Tittel"
+
+#: calendar/event_dialog.py:182 calendar/main_window.py:507
+#: calendar/main_window.py:793
+msgid "Local"
+msgstr "Lokal"
+
+#: calendar/event_dialog.py:206 calendar/views/day_view.py:53
+#: calendar/views/day_view.py:329 calendar/views/week_view.py:61
+#: calendar/views/week_view.py:72
+msgid "All day"
+msgstr "Heile dagen"
+
+#: calendar/event_dialog.py:212
+msgid "Start"
+msgstr "Start"
+
+#: calendar/event_dialog.py:222
+msgid "End"
+msgstr "Slutt"
+
+#: calendar/event_dialog.py:243
+msgid "Location"
+msgstr "Stad"
+
+#: calendar/event_dialog.py:246
+msgid "Optional"
+msgstr "Valfri"
+
+#: calendar/event_dialog.py:249
+msgid "Notes"
+msgstr "Notat"
+
+#: calendar/event_dialog.py:368 calendar/event_dialog.py:465
+#: calendar/main_window.py:482 calendar/backends/google.py:480
+#: calendar/views/day_view.py:328 calendar/views/month_view.py:183
+#: calendar/views/month_view.py:329 calendar/views/month_view.py:344
+#: calendar/views/week_view.py:337
+msgid "Untitled"
+msgstr "Utan namn"
+
+#: calendar/event_dialog.py:399 calendar/backends/google.py:291
+#, python-format
+msgid "The event dates are outside the sync range for %s."
+msgstr "Datoane for hendinga er utanfor synkroniseringsområdet for %s."
+
+#: calendar/event_dialog.py:400
+msgid "this calendar"
+msgstr "denne kalenderen"
+
+#: calendar/event_dialog.py:409
+msgid "Saving…"
+msgstr "Lagrar…"
+
+#: calendar/event_dialog.py:416 calendar/event_dialog.py:453
+#: calendar/event_dialog.py:476 calendar/main_window.py:715
+#, python-format
+msgid "Error: %s"
+msgstr "Feil: %s"
+
+#: calendar/event_dialog.py:465
+#, python-format
+msgid "Delete '%s'?"
+msgstr "Slett '%s'?"
+
+#: calendar/event_dialog.py:467
+msgid "This event will be permanently deleted."
+msgstr "Denne hendinga vil bli sletta permanent."
+
+#: calendar/main_window.py:146 calendar/main_window.py:1351
+msgid "Synchronizing online calendars…"
+msgstr "Synkroniserer nettkalendrar…"
+
+#: calendar/main_window.py:148 calendar/main_window.py:1353
+msgid "Synchronization finished"
+msgstr "Synkronisering fullført"
+
+#: calendar/main_window.py:154 clocks/clocks_app.py:220
+msgid "The daemon is not running."
+msgstr "Daemonen køyrer ikkje."
+
+#: calendar/main_window.py:155
+msgid "Synchronization and reminders may be unavailable."
+msgstr "Synkronisering og påminningar kan vere utilgjengelege."
+
+#: calendar/main_window.py:158 clocks/clocks_app.py:222
+msgid "The notification agent is not running."
+msgstr "Varslingsagenten køyrer ikkje."
+
+#: calendar/main_window.py:159
+msgid "Reminders may be unavailable."
+msgstr "Påminningar kan vere utilgjengelege."
+
+#: calendar/main_window.py:197 calendar/main_window.py:302
+#: calendar/main_window.py:754
+msgid "Calendars"
+msgstr "Kalendrar"
+
+#: calendar/main_window.py:200 calendar/preferences.py:15
+msgid "Preferences"
+msgstr "Innstillngar"
+
+#: calendar/main_window.py:204
+msgid "About"
+msgstr "Om"
+
+#: calendar/main_window.py:210
+msgid "Main menu"
+msgstr "Hovudmeny"
+
+#: calendar/main_window.py:220 calendar/main_window.py:447
+#: clocks/clocks_app.py:687
+msgid "Today"
+msgstr "I dag"
+
+#: calendar/main_window.py:230 calendar/widgets/mini_calendar.py:130
+msgid "Month"
+msgstr "Månad"
+
+#: calendar/main_window.py:230
+msgid "Week"
+msgstr "Veke"
+
+#: calendar/main_window.py:231
+msgid "Day"
+msgstr "Dag"
+
+#: calendar/main_window.py:239
+msgid "New event (Ctrl+N)"
+msgstr "Ny hending (Ctrl+N)"
+
+#: calendar/main_window.py:358
+msgid "A calendar application for Linux desktops"
+msgstr "Eit kalenderprogram for Linux-skrivebord"
+
+#: calendar/main_window.py:382 calendar/main_window.py:1366
+msgid "Some online calendars are disconnected (read-only)."
+msgstr "Nokre nettkalendrar er fråkopla (skrivebeskytta)"
+
+#: calendar/main_window.py:418
+#, python-format
+msgid "This date is outside the sync range for: %s. Events may be missing."
+msgstr ""
+"Denne datoen er utanfor synkroniseringsområdet for: %s. Hendingar kan mangle."
+
+#: calendar/main_window.py:448 clocks/clocks_app.py:689
+msgid "Tomorrow"
+msgstr "I morgon"
+
+#: calendar/main_window.py:449
+msgid "Coming Up"
+msgstr "Komande"
+
+#: calendar/main_window.py:459
+msgid "No upcoming events"
+msgstr "Ingen komande hendingar"
+
+#: calendar/main_window.py:520
+msgid "Online"
+msgstr "Tilkopla"
+
+#: calendar/main_window.py:520
+msgid "Offline, read only"
+msgstr "Fråkopla, skrivebeskytta"
+
+#: calendar/main_window.py:521
+msgid "Sync every 2 hours"
+msgstr "Synkroniser kvar 2. time"
+
+#: calendar/main_window.py:522
+msgid "Sync every 15 minutes"
+msgstr "Synkroniser kvart 15. minutt"
+
+#: calendar/main_window.py:536
+msgid "Sync range"
+msgstr "Synkroniseringsområde"
+
+#: calendar/main_window.py:536
+msgid "Status"
+msgstr "Status"
+
+#: calendar/main_window.py:537
+msgid "Reminders"
+msgstr "Påminningar"
+
+#: calendar/main_window.py:537
+msgid "Visible"
+msgstr "Synleg"
+
+#: calendar/main_window.py:537
+msgid "Actions"
+msgstr "Handlingar"
+
+#: calendar/main_window.py:564
+#, python-format
+msgid "Disconnect %s"
+msgstr "Kople frå %s"
+
+#: calendar/main_window.py:572
+msgid "Local calendars"
+msgstr "Lokale kalendrar"
+
+#: calendar/main_window.py:582
+msgid "My Calendars"
+msgstr "Mine kalendrar"
+
+#: calendar/main_window.py:583
+msgid "Other Calendars"
+msgstr "Andre kalendrar"
+
+#: calendar/main_window.py:608
+msgid "Show this calendar"
+msgstr "Vis denne kalenderen"
+
+#: calendar/main_window.py:622
+msgid "Already synchronized less than 5 minutes ago"
+msgstr "Allereie synkronisert for mindre enn 5 minutt sidan"
+
+#: calendar/main_window.py:630 calendar/main_window.py:680
+#: calendar/main_window.py:946
+msgid "Refresh this calendar"
+msgstr "Oppdater denne kalenderen"
+
+#: calendar/main_window.py:651 clocks/clocks_app.py:317
+#: clocks/clocks_app.py:358
+msgid "Edit"
+msgstr "Rediger"
+
+#: calendar/main_window.py:660 calendar/main_window.py:870
+msgid "Remove"
+msgstr "Fjern"
+
+#: calendar/main_window.py:705 calendar/main_window.py:709
+msgid "2 years ahead"
+msgstr "2 år fram i tid"
+
+#: calendar/main_window.py:706
+msgid "1 year ahead"
+msgstr "1år fram i tid"
+
+#: calendar/main_window.py:707
+msgid "3 months ahead"
+msgstr "3 månader fram i tid"
+
+#: calendar/main_window.py:708
+msgid "Too many events"
+msgstr "For mange hendingar"
+
+#: calendar/main_window.py:717
+msgid "Not synchronized"
+msgstr "Ikkje synkronisert"
+
+#: calendar/main_window.py:722
+msgid "just now"
+msgstr "nett no"
+
+#: calendar/main_window.py:725
+msgid "1 minute ago"
+msgstr "1 minutt sidan"
+
+#: calendar/main_window.py:726
+#, python-format
+msgid "%d minutes ago"
+msgstr "%d minutt sidan"
+
+#: calendar/main_window.py:729
+msgid "1 hour ago"
+msgstr "1 time sidan"
+
+#: calendar/main_window.py:730
+#, python-format
+msgid "%d hours ago"
+msgstr "%d timar sidan"
+
+#: calendar/main_window.py:733
+msgid "1 day ago"
+msgstr "1 dag sidan"
+
+#: calendar/main_window.py:734
+#, python-format
+msgid "%d days ago"
+msgstr "%d dagar sidan"
+
+#: calendar/main_window.py:735
+#, python-format
+msgid "Last sync: %s"
+msgstr "Siste synkronisering: %s"
+
+#: calendar/main_window.py:736
+msgid "Not synced yet"
+msgstr "Enno ikkje synkronisert"
+
+#: calendar/main_window.py:755
+msgid "Add a New Calendar…"
+msgstr "Legg til ein ny kalender…"
+
+#: calendar/main_window.py:795
+msgid "CalDAV (Nextcloud, Memotoo, etc.)"
+msgstr "CalDAV (Nextcloud, Memotoo, osv.)"
+
+#: calendar/main_window.py:812
+msgid "Edit Calendar"
+msgstr "Rediger kalender"
+
+#: calendar/main_window.py:821 calendar/main_window.py:960
+#: clocks/clocks_app.py:382
+msgid "Name"
+msgstr "Namn"
+
+#: calendar/main_window.py:827 calendar/main_window.py:962
+msgid "Color"
+msgstr "Farge"
+
+#: calendar/main_window.py:861 calendar/store.py:77
+msgid "At least one local calendar is required"
+msgstr "Minst ein lokal kalender er påkravd"
+
+#: calendar/main_window.py:868
+#, python-format
+msgid "Remove %s?"
+msgstr "Fjern %s?"
+
+#: calendar/main_window.py:871
+msgid "All the events from this calendar will be permanently removed."
+msgstr "Alle hendingane frå denne kalenderen vil bli fjerna permanent."
+
+#: calendar/main_window.py:890 calendar/main_window.py:925
+#, python-format
+msgid "Refresh requested for %s…"
+msgstr "Oppdatering førespurd for %s…"
+
+#: calendar/main_window.py:907
+msgid "Remind me about events in this calendar"
+msgstr "Minn meg på hendingar i denne kalenderen"
+
+#: calendar/main_window.py:924
+msgid "Refresh requested"
+msgstr "Oppdatering førespurd"
+
+#: calendar/main_window.py:947
+#, python-format
+msgid "Could not request refresh: %s"
+msgstr "Klarte ikkje å førespørje oppdatering: %s"
+
+#: calendar/main_window.py:950
+msgid "New Calendar"
+msgstr "Ny kalender"
+
+#: calendar/main_window.py:951
+msgid "Create"
+msgstr "Opprett"
+
+#: calendar/main_window.py:981
+msgid "No Google accounts were found in Online Accounts."
+msgstr "Fann ingen Google-kontoar i nettkontoar."
+
+#: calendar/main_window.py:986
+msgid "Google Account"
+msgstr "Google-konto"
+
+#: calendar/main_window.py:988 calendar/main_window.py:1069
+msgid "Connect"
+msgstr "Kople til"
+
+#: calendar/main_window.py:993
+msgid "Choose an account"
+msgstr "Vel ein konto"
+
+#: calendar/main_window.py:1007 calendar/main_window.py:1011
+#: calendar/main_window.py:1088
+msgid "Connecting…"
+msgstr "Koplar til…"
+
+#: calendar/main_window.py:1023 calendar/main_window.py:1101
+msgid "Requesting initial synchronization…"
+msgstr "Førespør innleiande synkronisering…"
+
+#: calendar/main_window.py:1040
+msgid "Could not connect the Google account"
+msgstr "Klarte ikkje å kople til Google-kontoen"
+
+#: calendar/main_window.py:1056
+msgid "Could not connect to the CalDAV server"
+msgstr "Klarte ikkje å kople til CalDAV-tenaren"
+
+#: calendar/main_window.py:1078
+msgid "Server URL"
+msgstr "Tenaradresse"
+
+#: calendar/main_window.py:1078
+msgid "Username"
+msgstr "Brukarnamn"
+
+#: calendar/main_window.py:1078
+msgid "Password"
+msgstr "Passord"
+
+#: calendar/main_window.py:1112
+#, python-format
+msgid "Disconnect %s?"
+msgstr "Kople frå %s?"
+
+#: calendar/main_window.py:1115
+msgid ""
+"This online calendar will be disconnected and removed from the application."
+msgstr "Denne nettkalenderen vil bli kopla frå og fjerna frå programmet."
+
+#: calendar/main_window.py:1313
+msgid "Connecting to online calendars…"
+msgstr "Koplar til nettkalendrar…"
+
+#: calendar/preferences.py:24
+msgid "First day of the week"
+msgstr "Første dag i veka"
+
+#: calendar/preferences.py:29 calendar/preferences.py:45
+msgid "Use locale default"
+msgstr "Bruk standard frå språkinnstilling"
+
+#: calendar/preferences.py:40
+msgid "Time format"
+msgstr "Tidsformat"
+
+#: calendar/preferences.py:46
+msgid "12-hour clock"
+msgstr "12-timars klokkeformat"
+
+#: calendar/preferences.py:47
+msgid "24-hour clock"
+msgstr "24-timars klokkeformat"
+
+#: calendar/preferences.py:54
+msgid "Show week numbers"
+msgstr "Vis vekenummer"
+
+#: calendar/store.py:50
+msgid "Personal"
+msgstr "Personleg"
+
+#: calendar/store.py:110
+#, python-format
+msgid "Unknown event %s"
+msgstr "Ukjend hending %s"
+
+#: calendar/backends/caldav.py:58
+msgid "A username and password are required"
+msgstr "Brukarnamn og passord er påkravde"
+
+#: calendar/backends/caldav.py:60
+msgid "Contacting CalDAV server…"
+msgstr "Kontaktar CalDAV-tenar…"
+
+#: calendar/backends/caldav.py:96 calendar/backends/caldav.py:204
+msgid "Password not found in the keyring"
+msgstr "Passordet vart ikkje funne i nøkkelringen"
+
+#: calendar/backends/caldav.py:166
+msgid "The event has no CalDAV resource URL"
+msgstr "Hendinga har inga CalDAV-ressursadresse"
+
+#: calendar/backends/caldav.py:215
+msgid "This CalDAV account is offline. It is now read-only."
+msgstr "Denne CalDAV-kontoen er fråkopla. Den er no skrivebeskytta."
+
+#: calendar/backends/caldav.py:274
+#, python-format
+msgid "Calendar CalDAV password for %s"
+msgstr "Passord for CalDAV-kalender for %s"
+
+#: calendar/backends/caldav.py:276
+msgid "Could not save the password in the keyring"
+msgstr "Klarte ikkje å lagre passordet i nøkkelringen"
+
+#: calendar/backends/caldav.py:320
+msgid "A server URL is required"
+msgstr "Ei tenaradresse er påkravd"
+
+#: calendar/backends/caldav.py:324
+msgid "CalDAV server URLs must use HTTP or HTTPS"
+msgstr "CalDAV-tenaradresser må bruke HTTP eller HTTPS"
+
+#: calendar/backends/google.py:66
+msgid "Waiting for Google authorization…"
+msgstr "Ventar på Google-autorisering…"
+
+#: calendar/backends/google.py:73
+msgid "Authorization received • Contacting Google Calendar…"
+msgstr "Autorisering motteken • Kontaktar Google Calendar…"
+
+#: calendar/backends/google.py:76 calendar/backends/google.py:119
+msgid "Loading your Google calendars…"
+msgstr "Lastar inn Google-kalendrane dine…"
+
+#: calendar/backends/google.py:80 calendar/backends/google.py:123
+msgid "Google did not return a primary calendar"
+msgstr "Google returnerte ingen primærkalender"
+
+#: calendar/backends/google.py:116
+msgid "Requesting authorization from Online Accounts…"
+msgstr "Førespør autorisering frå nettkontoar…"
+
+#: calendar/backends/google.py:263 calendar/backends/google.py:274
+msgid "This Google account is offline."
+msgstr "Denne Google-kontoen er fråkopla."
+
+#: calendar/backends/google.py:287
+msgid "Google calendar not found."
+msgstr "Google-kalender ikkje funnen."
+
+#: calendar/backends/google.py:319
+msgid "authorization expired"
+msgstr "autoriseringa har gått ut"
+
+#: calendar/backends/google.py:333
+msgid "The gir1.2-goa-1.0 package is missing"
+msgstr "Pakka gir1.2-goa-1.0 manglar"
+
+#: calendar/backends/google.py:344
+#, python-format
+msgid "Could not contact Online Accounts: %s"
+msgstr "Klarte ikkje å kontakte nettkontoar: %s"
+
+#: calendar/backends/google.py:351
+msgid "The selected Online Account is unavailable"
+msgstr "Den valde nettkontoen er utilgjengeleg"
+
+#: calendar/backends/google.py:363
+msgid "Online Accounts returned no access token"
+msgstr "Nettkontoar returnerte ingen tilgangstoken"
+
+#: calendar/backends/google.py:368
+#, python-format
+msgid "Could not obtain Google authorization: %s"
+msgstr "Klarte ikkje å hente Google-autorisering: %s"
+
+#: calendar/views/month_view.py:263
+#, python-format
+msgid "+%d more"
+msgstr "+%d til"
+
+#: calendar/widgets/mini_calendar.py:136
+msgid "Year"
+msgstr "År"
+
+#: clocks/clocks_app.py:108
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d time"
+msgstr[1] "%d timar"
+
+#: clocks/clocks_app.py:110 agent/agent.py:181
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minutt"
+msgstr[1] "%d minutt"
+
+#: clocks/clocks_app.py:111
+#, python-format
+msgid "Alarm in %s"
+msgstr "Alarm om %s"
+
+#: clocks/clocks_app.py:131
+msgid "Alarms"
+msgstr "Alarmar"
+
+#: clocks/clocks_app.py:133
+msgid "Add"
+msgstr "Legg til"
+
+#: clocks/clocks_app.py:150
+msgid "No alarms are set"
+msgstr "Ingen alarmar er stilte inn"
+
+#: clocks/clocks_app.py:226
+msgid "Alarms will not ring."
+msgstr "Alarmar vil ikkje ringje."
+
+#: clocks/clocks_app.py:249
+#, python-format
+msgid "Could not load alarms: %s"
+msgstr "Klarte ikkje å laste inn alarmar: %s"
+
+#: clocks/clocks_app.py:297 agent/agent.py:98 agent/agent.py:192
+msgid "Alarm"
+msgstr "Alarm"
+
+#: clocks/clocks_app.py:333
+msgid "Could not update alarm"
+msgstr "Klarte ikkje å oppdatere alarm"
+
+#: clocks/clocks_app.py:358
+msgid "New Alarm"
+msgstr "Ny alarm"
+
+#: clocks/clocks_app.py:408
+msgid "Time"
+msgstr "Tid"
+
+#: clocks/clocks_app.py:448 clocks/clocks_app.py:558
+#, python-format
+msgid "Every %s"
+msgstr "Kvar %s"
+
+#: clocks/clocks_app.py:459
+msgid "Choose a date"
+msgstr "Vel ein dato"
+
+#: clocks/clocks_app.py:470
+msgid "Clear date"
+msgstr "Fjern dato"
+
+#: clocks/clocks_app.py:488
+msgid "Audio files"
+msgstr "Lydfiler"
+
+#: clocks/clocks_app.py:496
+msgid "Choose a sound"
+msgstr "Vel ein lyd"
+
+#: clocks/clocks_app.py:500
+msgid "Select"
+msgstr "Merk"
+
+#: clocks/clocks_app.py:512
+msgid "Play selected sound"
+msgstr "Spel av vald lyd"
+
+#: clocks/clocks_app.py:518
+msgid "Seconds between sounds"
+msgstr "Sekund mellom lydar"
+
+#: clocks/clocks_app.py:519
+msgid "seconds"
+msgstr "sekund"
+
+#: clocks/clocks_app.py:537
+msgid "Sound"
+msgstr "Lyd"
+
+#: clocks/clocks_app.py:556 clocks/clocks_app.py:660
+msgid "Every day"
+msgstr "Kvar dag"
+
+#: clocks/clocks_app.py:639
+msgid "Could not delete alarm"
+msgstr "Kunne ikkje slette alarm"
+
+#: clocks/clocks_app.py:640
+msgid "Could not save alarm"
+msgstr "Kunne ikkje lagre alarm"
+
+#: clocks/clocks_app.py:707
+msgid "Could not open alarm database"
+msgstr "Kunne ikkje opne alarmdatabase"
+
+#: agent/agent.py:25
+msgid "Calendar Event"
+msgstr "Kalenderhending"
+
+#: agent/agent.py:123
+msgid "Mute"
+msgstr "Demp"
+
+#: agent/agent.py:172
+msgid "Snooze"
+msgstr "Slumre"
+
+#: agent/agent.py:212
+msgid "Open Clocks"
+msgstr "Opne klokker"
+
+#: agent/agent.py:215 agent/agent.py:285
+msgid "Dismiss"
+msgstr "Avvis"
+
+#: agent/agent.py:279
+msgid "Open Calendar"
+msgstr "Opne kalender"
+
+#: agent/agent.py:548
+#, python-format
+msgid "Starts in %d minute"
+msgid_plural "Starts in %d minutes"
+msgstr[0] "Startar om %d minutt"
+msgstr[1] "Startar om %d minutt"
+
+#: agent/agent.py:551
+msgid "Starts now"
+msgstr "Startar no"
+
+#: agent/agent.py:554
+#, python-format
+msgid "This event started %d minute ago"
+msgid_plural "This event started %d minutes ago"
+msgstr[0] "Denne hendinga starta for %d minutt sidan"
+msgstr[1] "Denne hendinga starta for %d minutt sidan"
+
+#: clockenstein/formatting.py:11
+msgid "MON"
+msgstr "MAN"
+
+#: clockenstein/formatting.py:11
+msgid "TUE"
+msgstr "TIR"
+
+#: clockenstein/formatting.py:11
+msgid "WED"
+msgstr "ONS"
+
+#: clockenstein/formatting.py:11
+msgid "THU"
+msgstr "TOR"
+
+#: clockenstein/formatting.py:11
+msgid "FRI"
+msgstr "FRE"
+
+#: clockenstein/formatting.py:11
+msgid "SAT"
+msgstr "LØR"
+
+#: clockenstein/formatting.py:11
+msgid "SUN"
+msgstr "SØN"

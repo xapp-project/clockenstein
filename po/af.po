@@ -1,0 +1,841 @@
+# Afrikaans translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-09-23 13:47+0100\n"
+"PO-Revision-Date: 2026-10-07 11:44+0000\n"
+"Last-Translator: Stéfan Driaan Turvey <Unknown>\n"
+"Language-Team: Afrikaans <af@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
+#: calendar/event_dialog.py:178 calendar/event_dialog.py:185
+#: calendar/main_window.py:35 calendar/main_window.py:193 calendar/store.py:60
+#: calendar/store.py:72 calendar/backends/caldav.py:296
+#: calendar/backends/caldav.py:298
+msgid "Calendar"
+msgstr "Kalender"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:3
+msgid "Manage your events and appointments"
+msgstr "Bestuur jou gebeurtenisse en afsprake"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:9
+msgid "calendar;event;appointment;Google;CalDAV;Nextcloud;"
+msgstr "kalender;gebeurtenis;afspraak;Google;CalDAV;Nextcloud;"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:2 clocks/clocks_app.py:116
+#: clocks/clocks_app.py:720
+msgid "Clocks"
+msgstr "Horlosies"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:3
+msgid "Set alarms"
+msgstr "Stel wekkers"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:9
+msgid "clock;alarm;wake;"
+msgstr "horlosie;wekker;wakker;"
+
+#: calendar/event_dialog.py:79 clocks/clocks_app.py:418
+msgid "AM"
+msgstr "VM"
+
+#: calendar/event_dialog.py:80 clocks/clocks_app.py:419
+msgid "PM"
+msgstr "NM"
+
+#: calendar/event_dialog.py:99
+msgid "New Event"
+msgstr "Nuwe gebeurtenis"
+
+#: calendar/event_dialog.py:99
+msgid "Event Details"
+msgstr "Gebeurtenisbesonderhede"
+
+#: calendar/event_dialog.py:116 calendar/main_window.py:813
+#: calendar/main_window.py:951 calendar/main_window.py:987
+#: calendar/main_window.py:1069 clocks/clocks_app.py:361
+#: clocks/clocks_app.py:499
+msgid "Cancel"
+msgstr "Kanselleer"
+
+#: calendar/event_dialog.py:116 calendar/preferences.py:16
+msgid "Close"
+msgstr "Sluit"
+
+#: calendar/event_dialog.py:118 clocks/clocks_app.py:363
+msgid "Delete"
+msgstr "Skrap"
+
+#: calendar/event_dialog.py:123 calendar/main_window.py:813
+#: clocks/clocks_app.py:365
+msgid "Save"
+msgstr "Stoor"
+
+#: calendar/event_dialog.py:139
+msgid "Birthday"
+msgstr "Verjaardag"
+
+#: calendar/event_dialog.py:140
+msgid "Focus time"
+msgstr "Fokustyd"
+
+#: calendar/event_dialog.py:141
+msgid "From Gmail"
+msgstr "Van Gmail"
+
+#: calendar/event_dialog.py:142
+msgid "Out of office"
+msgstr "Buite kantoor"
+
+#: calendar/event_dialog.py:143
+msgid "Working location"
+msgstr "Werkplek"
+
+#: calendar/event_dialog.py:148
+#, python-format
+msgid "This type of event (%s) cannot be edited."
+msgstr "Hierdie soort gebeurtenis (%s) kan nie geredigeer word nie."
+
+#: calendar/event_dialog.py:172
+msgid "Title"
+msgstr "Titel"
+
+#: calendar/event_dialog.py:182 calendar/main_window.py:507
+#: calendar/main_window.py:793
+msgid "Local"
+msgstr "Plaaslik"
+
+#: calendar/event_dialog.py:206 calendar/views/day_view.py:53
+#: calendar/views/day_view.py:329 calendar/views/week_view.py:61
+#: calendar/views/week_view.py:72
+msgid "All day"
+msgstr "Heeldag"
+
+#: calendar/event_dialog.py:212
+msgid "Start"
+msgstr "Begin"
+
+#: calendar/event_dialog.py:222
+msgid "End"
+msgstr "Einde"
+
+#: calendar/event_dialog.py:243
+msgid "Location"
+msgstr "Ligging"
+
+#: calendar/event_dialog.py:246
+msgid "Optional"
+msgstr "Opsioneel"
+
+#: calendar/event_dialog.py:249
+msgid "Notes"
+msgstr "Notas"
+
+#: calendar/event_dialog.py:368 calendar/event_dialog.py:465
+#: calendar/main_window.py:482 calendar/backends/google.py:480
+#: calendar/views/day_view.py:328 calendar/views/month_view.py:183
+#: calendar/views/month_view.py:329 calendar/views/month_view.py:344
+#: calendar/views/week_view.py:337
+msgid "Untitled"
+msgstr "Naamloos"
+
+#: calendar/event_dialog.py:399 calendar/backends/google.py:291
+#, python-format
+msgid "The event dates are outside the sync range for %s."
+msgstr "Die gebeurtenisdatums val buite die sinkroniseringsreeks vir %s."
+
+#: calendar/event_dialog.py:400
+msgid "this calendar"
+msgstr "hierdie kalender"
+
+#: calendar/event_dialog.py:409
+msgid "Saving…"
+msgstr "Stoor tans…"
+
+#: calendar/event_dialog.py:416 calendar/event_dialog.py:453
+#: calendar/event_dialog.py:476 calendar/main_window.py:715
+#, python-format
+msgid "Error: %s"
+msgstr "Fout: %s"
+
+#: calendar/event_dialog.py:465
+#, python-format
+msgid "Delete '%s'?"
+msgstr "Skrap '%s'?"
+
+#: calendar/event_dialog.py:467
+msgid "This event will be permanently deleted."
+msgstr "Hierdie gebeurtenis sal permanent geskrap word."
+
+#: calendar/main_window.py:146 calendar/main_window.py:1351
+msgid "Synchronizing online calendars…"
+msgstr "Sinkroniseer tans aanlynkalenders…"
+
+#: calendar/main_window.py:148 calendar/main_window.py:1353
+msgid "Synchronization finished"
+msgstr "Sinkronisering voltooi"
+
+#: calendar/main_window.py:154 clocks/clocks_app.py:220
+msgid "The daemon is not running."
+msgstr "Die agtergronddiens loop nie."
+
+#: calendar/main_window.py:155
+msgid "Synchronization and reminders may be unavailable."
+msgstr "Sinkronisering en herinneringe is dalk onbeskikbaar."
+
+#: calendar/main_window.py:158 clocks/clocks_app.py:222
+msgid "The notification agent is not running."
+msgstr "Die kennisgewingsagent loop nie."
+
+#: calendar/main_window.py:159
+msgid "Reminders may be unavailable."
+msgstr "Herinneringe is dalk onbeskikbaar."
+
+#: calendar/main_window.py:197 calendar/main_window.py:302
+#: calendar/main_window.py:754
+msgid "Calendars"
+msgstr "Kalenders"
+
+#: calendar/main_window.py:200 calendar/preferences.py:15
+msgid "Preferences"
+msgstr "Voorkeure"
+
+#: calendar/main_window.py:204
+msgid "About"
+msgstr "Aangaande"
+
+#: calendar/main_window.py:210
+msgid "Main menu"
+msgstr "Hoofkieslys"
+
+#: calendar/main_window.py:220 calendar/main_window.py:447
+#: clocks/clocks_app.py:687
+msgid "Today"
+msgstr "Vandag"
+
+#: calendar/main_window.py:230 calendar/widgets/mini_calendar.py:130
+msgid "Month"
+msgstr "Maand"
+
+#: calendar/main_window.py:230
+msgid "Week"
+msgstr "Week"
+
+#: calendar/main_window.py:231
+msgid "Day"
+msgstr "Dag"
+
+#: calendar/main_window.py:239
+msgid "New event (Ctrl+N)"
+msgstr "Nuwe gebeurtenis (Ctrl+N)"
+
+#: calendar/main_window.py:358
+msgid "A calendar application for Linux desktops"
+msgstr "'n Kalendertoepassing vir Linux-lessenaars"
+
+#: calendar/main_window.py:382 calendar/main_window.py:1366
+msgid "Some online calendars are disconnected (read-only)."
+msgstr "Sommige aanlynkalenders is ontkoppel (leesalleen)."
+
+#: calendar/main_window.py:418
+#, python-format
+msgid "This date is outside the sync range for: %s. Events may be missing."
+msgstr ""
+"Hierdie datum val buite die sinkroniseringsreeks vir: %s. Gebeurtenisse "
+"ontbreek dalk."
+
+#: calendar/main_window.py:448 clocks/clocks_app.py:689
+msgid "Tomorrow"
+msgstr "Môre"
+
+#: calendar/main_window.py:449
+msgid "Coming Up"
+msgstr "Binnekort"
+
+#: calendar/main_window.py:459
+msgid "No upcoming events"
+msgstr "Geen komende gebeurtenisse nie"
+
+#: calendar/main_window.py:520
+msgid "Online"
+msgstr "Aanlyn"
+
+#: calendar/main_window.py:520
+msgid "Offline, read only"
+msgstr "Aflyn, leesalleen"
+
+#: calendar/main_window.py:521
+msgid "Sync every 2 hours"
+msgstr "Sinkroniseer elke 2 uur"
+
+#: calendar/main_window.py:522
+msgid "Sync every 15 minutes"
+msgstr "Sinkroniseer elke 15 minute"
+
+#: calendar/main_window.py:536
+msgid "Sync range"
+msgstr "Sinkroniseringsreeks"
+
+#: calendar/main_window.py:536
+msgid "Status"
+msgstr "Status"
+
+#: calendar/main_window.py:537
+msgid "Reminders"
+msgstr "Herinneringe"
+
+#: calendar/main_window.py:537
+msgid "Visible"
+msgstr "Sigbaar"
+
+#: calendar/main_window.py:537
+msgid "Actions"
+msgstr "Aksies"
+
+#: calendar/main_window.py:564
+#, python-format
+msgid "Disconnect %s"
+msgstr "Ontkoppel %s"
+
+#: calendar/main_window.py:572
+msgid "Local calendars"
+msgstr "Plaaslike kalenders"
+
+#: calendar/main_window.py:582
+msgid "My Calendars"
+msgstr "My kalenders"
+
+#: calendar/main_window.py:583
+msgid "Other Calendars"
+msgstr "Ander kalenders"
+
+#: calendar/main_window.py:608
+msgid "Show this calendar"
+msgstr "Wys hierdie kalender"
+
+#: calendar/main_window.py:622
+msgid "Already synchronized less than 5 minutes ago"
+msgstr "Reeds minder as 5 minute gelede gesinkroniseer"
+
+#: calendar/main_window.py:630 calendar/main_window.py:680
+#: calendar/main_window.py:946
+msgid "Refresh this calendar"
+msgstr "Verfris hierdie kalender"
+
+#: calendar/main_window.py:651 clocks/clocks_app.py:317
+#: clocks/clocks_app.py:358
+msgid "Edit"
+msgstr "Redigeer"
+
+#: calendar/main_window.py:660 calendar/main_window.py:870
+msgid "Remove"
+msgstr "Verwyder"
+
+#: calendar/main_window.py:705 calendar/main_window.py:709
+msgid "2 years ahead"
+msgstr "2 jaar vorentoe"
+
+#: calendar/main_window.py:706
+msgid "1 year ahead"
+msgstr "1 jaar vorentoe"
+
+#: calendar/main_window.py:707
+msgid "3 months ahead"
+msgstr "3 maande vorentoe"
+
+#: calendar/main_window.py:708
+msgid "Too many events"
+msgstr "Te veel gebeurtenisse"
+
+#: calendar/main_window.py:717
+msgid "Not synchronized"
+msgstr "Nie gesinkroniseer nie"
+
+#: calendar/main_window.py:722
+msgid "just now"
+msgstr "nou pas"
+
+#: calendar/main_window.py:725
+msgid "1 minute ago"
+msgstr "1 minuut gelede"
+
+#: calendar/main_window.py:726
+#, python-format
+msgid "%d minutes ago"
+msgstr "%d minute gelede"
+
+#: calendar/main_window.py:729
+msgid "1 hour ago"
+msgstr "1 uur gelede"
+
+#: calendar/main_window.py:730
+#, python-format
+msgid "%d hours ago"
+msgstr "%d ure gelede"
+
+#: calendar/main_window.py:733
+msgid "1 day ago"
+msgstr "1 dag gelede"
+
+#: calendar/main_window.py:734
+#, python-format
+msgid "%d days ago"
+msgstr "%d dae gelede"
+
+#: calendar/main_window.py:735
+#, python-format
+msgid "Last sync: %s"
+msgstr "Laaste sinkronisering: %s"
+
+#: calendar/main_window.py:736
+msgid "Not synced yet"
+msgstr "Nog nie gesinkroniseer nie"
+
+#: calendar/main_window.py:755
+msgid "Add a New Calendar…"
+msgstr "Voeg 'n nuwe kalender by…"
+
+#: calendar/main_window.py:795
+msgid "CalDAV (Nextcloud, Memotoo, etc.)"
+msgstr "CalDAV (Nextcloud, Memotoo, ens.)"
+
+#: calendar/main_window.py:812
+msgid "Edit Calendar"
+msgstr "Redigeer kalender"
+
+#: calendar/main_window.py:821 calendar/main_window.py:960
+#: clocks/clocks_app.py:382
+msgid "Name"
+msgstr "Naam"
+
+#: calendar/main_window.py:827 calendar/main_window.py:962
+msgid "Color"
+msgstr "Kleur"
+
+#: calendar/main_window.py:861 calendar/store.py:77
+msgid "At least one local calendar is required"
+msgstr "Ten minste een plaaslike kalender word vereis"
+
+#: calendar/main_window.py:868
+#, python-format
+msgid "Remove %s?"
+msgstr "Verwyder %s?"
+
+#: calendar/main_window.py:871
+msgid "All the events from this calendar will be permanently removed."
+msgstr ""
+"Al die gebeurtenisse van hierdie kalender sal permanent verwyder word."
+
+#: calendar/main_window.py:890 calendar/main_window.py:925
+#, python-format
+msgid "Refresh requested for %s…"
+msgstr "Verfrissing aangevra vir %s…"
+
+#: calendar/main_window.py:907
+msgid "Remind me about events in this calendar"
+msgstr "Herinner my aan gebeurtenisse in hierdie kalender"
+
+#: calendar/main_window.py:924
+msgid "Refresh requested"
+msgstr "Verfrissing aangevra"
+
+#: calendar/main_window.py:947
+#, python-format
+msgid "Could not request refresh: %s"
+msgstr "Kon nie verfrissing aanvra nie: %s"
+
+#: calendar/main_window.py:950
+msgid "New Calendar"
+msgstr "Nuwe kalender"
+
+#: calendar/main_window.py:951
+msgid "Create"
+msgstr "Skep"
+
+#: calendar/main_window.py:981
+msgid "No Google accounts were found in Online Accounts."
+msgstr "Geen Google-rekeninge is in Aanlynrekeninge gevind nie."
+
+#: calendar/main_window.py:986
+msgid "Google Account"
+msgstr "Google-rekening"
+
+#: calendar/main_window.py:988 calendar/main_window.py:1069
+msgid "Connect"
+msgstr "Koppel"
+
+#: calendar/main_window.py:993
+msgid "Choose an account"
+msgstr "Kies 'n rekening"
+
+#: calendar/main_window.py:1007 calendar/main_window.py:1011
+#: calendar/main_window.py:1088
+msgid "Connecting…"
+msgstr "Koppel tans…"
+
+#: calendar/main_window.py:1023 calendar/main_window.py:1101
+msgid "Requesting initial synchronization…"
+msgstr "Aanvanklike sinkronisering word aangevra…"
+
+#: calendar/main_window.py:1040
+msgid "Could not connect the Google account"
+msgstr "Kon nie die Google-rekening koppel nie"
+
+#: calendar/main_window.py:1056
+msgid "Could not connect to the CalDAV server"
+msgstr "Kon nie aan die CalDAV-bediener koppel nie"
+
+#: calendar/main_window.py:1078
+msgid "Server URL"
+msgstr "Bediener-URL"
+
+#: calendar/main_window.py:1078
+msgid "Username"
+msgstr "Gebruikernaam"
+
+#: calendar/main_window.py:1078
+msgid "Password"
+msgstr "Wagwoord"
+
+#: calendar/main_window.py:1112
+#, python-format
+msgid "Disconnect %s?"
+msgstr "Ontkoppel %s?"
+
+#: calendar/main_window.py:1115
+msgid ""
+"This online calendar will be disconnected and removed from the application."
+msgstr ""
+"Hierdie aanlynkalender sal ontkoppel en uit die toepassing verwyder word."
+
+#: calendar/main_window.py:1313
+msgid "Connecting to online calendars…"
+msgstr "Koppel tans aan aanlynkalenders…"
+
+#: calendar/preferences.py:24
+msgid "First day of the week"
+msgstr "Eerste dag van die week"
+
+#: calendar/preferences.py:29 calendar/preferences.py:45
+msgid "Use locale default"
+msgstr "Gebruik lokaalverstek"
+
+#: calendar/preferences.py:40
+msgid "Time format"
+msgstr "Tydformaat"
+
+#: calendar/preferences.py:46
+msgid "12-hour clock"
+msgstr "12-uur-horlosie"
+
+#: calendar/preferences.py:47
+msgid "24-hour clock"
+msgstr "24-uur-horlosie"
+
+#: calendar/preferences.py:54
+msgid "Show week numbers"
+msgstr "Wys weeknommers"
+
+#: calendar/store.py:50
+msgid "Personal"
+msgstr "Persoonlik"
+
+#: calendar/store.py:110
+#, python-format
+msgid "Unknown event %s"
+msgstr "Onbekende gebeurtenis %s"
+
+#: calendar/backends/caldav.py:58
+msgid "A username and password are required"
+msgstr "'n Gebruikernaam en wagwoord word vereis"
+
+#: calendar/backends/caldav.py:60
+msgid "Contacting CalDAV server…"
+msgstr "Kontak tans CalDAV-bediener…"
+
+#: calendar/backends/caldav.py:96 calendar/backends/caldav.py:204
+msgid "Password not found in the keyring"
+msgstr "Wagwoord nie in die sleutelring gevind nie"
+
+#: calendar/backends/caldav.py:166
+msgid "The event has no CalDAV resource URL"
+msgstr "Die gebeurtenis het geen CalDAV-hulpbron-URL nie"
+
+#: calendar/backends/caldav.py:215
+msgid "This CalDAV account is offline. It is now read-only."
+msgstr "Hierdie CalDAV-rekening is aflyn. Dit is nou leesalleen."
+
+#: calendar/backends/caldav.py:274
+#, python-format
+msgid "Calendar CalDAV password for %s"
+msgstr "Kalender-CalDAV-wagwoord vir %s"
+
+#: calendar/backends/caldav.py:276
+msgid "Could not save the password in the keyring"
+msgstr "Kon nie die wagwoord in die sleutelring stoor nie"
+
+#: calendar/backends/caldav.py:320
+msgid "A server URL is required"
+msgstr "'n Bediener-URL word vereis"
+
+#: calendar/backends/caldav.py:324
+msgid "CalDAV server URLs must use HTTP or HTTPS"
+msgstr "CalDAV-bediener-URL's moet HTTP of HTTPS gebruik"
+
+#: calendar/backends/google.py:66
+msgid "Waiting for Google authorization…"
+msgstr "Wag tans vir Google-magtiging…"
+
+#: calendar/backends/google.py:73
+msgid "Authorization received • Contacting Google Calendar…"
+msgstr "Magtiging ontvang • Kontak tans Google Calendar…"
+
+#: calendar/backends/google.py:76 calendar/backends/google.py:119
+msgid "Loading your Google calendars…"
+msgstr "Laai tans jou Google-kalenders…"
+
+#: calendar/backends/google.py:80 calendar/backends/google.py:123
+msgid "Google did not return a primary calendar"
+msgstr "Google het nie 'n primêre kalender teruggestuur nie"
+
+#: calendar/backends/google.py:116
+msgid "Requesting authorization from Online Accounts…"
+msgstr "Vra tans magtiging van Aanlynrekeninge…"
+
+#: calendar/backends/google.py:263 calendar/backends/google.py:274
+msgid "This Google account is offline."
+msgstr "Hierdie Google-rekening is aflyn."
+
+#: calendar/backends/google.py:287
+msgid "Google calendar not found."
+msgstr "Google-kalender nie gevind nie."
+
+#: calendar/backends/google.py:319
+msgid "authorization expired"
+msgstr "magtiging het verval"
+
+#: calendar/backends/google.py:333
+msgid "The gir1.2-goa-1.0 package is missing"
+msgstr "Die gir1.2-goa-1.0-pakket ontbreek"
+
+#: calendar/backends/google.py:344
+#, python-format
+msgid "Could not contact Online Accounts: %s"
+msgstr "Kon nie Aanlynrekeninge kontak nie: %s"
+
+#: calendar/backends/google.py:351
+msgid "The selected Online Account is unavailable"
+msgstr "Die gekose aanlynrekening is onbeskikbaar"
+
+#: calendar/backends/google.py:363
+msgid "Online Accounts returned no access token"
+msgstr "Aanlynrekeninge het geen toegangtoken teruggestuur nie"
+
+#: calendar/backends/google.py:368
+#, python-format
+msgid "Could not obtain Google authorization: %s"
+msgstr "Kon nie Google-magtiging verkry nie: %s"
+
+#: calendar/views/month_view.py:263
+#, python-format
+msgid "+%d more"
+msgstr "+%d meer"
+
+#: calendar/widgets/mini_calendar.py:136
+msgid "Year"
+msgstr "Jaar"
+
+#: clocks/clocks_app.py:108
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d uur"
+msgstr[1] "%d ure"
+
+#: clocks/clocks_app.py:110 agent/agent.py:181
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minuut"
+msgstr[1] "%d minute"
+
+#: clocks/clocks_app.py:111
+#, python-format
+msgid "Alarm in %s"
+msgstr "Wekker oor %s"
+
+#: clocks/clocks_app.py:131
+msgid "Alarms"
+msgstr "Wekkers"
+
+#: clocks/clocks_app.py:133
+msgid "Add"
+msgstr "Voeg by"
+
+#: clocks/clocks_app.py:150
+msgid "No alarms are set"
+msgstr "Geen wekkers is gestel nie"
+
+#: clocks/clocks_app.py:226
+msgid "Alarms will not ring."
+msgstr "Wekkers sal nie lui nie."
+
+#: clocks/clocks_app.py:249
+#, python-format
+msgid "Could not load alarms: %s"
+msgstr "Kon nie wekkers laai nie: %s"
+
+#: clocks/clocks_app.py:297 agent/agent.py:98 agent/agent.py:192
+msgid "Alarm"
+msgstr "Wekker"
+
+#: clocks/clocks_app.py:333
+msgid "Could not update alarm"
+msgstr "Kon nie wekker bywerk nie"
+
+#: clocks/clocks_app.py:358
+msgid "New Alarm"
+msgstr "Nuwe wekker"
+
+#: clocks/clocks_app.py:408
+msgid "Time"
+msgstr "Tyd"
+
+#: clocks/clocks_app.py:448 clocks/clocks_app.py:558
+#, python-format
+msgid "Every %s"
+msgstr "Elke %s"
+
+#: clocks/clocks_app.py:459
+msgid "Choose a date"
+msgstr "Kies 'n datum"
+
+#: clocks/clocks_app.py:470
+msgid "Clear date"
+msgstr "Maak datum skoon"
+
+#: clocks/clocks_app.py:488
+msgid "Audio files"
+msgstr "Oudiolêers"
+
+#: clocks/clocks_app.py:496
+msgid "Choose a sound"
+msgstr "Kies 'n klank"
+
+#: clocks/clocks_app.py:500
+msgid "Select"
+msgstr "Kies"
+
+#: clocks/clocks_app.py:512
+msgid "Play selected sound"
+msgstr "Speel gekose klank"
+
+#: clocks/clocks_app.py:518
+msgid "Seconds between sounds"
+msgstr "Sekondes tussen klanke"
+
+#: clocks/clocks_app.py:519
+msgid "seconds"
+msgstr "sekondes"
+
+#: clocks/clocks_app.py:537
+msgid "Sound"
+msgstr "Klank"
+
+#: clocks/clocks_app.py:556 clocks/clocks_app.py:660
+msgid "Every day"
+msgstr "Elke dag"
+
+#: clocks/clocks_app.py:639
+msgid "Could not delete alarm"
+msgstr "Kon nie wekker skrap nie"
+
+#: clocks/clocks_app.py:640
+msgid "Could not save alarm"
+msgstr "Kon nie wekker stoor nie"
+
+#: clocks/clocks_app.py:707
+msgid "Could not open alarm database"
+msgstr "Kon nie wekkerdatabasis open nie"
+
+#: agent/agent.py:25
+msgid "Calendar Event"
+msgstr "Kalendergebeurtenis"
+
+#: agent/agent.py:123
+msgid "Mute"
+msgstr "Demp"
+
+#: agent/agent.py:172
+msgid "Snooze"
+msgstr "Sluimer"
+
+#: agent/agent.py:212
+msgid "Open Clocks"
+msgstr "Open Horlosies"
+
+#: agent/agent.py:215 agent/agent.py:285
+msgid "Dismiss"
+msgstr "Maak toe"
+
+#: agent/agent.py:279
+msgid "Open Calendar"
+msgstr "Open kalender"
+
+#: agent/agent.py:548
+#, python-format
+msgid "Starts in %d minute"
+msgid_plural "Starts in %d minutes"
+msgstr[0] "Begin oor %d minuut"
+msgstr[1] "Begin oor %d minute"
+
+#: agent/agent.py:551
+msgid "Starts now"
+msgstr "Begin nou"
+
+#: agent/agent.py:554
+#, python-format
+msgid "This event started %d minute ago"
+msgid_plural "This event started %d minutes ago"
+msgstr[0] "Hierdie gebeurtenis het %d minuut gelede begin"
+msgstr[1] "Hierdie gebeurtenis het %d minute gelede begin"
+
+#: clockenstein/formatting.py:11
+msgid "MON"
+msgstr "MA"
+
+#: clockenstein/formatting.py:11
+msgid "TUE"
+msgstr "DI"
+
+#: clockenstein/formatting.py:11
+msgid "WED"
+msgstr "WO"
+
+#: clockenstein/formatting.py:11
+msgid "THU"
+msgstr "DO"
+
+#: clockenstein/formatting.py:11
+msgid "FRI"
+msgstr "VR"
+
+#: clockenstein/formatting.py:11
+msgid "SAT"
+msgstr "SA"
+
+#: clockenstein/formatting.py:11
+msgid "SUN"
+msgstr "SO"

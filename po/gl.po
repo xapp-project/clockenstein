@@ -1,0 +1,841 @@
+# Galician translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-09-23 13:47+0100\n"
+"PO-Revision-Date: 2026-10-30 02:09+0000\n"
+"Last-Translator: Calq Calquera <Unknown>\n"
+"Language-Team: Galician <gl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
+#: calendar/event_dialog.py:178 calendar/event_dialog.py:185
+#: calendar/main_window.py:35 calendar/main_window.py:193 calendar/store.py:60
+#: calendar/store.py:72 calendar/backends/caldav.py:296
+#: calendar/backends/caldav.py:298
+msgid "Calendar"
+msgstr "Calendario"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:3
+msgid "Manage your events and appointments"
+msgstr "Xestionar eventos e citas"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:9
+msgid "calendar;event;appointment;Google;CalDAV;Nextcloud;"
+msgstr "calendario;evento;cita;Google;CalDAV;Nextcloud;"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:2 clocks/clocks_app.py:116
+#: clocks/clocks_app.py:720
+msgid "Clocks"
+msgstr "Reloxos"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:3
+msgid "Set alarms"
+msgstr "Configurar alarmas"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:9
+msgid "clock;alarm;wake;"
+msgstr "reloxo;alarma;espertar;"
+
+#: calendar/event_dialog.py:79 clocks/clocks_app.py:418
+msgid "AM"
+msgstr "a. m."
+
+#: calendar/event_dialog.py:80 clocks/clocks_app.py:419
+msgid "PM"
+msgstr "p. m."
+
+#: calendar/event_dialog.py:99
+msgid "New Event"
+msgstr "Novo evento"
+
+#: calendar/event_dialog.py:99
+msgid "Event Details"
+msgstr "Detalles do evento"
+
+#: calendar/event_dialog.py:116 calendar/main_window.py:813
+#: calendar/main_window.py:951 calendar/main_window.py:987
+#: calendar/main_window.py:1069 clocks/clocks_app.py:361
+#: clocks/clocks_app.py:499
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: calendar/event_dialog.py:116 calendar/preferences.py:16
+msgid "Close"
+msgstr "Pechar"
+
+#: calendar/event_dialog.py:118 clocks/clocks_app.py:363
+msgid "Delete"
+msgstr "Eliminar"
+
+#: calendar/event_dialog.py:123 calendar/main_window.py:813
+#: clocks/clocks_app.py:365
+msgid "Save"
+msgstr "Gardar"
+
+#: calendar/event_dialog.py:139
+msgid "Birthday"
+msgstr "Aniversario"
+
+#: calendar/event_dialog.py:140
+msgid "Focus time"
+msgstr "Tempo de concentración"
+
+#: calendar/event_dialog.py:141
+msgid "From Gmail"
+msgstr "Procedente de Gmail"
+
+#: calendar/event_dialog.py:142
+msgid "Out of office"
+msgstr "Fóra da oficina"
+
+#: calendar/event_dialog.py:143
+msgid "Working location"
+msgstr "Lugar de traballo"
+
+#: calendar/event_dialog.py:148
+#, python-format
+msgid "This type of event (%s) cannot be edited."
+msgstr "Este tipo de evento (%s) non se pode editar."
+
+#: calendar/event_dialog.py:172
+msgid "Title"
+msgstr "Título"
+
+#: calendar/event_dialog.py:182 calendar/main_window.py:507
+#: calendar/main_window.py:793
+msgid "Local"
+msgstr "Local"
+
+#: calendar/event_dialog.py:206 calendar/views/day_view.py:53
+#: calendar/views/day_view.py:329 calendar/views/week_view.py:61
+#: calendar/views/week_view.py:72
+msgid "All day"
+msgstr "Todo o día"
+
+#: calendar/event_dialog.py:212
+msgid "Start"
+msgstr "Inicio"
+
+#: calendar/event_dialog.py:222
+msgid "End"
+msgstr "Fin"
+
+#: calendar/event_dialog.py:243
+msgid "Location"
+msgstr "Lugar"
+
+#: calendar/event_dialog.py:246
+msgid "Optional"
+msgstr "Opcional"
+
+#: calendar/event_dialog.py:249
+msgid "Notes"
+msgstr "Notas"
+
+#: calendar/event_dialog.py:368 calendar/event_dialog.py:465
+#: calendar/main_window.py:482 calendar/backends/google.py:480
+#: calendar/views/day_view.py:328 calendar/views/month_view.py:183
+#: calendar/views/month_view.py:329 calendar/views/month_view.py:344
+#: calendar/views/week_view.py:337
+msgid "Untitled"
+msgstr "Sen título"
+
+#: calendar/event_dialog.py:399 calendar/backends/google.py:291
+#, python-format
+msgid "The event dates are outside the sync range for %s."
+msgstr ""
+"As datas do evento están fóra do intervalo de sincronización establecido "
+"para %s."
+
+#: calendar/event_dialog.py:400
+msgid "this calendar"
+msgstr "este calendario"
+
+#: calendar/event_dialog.py:409
+msgid "Saving…"
+msgstr "Gardando…"
+
+#: calendar/event_dialog.py:416 calendar/event_dialog.py:453
+#: calendar/event_dialog.py:476 calendar/main_window.py:715
+#, python-format
+msgid "Error: %s"
+msgstr "Erro: %s"
+
+#: calendar/event_dialog.py:465
+#, python-format
+msgid "Delete '%s'?"
+msgstr "Eliminar «%s»?"
+
+#: calendar/event_dialog.py:467
+msgid "This event will be permanently deleted."
+msgstr "Este evento eliminarase definitivamente."
+
+#: calendar/main_window.py:146 calendar/main_window.py:1351
+msgid "Synchronizing online calendars…"
+msgstr "Sincronizando os calendarios en liña…"
+
+#: calendar/main_window.py:148 calendar/main_window.py:1353
+msgid "Synchronization finished"
+msgstr "Sincronización rematada"
+
+#: calendar/main_window.py:154 clocks/clocks_app.py:220
+msgid "The daemon is not running."
+msgstr "O servizo en segundo plano non está en execución."
+
+#: calendar/main_window.py:155
+msgid "Synchronization and reminders may be unavailable."
+msgstr "A sincronización e os recordatorios poden non estar dispoñibles."
+
+#: calendar/main_window.py:158 clocks/clocks_app.py:222
+msgid "The notification agent is not running."
+msgstr "O axente de notificacións non está en execución."
+
+#: calendar/main_window.py:159
+msgid "Reminders may be unavailable."
+msgstr "Os recordatorios poden non estar dispoñibles."
+
+#: calendar/main_window.py:197 calendar/main_window.py:302
+#: calendar/main_window.py:754
+msgid "Calendars"
+msgstr "Calendarios"
+
+#: calendar/main_window.py:200 calendar/preferences.py:15
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: calendar/main_window.py:204
+msgid "About"
+msgstr "Sobre"
+
+#: calendar/main_window.py:210
+msgid "Main menu"
+msgstr "Menú principal"
+
+#: calendar/main_window.py:220 calendar/main_window.py:447
+#: clocks/clocks_app.py:687
+msgid "Today"
+msgstr "Hoxe"
+
+#: calendar/main_window.py:230 calendar/widgets/mini_calendar.py:130
+msgid "Month"
+msgstr "Mes"
+
+#: calendar/main_window.py:230
+msgid "Week"
+msgstr "Semana"
+
+#: calendar/main_window.py:231
+msgid "Day"
+msgstr "Día"
+
+#: calendar/main_window.py:239
+msgid "New event (Ctrl+N)"
+msgstr "Novo evento (Ctrl+N)"
+
+#: calendar/main_window.py:358
+msgid "A calendar application for Linux desktops"
+msgstr "Unha aplicación de calendario para escritorios con Linux"
+
+#: calendar/main_window.py:382 calendar/main_window.py:1366
+msgid "Some online calendars are disconnected (read-only)."
+msgstr "Algúns calendarios en liña están desconectados (só de lectura)."
+
+#: calendar/main_window.py:418
+#, python-format
+msgid "This date is outside the sync range for: %s. Events may be missing."
+msgstr ""
+"Esta data está fóra do intervalo de sincronización destes calendarios: %s. É "
+"posible que falten eventos."
+
+#: calendar/main_window.py:448 clocks/clocks_app.py:689
+msgid "Tomorrow"
+msgstr "Mañá"
+
+#: calendar/main_window.py:449
+msgid "Coming Up"
+msgstr "Máis adiante"
+
+#: calendar/main_window.py:459
+msgid "No upcoming events"
+msgstr "Non hai eventos próximos"
+
+#: calendar/main_window.py:520
+msgid "Online"
+msgstr "En liña"
+
+#: calendar/main_window.py:520
+msgid "Offline, read only"
+msgstr "Sen conexión, só de lectura"
+
+#: calendar/main_window.py:521
+msgid "Sync every 2 hours"
+msgstr "Sincronización cada 2 horas"
+
+#: calendar/main_window.py:522
+msgid "Sync every 15 minutes"
+msgstr "Sincronización cada 15 minutos"
+
+#: calendar/main_window.py:536
+msgid "Sync range"
+msgstr "Intervalo de sincronización"
+
+#: calendar/main_window.py:536
+msgid "Status"
+msgstr "Estado"
+
+#: calendar/main_window.py:537
+msgid "Reminders"
+msgstr "Recordatorios"
+
+#: calendar/main_window.py:537
+msgid "Visible"
+msgstr "Visible"
+
+#: calendar/main_window.py:537
+msgid "Actions"
+msgstr "Accións"
+
+#: calendar/main_window.py:564
+#, python-format
+msgid "Disconnect %s"
+msgstr "Desconectar %s"
+
+#: calendar/main_window.py:572
+msgid "Local calendars"
+msgstr "Calendarios locais"
+
+#: calendar/main_window.py:582
+msgid "My Calendars"
+msgstr "Os meus calendarios"
+
+#: calendar/main_window.py:583
+msgid "Other Calendars"
+msgstr "Outros calendarios"
+
+#: calendar/main_window.py:608
+msgid "Show this calendar"
+msgstr "Mostrar este calendario"
+
+#: calendar/main_window.py:622
+msgid "Already synchronized less than 5 minutes ago"
+msgstr "Xa se sincronizou hai menos de 5 minutos"
+
+#: calendar/main_window.py:630 calendar/main_window.py:680
+#: calendar/main_window.py:946
+msgid "Refresh this calendar"
+msgstr "Actualizar este calendario"
+
+#: calendar/main_window.py:651 clocks/clocks_app.py:317
+#: clocks/clocks_app.py:358
+msgid "Edit"
+msgstr "Editar"
+
+#: calendar/main_window.py:660 calendar/main_window.py:870
+msgid "Remove"
+msgstr "Eliminar"
+
+#: calendar/main_window.py:705 calendar/main_window.py:709
+msgid "2 years ahead"
+msgstr "Ata 2 anos no futuro"
+
+#: calendar/main_window.py:706
+msgid "1 year ahead"
+msgstr "Ata 1 ano no futuro"
+
+#: calendar/main_window.py:707
+msgid "3 months ahead"
+msgstr "Ata 3 meses no futuro"
+
+#: calendar/main_window.py:708
+msgid "Too many events"
+msgstr "Demasiados eventos"
+
+#: calendar/main_window.py:717
+msgid "Not synchronized"
+msgstr "Non sincronizado"
+
+#: calendar/main_window.py:722
+msgid "just now"
+msgstr "agora mesmo"
+
+#: calendar/main_window.py:725
+msgid "1 minute ago"
+msgstr "hai 1 minuto"
+
+#: calendar/main_window.py:726
+#, python-format
+msgid "%d minutes ago"
+msgstr "hai %d minutos"
+
+#: calendar/main_window.py:729
+msgid "1 hour ago"
+msgstr "hai 1 hora"
+
+#: calendar/main_window.py:730
+#, python-format
+msgid "%d hours ago"
+msgstr "hai %d horas"
+
+#: calendar/main_window.py:733
+msgid "1 day ago"
+msgstr "hai 1 día"
+
+#: calendar/main_window.py:734
+#, python-format
+msgid "%d days ago"
+msgstr "hai %d días"
+
+#: calendar/main_window.py:735
+#, python-format
+msgid "Last sync: %s"
+msgstr "Última sincronización: %s"
+
+#: calendar/main_window.py:736
+msgid "Not synced yet"
+msgstr "Aínda sen sincronizar"
+
+#: calendar/main_window.py:755
+msgid "Add a New Calendar…"
+msgstr "Engadir un novo calendario…"
+
+#: calendar/main_window.py:795
+msgid "CalDAV (Nextcloud, Memotoo, etc.)"
+msgstr "CalDAV (Nextcloud, Memotoo, etc.)"
+
+#: calendar/main_window.py:812
+msgid "Edit Calendar"
+msgstr "Editar o calendario"
+
+#: calendar/main_window.py:821 calendar/main_window.py:960
+#: clocks/clocks_app.py:382
+msgid "Name"
+msgstr "Nome"
+
+#: calendar/main_window.py:827 calendar/main_window.py:962
+msgid "Color"
+msgstr "Cor"
+
+#: calendar/main_window.py:861 calendar/store.py:77
+msgid "At least one local calendar is required"
+msgstr "É necesario ter polo menos un calendario local"
+
+#: calendar/main_window.py:868
+#, python-format
+msgid "Remove %s?"
+msgstr "Eliminar «%s»?"
+
+#: calendar/main_window.py:871
+msgid "All the events from this calendar will be permanently removed."
+msgstr "Todos os eventos deste calendario eliminaranse definitivamente."
+
+#: calendar/main_window.py:890 calendar/main_window.py:925
+#, python-format
+msgid "Refresh requested for %s…"
+msgstr "Solicitouse a actualización de %s…"
+
+#: calendar/main_window.py:907
+msgid "Remind me about events in this calendar"
+msgstr "Recibir recordatorios dos eventos deste calendario"
+
+#: calendar/main_window.py:924
+msgid "Refresh requested"
+msgstr "Actualización solicitada"
+
+#: calendar/main_window.py:947
+#, python-format
+msgid "Could not request refresh: %s"
+msgstr "Non se puido solicitar a actualización: %s"
+
+#: calendar/main_window.py:950
+msgid "New Calendar"
+msgstr "Novo calendario"
+
+#: calendar/main_window.py:951
+msgid "Create"
+msgstr "Crear"
+
+#: calendar/main_window.py:981
+msgid "No Google accounts were found in Online Accounts."
+msgstr "Non se atopou ningunha conta de Google en «Contas en liña»."
+
+#: calendar/main_window.py:986
+msgid "Google Account"
+msgstr "Conta de Google"
+
+#: calendar/main_window.py:988 calendar/main_window.py:1069
+msgid "Connect"
+msgstr "Conectar"
+
+#: calendar/main_window.py:993
+msgid "Choose an account"
+msgstr "Escoller unha conta"
+
+#: calendar/main_window.py:1007 calendar/main_window.py:1011
+#: calendar/main_window.py:1088
+msgid "Connecting…"
+msgstr "Conectando…"
+
+#: calendar/main_window.py:1023 calendar/main_window.py:1101
+msgid "Requesting initial synchronization…"
+msgstr "Solicitando a sincronización inicial…"
+
+#: calendar/main_window.py:1040
+msgid "Could not connect the Google account"
+msgstr "Non se puido conectar a conta de Google"
+
+#: calendar/main_window.py:1056
+msgid "Could not connect to the CalDAV server"
+msgstr "Non se puido conectar co servidor CalDAV"
+
+#: calendar/main_window.py:1078
+msgid "Server URL"
+msgstr "URL do servidor"
+
+#: calendar/main_window.py:1078
+msgid "Username"
+msgstr "Nome de usuario"
+
+#: calendar/main_window.py:1078
+msgid "Password"
+msgstr "Contrasinal"
+
+#: calendar/main_window.py:1112
+#, python-format
+msgid "Disconnect %s?"
+msgstr "Desconectar «%s»?"
+
+#: calendar/main_window.py:1115
+msgid ""
+"This online calendar will be disconnected and removed from the application."
+msgstr "Este calendario en liña desconectarase e eliminarase da aplicación."
+
+#: calendar/main_window.py:1313
+msgid "Connecting to online calendars…"
+msgstr "Conectando cos calendarios en liña…"
+
+#: calendar/preferences.py:24
+msgid "First day of the week"
+msgstr "Primeiro día da semana"
+
+#: calendar/preferences.py:29 calendar/preferences.py:45
+msgid "Use locale default"
+msgstr "Usar a configuración rexional"
+
+#: calendar/preferences.py:40
+msgid "Time format"
+msgstr "Formato horario"
+
+#: calendar/preferences.py:46
+msgid "12-hour clock"
+msgstr "Formato de 12 horas"
+
+#: calendar/preferences.py:47
+msgid "24-hour clock"
+msgstr "Formato de 24 horas"
+
+#: calendar/preferences.py:54
+msgid "Show week numbers"
+msgstr "Mostrar os números das semanas"
+
+#: calendar/store.py:50
+msgid "Personal"
+msgstr "Persoal"
+
+#: calendar/store.py:110
+#, python-format
+msgid "Unknown event %s"
+msgstr "Evento descoñecido: %s"
+
+#: calendar/backends/caldav.py:58
+msgid "A username and password are required"
+msgstr "É necesario indicar un nome de usuario e un contrasinal"
+
+#: calendar/backends/caldav.py:60
+msgid "Contacting CalDAV server…"
+msgstr "Contactando co servidor CalDAV…"
+
+#: calendar/backends/caldav.py:96 calendar/backends/caldav.py:204
+msgid "Password not found in the keyring"
+msgstr "Non se atopou o contrasinal no anel de chaves"
+
+#: calendar/backends/caldav.py:166
+msgid "The event has no CalDAV resource URL"
+msgstr "O evento non ten un enderezo URL do recurso CalDAV"
+
+#: calendar/backends/caldav.py:215
+msgid "This CalDAV account is offline. It is now read-only."
+msgstr "Esta conta CalDAV está sen conexión. Agora é de só lectura."
+
+#: calendar/backends/caldav.py:274
+#, python-format
+msgid "Calendar CalDAV password for %s"
+msgstr "Contrasinal de CalDAV para %s"
+
+#: calendar/backends/caldav.py:276
+msgid "Could not save the password in the keyring"
+msgstr "Non se puido gardar o contrasinal no anel de chaves"
+
+#: calendar/backends/caldav.py:320
+msgid "A server URL is required"
+msgstr "É necesario indicar o URL do servidor"
+
+#: calendar/backends/caldav.py:324
+msgid "CalDAV server URLs must use HTTP or HTTPS"
+msgstr "Os enderezos URL dos servidores CalDAV deben utilizar HTTP ou HTTPS"
+
+#: calendar/backends/google.py:66
+msgid "Waiting for Google authorization…"
+msgstr "Agardando a autorización de Google…"
+
+#: calendar/backends/google.py:73
+msgid "Authorization received • Contacting Google Calendar…"
+msgstr "Autorización recibida • Contactando con Google Calendar…"
+
+#: calendar/backends/google.py:76 calendar/backends/google.py:119
+msgid "Loading your Google calendars…"
+msgstr "Cargando os seus calendarios de Google…"
+
+#: calendar/backends/google.py:80 calendar/backends/google.py:123
+msgid "Google did not return a primary calendar"
+msgstr "Google non devolveu ningún calendario principal"
+
+#: calendar/backends/google.py:116
+msgid "Requesting authorization from Online Accounts…"
+msgstr "Solicitando autorización a «Contas en liña»…"
+
+#: calendar/backends/google.py:263 calendar/backends/google.py:274
+msgid "This Google account is offline."
+msgstr "Esta conta de Google está sen conexión."
+
+#: calendar/backends/google.py:287
+msgid "Google calendar not found."
+msgstr "Non se atopou o calendario de Google."
+
+#: calendar/backends/google.py:319
+msgid "authorization expired"
+msgstr "autorización caducada"
+
+#: calendar/backends/google.py:333
+msgid "The gir1.2-goa-1.0 package is missing"
+msgstr "Falta o paquete gir1.2-goa-1.0"
+
+#: calendar/backends/google.py:344
+#, python-format
+msgid "Could not contact Online Accounts: %s"
+msgstr "Non se puido contactar con «Contas en liña»: %s"
+
+#: calendar/backends/google.py:351
+msgid "The selected Online Account is unavailable"
+msgstr "A conta en liña seleccionada non está dispoñible"
+
+#: calendar/backends/google.py:363
+msgid "Online Accounts returned no access token"
+msgstr "«Contas en liña» non devolveu ningún token de acceso"
+
+#: calendar/backends/google.py:368
+#, python-format
+msgid "Could not obtain Google authorization: %s"
+msgstr "Non se puido obter a autorización de Google: %s"
+
+#: calendar/views/month_view.py:263
+#, python-format
+msgid "+%d more"
+msgstr "+%d máis"
+
+#: calendar/widgets/mini_calendar.py:136
+msgid "Year"
+msgstr "Ano"
+
+#: clocks/clocks_app.py:108
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hora"
+msgstr[1] "%d horas"
+
+#: clocks/clocks_app.py:110 agent/agent.py:181
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minuto"
+msgstr[1] "%d minutos"
+
+#: clocks/clocks_app.py:111
+#, python-format
+msgid "Alarm in %s"
+msgstr "Alarma dentro de %s"
+
+#: clocks/clocks_app.py:131
+msgid "Alarms"
+msgstr "Alarmas"
+
+#: clocks/clocks_app.py:133
+msgid "Add"
+msgstr "Engadir"
+
+#: clocks/clocks_app.py:150
+msgid "No alarms are set"
+msgstr "Non hai alarmas configuradas"
+
+#: clocks/clocks_app.py:226
+msgid "Alarms will not ring."
+msgstr "As alarmas non soarán."
+
+#: clocks/clocks_app.py:249
+#, python-format
+msgid "Could not load alarms: %s"
+msgstr "Non se puideron cargar as alarmas: %s"
+
+#: clocks/clocks_app.py:297 agent/agent.py:98 agent/agent.py:192
+msgid "Alarm"
+msgstr "Alarma"
+
+#: clocks/clocks_app.py:333
+msgid "Could not update alarm"
+msgstr "Non se puido actualizar a alarma"
+
+#: clocks/clocks_app.py:358
+msgid "New Alarm"
+msgstr "Nova alarma"
+
+#: clocks/clocks_app.py:408
+msgid "Time"
+msgstr "Hora"
+
+#: clocks/clocks_app.py:448 clocks/clocks_app.py:558
+#, python-format
+msgid "Every %s"
+msgstr "Cada %s"
+
+#: clocks/clocks_app.py:459
+msgid "Choose a date"
+msgstr "Escoller unha data"
+
+#: clocks/clocks_app.py:470
+msgid "Clear date"
+msgstr "Borrar a data"
+
+#: clocks/clocks_app.py:488
+msgid "Audio files"
+msgstr "Ficheiros de audio"
+
+#: clocks/clocks_app.py:496
+msgid "Choose a sound"
+msgstr "Escoller un son"
+
+#: clocks/clocks_app.py:500
+msgid "Select"
+msgstr "Seleccionar"
+
+#: clocks/clocks_app.py:512
+msgid "Play selected sound"
+msgstr "Reproducir o son seleccionado"
+
+#: clocks/clocks_app.py:518
+msgid "Seconds between sounds"
+msgstr "Segundos entre reproducións do son"
+
+#: clocks/clocks_app.py:519
+msgid "seconds"
+msgstr "s"
+
+#: clocks/clocks_app.py:537
+msgid "Sound"
+msgstr "Son"
+
+#: clocks/clocks_app.py:556 clocks/clocks_app.py:660
+msgid "Every day"
+msgstr "Todos os días"
+
+#: clocks/clocks_app.py:639
+msgid "Could not delete alarm"
+msgstr "Non se puido eliminar a alarma"
+
+#: clocks/clocks_app.py:640
+msgid "Could not save alarm"
+msgstr "Non se puido gardar a alarma"
+
+#: clocks/clocks_app.py:707
+msgid "Could not open alarm database"
+msgstr "Non se puido abrir a base de datos das alarmas"
+
+#: agent/agent.py:25
+msgid "Calendar Event"
+msgstr "Evento do calendario"
+
+#: agent/agent.py:123
+msgid "Mute"
+msgstr "Silenciar"
+
+#: agent/agent.py:172
+msgid "Snooze"
+msgstr "Pospoñer"
+
+#: agent/agent.py:212
+msgid "Open Clocks"
+msgstr "Abrir Reloxos"
+
+#: agent/agent.py:215 agent/agent.py:285
+msgid "Dismiss"
+msgstr "Descartar"
+
+#: agent/agent.py:279
+msgid "Open Calendar"
+msgstr "Abrir Calendario"
+
+#: agent/agent.py:548
+#, python-format
+msgid "Starts in %d minute"
+msgid_plural "Starts in %d minutes"
+msgstr[0] "Comeza dentro de %d minuto"
+msgstr[1] "Comeza dentro de %d minutos"
+
+#: agent/agent.py:551
+msgid "Starts now"
+msgstr "Comeza agora"
+
+#: agent/agent.py:554
+#, python-format
+msgid "This event started %d minute ago"
+msgid_plural "This event started %d minutes ago"
+msgstr[0] "Este evento comezou hai %d minuto"
+msgstr[1] "Este evento comezou hai %d minutos"
+
+#: clockenstein/formatting.py:11
+msgid "MON"
+msgstr "LUN"
+
+#: clockenstein/formatting.py:11
+msgid "TUE"
+msgstr "MAR"
+
+#: clockenstein/formatting.py:11
+msgid "WED"
+msgstr "MÉR"
+
+#: clockenstein/formatting.py:11
+msgid "THU"
+msgstr "XOV"
+
+#: clockenstein/formatting.py:11
+msgid "FRI"
+msgstr "VEN"
+
+#: clockenstein/formatting.py:11
+msgid "SAT"
+msgstr "SÁB"
+
+#: clockenstein/formatting.py:11
+msgid "SUN"
+msgstr "DOM"

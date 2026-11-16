@@ -1,0 +1,835 @@
+# Korean translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-09-23 13:47+0100\n"
+"PO-Revision-Date: 2026-10-28 12:15+0000\n"
+"Last-Translator: n.e.yoseph <Unknown>\n"
+"Language-Team: Korean <ko@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
+#: calendar/event_dialog.py:178 calendar/event_dialog.py:185
+#: calendar/main_window.py:35 calendar/main_window.py:193 calendar/store.py:60
+#: calendar/store.py:72 calendar/backends/caldav.py:296
+#: calendar/backends/caldav.py:298
+msgid "Calendar"
+msgstr "달력"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:3
+msgid "Manage your events and appointments"
+msgstr ""
+
+#: data/org.x.clockenstein.Calendar.desktop.in:9
+msgid "calendar;event;appointment;Google;CalDAV;Nextcloud;"
+msgstr ""
+
+#: data/org.x.clockenstein.Clocks.desktop.in:2 clocks/clocks_app.py:116
+#: clocks/clocks_app.py:720
+msgid "Clocks"
+msgstr "시계"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:3
+msgid "Set alarms"
+msgstr "알람 설정"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:9
+msgid "clock;alarm;wake;"
+msgstr "시계;알람;깨우기"
+
+#: calendar/event_dialog.py:79 clocks/clocks_app.py:418
+msgid "AM"
+msgstr "오전"
+
+#: calendar/event_dialog.py:80 clocks/clocks_app.py:419
+msgid "PM"
+msgstr "오후"
+
+#: calendar/event_dialog.py:99
+msgid "New Event"
+msgstr "새 일정"
+
+#: calendar/event_dialog.py:99
+msgid "Event Details"
+msgstr "일정 세부사항"
+
+#: calendar/event_dialog.py:116 calendar/main_window.py:813
+#: calendar/main_window.py:951 calendar/main_window.py:987
+#: calendar/main_window.py:1069 clocks/clocks_app.py:361
+#: clocks/clocks_app.py:499
+msgid "Cancel"
+msgstr "취소"
+
+#: calendar/event_dialog.py:116 calendar/preferences.py:16
+msgid "Close"
+msgstr "닫기"
+
+#: calendar/event_dialog.py:118 clocks/clocks_app.py:363
+msgid "Delete"
+msgstr "지우기"
+
+#: calendar/event_dialog.py:123 calendar/main_window.py:813
+#: clocks/clocks_app.py:365
+msgid "Save"
+msgstr "저장하기"
+
+#: calendar/event_dialog.py:139
+msgid "Birthday"
+msgstr "생일"
+
+#: calendar/event_dialog.py:140
+msgid "Focus time"
+msgstr "집중 시간"
+
+#: calendar/event_dialog.py:141
+msgid "From Gmail"
+msgstr ""
+
+#: calendar/event_dialog.py:142
+msgid "Out of office"
+msgstr "부재 중"
+
+#: calendar/event_dialog.py:143
+msgid "Working location"
+msgstr "위치"
+
+#: calendar/event_dialog.py:148
+#, python-format
+msgid "This type of event (%s) cannot be edited."
+msgstr "이 유형의 일정 (%s)는 편집이 불가합니다."
+
+#: calendar/event_dialog.py:172
+msgid "Title"
+msgstr "제목"
+
+#: calendar/event_dialog.py:182 calendar/main_window.py:507
+#: calendar/main_window.py:793
+msgid "Local"
+msgstr "로컬"
+
+#: calendar/event_dialog.py:206 calendar/views/day_view.py:53
+#: calendar/views/day_view.py:329 calendar/views/week_view.py:61
+#: calendar/views/week_view.py:72
+msgid "All day"
+msgstr "하루 종일"
+
+#: calendar/event_dialog.py:212
+msgid "Start"
+msgstr "시작"
+
+#: calendar/event_dialog.py:222
+msgid "End"
+msgstr "끝"
+
+#: calendar/event_dialog.py:243
+msgid "Location"
+msgstr "위치"
+
+#: calendar/event_dialog.py:246
+msgid "Optional"
+msgstr "선택 사항"
+
+#: calendar/event_dialog.py:249
+msgid "Notes"
+msgstr "참고"
+
+#: calendar/event_dialog.py:368 calendar/event_dialog.py:465
+#: calendar/main_window.py:482 calendar/backends/google.py:480
+#: calendar/views/day_view.py:328 calendar/views/month_view.py:183
+#: calendar/views/month_view.py:329 calendar/views/month_view.py:344
+#: calendar/views/week_view.py:337
+msgid "Untitled"
+msgstr "제목없음"
+
+#: calendar/event_dialog.py:399 calendar/backends/google.py:291
+#, python-format
+msgid "The event dates are outside the sync range for %s."
+msgstr "일정의 날짜가 %s의 동기화 범위를 벗어났습니다."
+
+#: calendar/event_dialog.py:400
+msgid "this calendar"
+msgstr "이 캘린더"
+
+#: calendar/event_dialog.py:409
+msgid "Saving…"
+msgstr "저장 중…"
+
+#: calendar/event_dialog.py:416 calendar/event_dialog.py:453
+#: calendar/event_dialog.py:476 calendar/main_window.py:715
+#, python-format
+msgid "Error: %s"
+msgstr "오류: %s"
+
+#: calendar/event_dialog.py:465
+#, python-format
+msgid "Delete '%s'?"
+msgstr "'%s'을(를) 삭제하시겠습니까?"
+
+#: calendar/event_dialog.py:467
+msgid "This event will be permanently deleted."
+msgstr "이 일정은 완전히 제거될 것입니다."
+
+#: calendar/main_window.py:146 calendar/main_window.py:1351
+msgid "Synchronizing online calendars…"
+msgstr "온라인 캘린더 동기화 중..."
+
+#: calendar/main_window.py:148 calendar/main_window.py:1353
+msgid "Synchronization finished"
+msgstr "동기화 완료"
+
+#: calendar/main_window.py:154 clocks/clocks_app.py:220
+msgid "The daemon is not running."
+msgstr "데몬이 실행되고 있지 않습니다."
+
+#: calendar/main_window.py:155
+msgid "Synchronization and reminders may be unavailable."
+msgstr "동기화 및 리마인더가 작동되지 않을 것입니다."
+
+#: calendar/main_window.py:158 clocks/clocks_app.py:222
+msgid "The notification agent is not running."
+msgstr "notification agent가 실행되지 않고 있습니다."
+
+#: calendar/main_window.py:159
+msgid "Reminders may be unavailable."
+msgstr "리마인더를 사용할 수 없을 것입니다."
+
+#: calendar/main_window.py:197 calendar/main_window.py:302
+#: calendar/main_window.py:754
+msgid "Calendars"
+msgstr "캘린더 설정"
+
+#: calendar/main_window.py:200 calendar/preferences.py:15
+msgid "Preferences"
+msgstr "환경설정"
+
+#: calendar/main_window.py:204
+msgid "About"
+msgstr "정보"
+
+#: calendar/main_window.py:210
+msgid "Main menu"
+msgstr "메인 메뉴"
+
+#: calendar/main_window.py:220 calendar/main_window.py:447
+#: clocks/clocks_app.py:687
+msgid "Today"
+msgstr "오늘"
+
+#: calendar/main_window.py:230 calendar/widgets/mini_calendar.py:130
+msgid "Month"
+msgstr "월"
+
+#: calendar/main_window.py:230
+msgid "Week"
+msgstr "주"
+
+#: calendar/main_window.py:231
+msgid "Day"
+msgstr "일"
+
+#: calendar/main_window.py:239
+msgid "New event (Ctrl+N)"
+msgstr "새 일정 (Ctrl+N)"
+
+#: calendar/main_window.py:358
+msgid "A calendar application for Linux desktops"
+msgstr "리눅스 데스크탑을 위한 달력 앱"
+
+#: calendar/main_window.py:382 calendar/main_window.py:1366
+msgid "Some online calendars are disconnected (read-only)."
+msgstr "일부 온라인 캘린더의 연결이 해제되었습니다(읽기전용)"
+
+#: calendar/main_window.py:418
+#, python-format
+msgid "This date is outside the sync range for: %s. Events may be missing."
+msgstr "이 날짜는 %s의 동기화 범위를 벗어납니다. 일정이 누락될 것입니다."
+
+#: calendar/main_window.py:448 clocks/clocks_app.py:689
+msgid "Tomorrow"
+msgstr "내일"
+
+#: calendar/main_window.py:449
+msgid "Coming Up"
+msgstr "곧 예정된 일정"
+
+#: calendar/main_window.py:459
+msgid "No upcoming events"
+msgstr "곧 예정된 일정 없음"
+
+#: calendar/main_window.py:520
+msgid "Online"
+msgstr "온라인"
+
+#: calendar/main_window.py:520
+msgid "Offline, read only"
+msgstr "오프라인, 읽기 전용"
+
+#: calendar/main_window.py:521
+msgid "Sync every 2 hours"
+msgstr "두 시간마다 동기화"
+
+#: calendar/main_window.py:522
+msgid "Sync every 15 minutes"
+msgstr "15분마다 동기화"
+
+#: calendar/main_window.py:536
+msgid "Sync range"
+msgstr "동기화 범위"
+
+#: calendar/main_window.py:536
+msgid "Status"
+msgstr "상태"
+
+#: calendar/main_window.py:537
+msgid "Reminders"
+msgstr "리마인더"
+
+#: calendar/main_window.py:537
+msgid "Visible"
+msgstr "표시"
+
+#: calendar/main_window.py:537
+msgid "Actions"
+msgstr "설정"
+
+#: calendar/main_window.py:564
+#, python-format
+msgid "Disconnect %s"
+msgstr "%s을(를) 연결 해제하기"
+
+#: calendar/main_window.py:572
+msgid "Local calendars"
+msgstr "로컬 캘린더"
+
+#: calendar/main_window.py:582
+msgid "My Calendars"
+msgstr "내 캘린더"
+
+#: calendar/main_window.py:583
+msgid "Other Calendars"
+msgstr "기타 캘린더"
+
+#: calendar/main_window.py:608
+msgid "Show this calendar"
+msgstr "이 캘린더 보기"
+
+#: calendar/main_window.py:622
+msgid "Already synchronized less than 5 minutes ago"
+msgstr "이미 5분 전에 동기화 됨"
+
+#: calendar/main_window.py:630 calendar/main_window.py:680
+#: calendar/main_window.py:946
+msgid "Refresh this calendar"
+msgstr "캘린더 새로고침"
+
+#: calendar/main_window.py:651 clocks/clocks_app.py:317
+#: clocks/clocks_app.py:358
+msgid "Edit"
+msgstr "편집"
+
+#: calendar/main_window.py:660 calendar/main_window.py:870
+msgid "Remove"
+msgstr "삭제"
+
+#: calendar/main_window.py:705 calendar/main_window.py:709
+msgid "2 years ahead"
+msgstr "앞으로 2년"
+
+#: calendar/main_window.py:706
+msgid "1 year ahead"
+msgstr "앞으로 1년"
+
+#: calendar/main_window.py:707
+msgid "3 months ahead"
+msgstr "앞으로 3개월"
+
+#: calendar/main_window.py:708
+msgid "Too many events"
+msgstr "너무 많은 일정"
+
+#: calendar/main_window.py:717
+msgid "Not synchronized"
+msgstr "동기화 안됨"
+
+#: calendar/main_window.py:722
+msgid "just now"
+msgstr "방금 전"
+
+#: calendar/main_window.py:725
+msgid "1 minute ago"
+msgstr "1분 전"
+
+#: calendar/main_window.py:726
+#, python-format
+msgid "%d minutes ago"
+msgstr "%d분 전"
+
+#: calendar/main_window.py:729
+msgid "1 hour ago"
+msgstr "1시간 전"
+
+#: calendar/main_window.py:730
+#, python-format
+msgid "%d hours ago"
+msgstr "%d시간 전"
+
+#: calendar/main_window.py:733
+msgid "1 day ago"
+msgstr "1일 전"
+
+#: calendar/main_window.py:734
+#, python-format
+msgid "%d days ago"
+msgstr "%d일 전"
+
+#: calendar/main_window.py:735
+#, python-format
+msgid "Last sync: %s"
+msgstr "마지막 동기화: %s"
+
+#: calendar/main_window.py:736
+msgid "Not synced yet"
+msgstr "아직 동기화 되지 않음"
+
+#: calendar/main_window.py:755
+msgid "Add a New Calendar…"
+msgstr "새 캘린더 추가하기..."
+
+#: calendar/main_window.py:795
+msgid "CalDAV (Nextcloud, Memotoo, etc.)"
+msgstr "CalDAV (Nextcloud, Memotoo, 등등)"
+
+#: calendar/main_window.py:812
+msgid "Edit Calendar"
+msgstr "캘린터 편집"
+
+#: calendar/main_window.py:821 calendar/main_window.py:960
+#: clocks/clocks_app.py:382
+msgid "Name"
+msgstr "이름"
+
+#: calendar/main_window.py:827 calendar/main_window.py:962
+msgid "Color"
+msgstr "색상"
+
+#: calendar/main_window.py:861 calendar/store.py:77
+msgid "At least one local calendar is required"
+msgstr "적어도 하나의 캘린더가 필요합니다."
+
+#: calendar/main_window.py:868
+#, python-format
+msgid "Remove %s?"
+msgstr "%s(을)를 제거하시겠습니까?"
+
+#: calendar/main_window.py:871
+msgid "All the events from this calendar will be permanently removed."
+msgstr "이 캘린더의 모든 일정이 완전히 제거될 것입니다."
+
+#: calendar/main_window.py:890 calendar/main_window.py:925
+#, python-format
+msgid "Refresh requested for %s…"
+msgstr "%s 새로고침 요청됨…"
+
+#: calendar/main_window.py:907
+msgid "Remind me about events in this calendar"
+msgstr "이 달력의 이벤트 리마인드하기"
+
+#: calendar/main_window.py:924
+msgid "Refresh requested"
+msgstr "새로고침 요청"
+
+#: calendar/main_window.py:947
+#, python-format
+msgid "Could not request refresh: %s"
+msgstr "새로고침 요청을 할 수 없습니다: %s"
+
+#: calendar/main_window.py:950
+msgid "New Calendar"
+msgstr "새 캘린더"
+
+#: calendar/main_window.py:951
+msgid "Create"
+msgstr "생성"
+
+#: calendar/main_window.py:981
+msgid "No Google accounts were found in Online Accounts."
+msgstr "온라인 계정에서 Google 계정을 찾을 수 없습니다."
+
+#: calendar/main_window.py:986
+msgid "Google Account"
+msgstr "Google 계정"
+
+#: calendar/main_window.py:988 calendar/main_window.py:1069
+msgid "Connect"
+msgstr "연결"
+
+#: calendar/main_window.py:993
+msgid "Choose an account"
+msgstr "계정 선택"
+
+#: calendar/main_window.py:1007 calendar/main_window.py:1011
+#: calendar/main_window.py:1088
+msgid "Connecting…"
+msgstr "연결 중…"
+
+#: calendar/main_window.py:1023 calendar/main_window.py:1101
+msgid "Requesting initial synchronization…"
+msgstr "초기 동기화 요청중..."
+
+#: calendar/main_window.py:1040
+msgid "Could not connect the Google account"
+msgstr "구글 계정과 연결할 수 없습니다."
+
+#: calendar/main_window.py:1056
+msgid "Could not connect to the CalDAV server"
+msgstr "CalDAV server와 연결할 수 없습니다."
+
+#: calendar/main_window.py:1078
+msgid "Server URL"
+msgstr "서버 URL"
+
+#: calendar/main_window.py:1078
+msgid "Username"
+msgstr "사용자명"
+
+#: calendar/main_window.py:1078
+msgid "Password"
+msgstr "비밀번호"
+
+#: calendar/main_window.py:1112
+#, python-format
+msgid "Disconnect %s?"
+msgstr "%s 연결을 해제하겠습니까?"
+
+#: calendar/main_window.py:1115
+msgid ""
+"This online calendar will be disconnected and removed from the application."
+msgstr "이 온라인 캘린더는 앱에서 제거되고 연결이 해제될 것입니다."
+
+#: calendar/main_window.py:1313
+msgid "Connecting to online calendars…"
+msgstr "온라인 캘린더 연결 중..."
+
+#: calendar/preferences.py:24
+msgid "First day of the week"
+msgstr "일주일의 첫 요일"
+
+#: calendar/preferences.py:29 calendar/preferences.py:45
+msgid "Use locale default"
+msgstr "기본 로케일 값 사용"
+
+#: calendar/preferences.py:40
+msgid "Time format"
+msgstr "시간 단위"
+
+#: calendar/preferences.py:46
+msgid "12-hour clock"
+msgstr "12시간 단위"
+
+#: calendar/preferences.py:47
+msgid "24-hour clock"
+msgstr "24시간 단위"
+
+#: calendar/preferences.py:54
+msgid "Show week numbers"
+msgstr "해의 몇 번째 주인지 표기"
+
+#: calendar/store.py:50
+msgid "Personal"
+msgstr "개인적인"
+
+#: calendar/store.py:110
+#, python-format
+msgid "Unknown event %s"
+msgstr "알 수 없는 일정 %s"
+
+#: calendar/backends/caldav.py:58
+msgid "A username and password are required"
+msgstr "유저명과 비밀번호가 필요합니다."
+
+#: calendar/backends/caldav.py:60
+msgid "Contacting CalDAV server…"
+msgstr "CalDAV server 접속 중…"
+
+#: calendar/backends/caldav.py:96 calendar/backends/caldav.py:204
+msgid "Password not found in the keyring"
+msgstr "keyring에서 비밀번호를 찾을 수 없습니다."
+
+#: calendar/backends/caldav.py:166
+msgid "The event has no CalDAV resource URL"
+msgstr "이 일정에 CalDAV 리소스 URL이 없습니다."
+
+#: calendar/backends/caldav.py:215
+msgid "This CalDAV account is offline. It is now read-only."
+msgstr "이 CalDAV계정은 오프라인입니다. 이제 읽기 전용 모드입니다."
+
+#: calendar/backends/caldav.py:274
+#, python-format
+msgid "Calendar CalDAV password for %s"
+msgstr "%s 캘린더의 CalDAV 비밀번호"
+
+#: calendar/backends/caldav.py:276
+msgid "Could not save the password in the keyring"
+msgstr "keyring에 비밀번호를 저장할 수 없습니다."
+
+#: calendar/backends/caldav.py:320
+msgid "A server URL is required"
+msgstr "서버 URL이 필요합니다."
+
+#: calendar/backends/caldav.py:324
+msgid "CalDAV server URLs must use HTTP or HTTPS"
+msgstr "CalDAV 서버 URL은 HTTP 혹은 HTTPS여야 합니다."
+
+#: calendar/backends/google.py:66
+msgid "Waiting for Google authorization…"
+msgstr "Google 인증 대기 중..."
+
+#: calendar/backends/google.py:73
+msgid "Authorization received • Contacting Google Calendar…"
+msgstr "인증 활성화  • Google Calendar 접속 중..."
+
+#: calendar/backends/google.py:76 calendar/backends/google.py:119
+msgid "Loading your Google calendars…"
+msgstr "Google Calendar 로딩 중"
+
+#: calendar/backends/google.py:80 calendar/backends/google.py:123
+msgid "Google did not return a primary calendar"
+msgstr "Google에서 기본 캘린더를 반환하지 않았습니다"
+
+#: calendar/backends/google.py:116
+msgid "Requesting authorization from Online Accounts…"
+msgstr "온라인 계정에서의 인증이 필요합니다."
+
+#: calendar/backends/google.py:263 calendar/backends/google.py:274
+msgid "This Google account is offline."
+msgstr "이 Google 계정은 오프라인입니다."
+
+#: calendar/backends/google.py:287
+msgid "Google calendar not found."
+msgstr "Google calendar를 찾지 못했습니다."
+
+#: calendar/backends/google.py:319
+msgid "authorization expired"
+msgstr "인증 만료됨"
+
+#: calendar/backends/google.py:333
+msgid "The gir1.2-goa-1.0 package is missing"
+msgstr ""
+
+#: calendar/backends/google.py:344
+#, python-format
+msgid "Could not contact Online Accounts: %s"
+msgstr "구글 계정에 접속할 수 없음: %s"
+
+#: calendar/backends/google.py:351
+msgid "The selected Online Account is unavailable"
+msgstr "선택된 온라인 계정을 사용할 수 없음"
+
+#: calendar/backends/google.py:363
+msgid "Online Accounts returned no access token"
+msgstr ""
+
+#: calendar/backends/google.py:368
+#, python-format
+msgid "Could not obtain Google authorization: %s"
+msgstr ""
+
+#: calendar/views/month_view.py:263
+#, python-format
+msgid "+%d more"
+msgstr "+%d"
+
+#: calendar/widgets/mini_calendar.py:136
+msgid "Year"
+msgstr "년"
+
+#: clocks/clocks_app.py:108
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d시간"
+
+#: clocks/clocks_app.py:110 agent/agent.py:181
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d분"
+
+#: clocks/clocks_app.py:111
+#, python-format
+msgid "Alarm in %s"
+msgstr ""
+
+#: clocks/clocks_app.py:131
+msgid "Alarms"
+msgstr ""
+
+#: clocks/clocks_app.py:133
+msgid "Add"
+msgstr ""
+
+#: clocks/clocks_app.py:150
+msgid "No alarms are set"
+msgstr ""
+
+#: clocks/clocks_app.py:226
+msgid "Alarms will not ring."
+msgstr ""
+
+#: clocks/clocks_app.py:249
+#, python-format
+msgid "Could not load alarms: %s"
+msgstr ""
+
+#: clocks/clocks_app.py:297 agent/agent.py:98 agent/agent.py:192
+msgid "Alarm"
+msgstr ""
+
+#: clocks/clocks_app.py:333
+msgid "Could not update alarm"
+msgstr ""
+
+#: clocks/clocks_app.py:358
+msgid "New Alarm"
+msgstr ""
+
+#: clocks/clocks_app.py:408
+msgid "Time"
+msgstr ""
+
+#: clocks/clocks_app.py:448 clocks/clocks_app.py:558
+#, python-format
+msgid "Every %s"
+msgstr ""
+
+#: clocks/clocks_app.py:459
+msgid "Choose a date"
+msgstr ""
+
+#: clocks/clocks_app.py:470
+msgid "Clear date"
+msgstr ""
+
+#: clocks/clocks_app.py:488
+msgid "Audio files"
+msgstr ""
+
+#: clocks/clocks_app.py:496
+msgid "Choose a sound"
+msgstr ""
+
+#: clocks/clocks_app.py:500
+msgid "Select"
+msgstr ""
+
+#: clocks/clocks_app.py:512
+msgid "Play selected sound"
+msgstr ""
+
+#: clocks/clocks_app.py:518
+msgid "Seconds between sounds"
+msgstr ""
+
+#: clocks/clocks_app.py:519
+msgid "seconds"
+msgstr ""
+
+#: clocks/clocks_app.py:537
+msgid "Sound"
+msgstr ""
+
+#: clocks/clocks_app.py:556 clocks/clocks_app.py:660
+msgid "Every day"
+msgstr ""
+
+#: clocks/clocks_app.py:639
+msgid "Could not delete alarm"
+msgstr ""
+
+#: clocks/clocks_app.py:640
+msgid "Could not save alarm"
+msgstr ""
+
+#: clocks/clocks_app.py:707
+msgid "Could not open alarm database"
+msgstr ""
+
+#: agent/agent.py:25
+msgid "Calendar Event"
+msgstr ""
+
+#: agent/agent.py:123
+msgid "Mute"
+msgstr ""
+
+#: agent/agent.py:172
+msgid "Snooze"
+msgstr ""
+
+#: agent/agent.py:212
+msgid "Open Clocks"
+msgstr ""
+
+#: agent/agent.py:215 agent/agent.py:285
+msgid "Dismiss"
+msgstr ""
+
+#: agent/agent.py:279
+msgid "Open Calendar"
+msgstr ""
+
+#: agent/agent.py:548
+#, python-format
+msgid "Starts in %d minute"
+msgid_plural "Starts in %d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: agent/agent.py:551
+msgid "Starts now"
+msgstr ""
+
+#: agent/agent.py:554
+#, python-format
+msgid "This event started %d minute ago"
+msgid_plural "This event started %d minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: clockenstein/formatting.py:11
+msgid "MON"
+msgstr ""
+
+#: clockenstein/formatting.py:11
+msgid "TUE"
+msgstr ""
+
+#: clockenstein/formatting.py:11
+msgid "WED"
+msgstr ""
+
+#: clockenstein/formatting.py:11
+msgid "THU"
+msgstr ""
+
+#: clockenstein/formatting.py:11
+msgid "FRI"
+msgstr ""
+
+#: clockenstein/formatting.py:11
+msgid "SAT"
+msgstr ""
+
+#: clockenstein/formatting.py:11
+msgid "SUN"
+msgstr ""

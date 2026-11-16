@@ -1,0 +1,848 @@
+# Greek translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-09-23 13:47+0100\n"
+"PO-Revision-Date: 2026-10-18 07:52+0000\n"
+"Last-Translator: George Georgiou <Unknown>\n"
+"Language-Team: Greek <el@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
+#: calendar/event_dialog.py:178 calendar/event_dialog.py:185
+#: calendar/main_window.py:35 calendar/main_window.py:193 calendar/store.py:60
+#: calendar/store.py:72 calendar/backends/caldav.py:296
+#: calendar/backends/caldav.py:298
+msgid "Calendar"
+msgstr "Ημερολόγιο"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:3
+msgid "Manage your events and appointments"
+msgstr "Διαχειριστείτε τα γεγονότα και τα ραντεβού σας"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:9
+msgid "calendar;event;appointment;Google;CalDAV;Nextcloud;"
+msgstr ""
+"ημερολόγιο;εκδήλωση;γεγονός;συμβάν;ραντεβού;συνάντηση;calendar;event;appointm"
+"ent;Google;CalDAV;Nextcloud;"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:2 clocks/clocks_app.py:116
+#: clocks/clocks_app.py:720
+msgid "Clocks"
+msgstr "Ρολόγια"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:3
+msgid "Set alarms"
+msgstr "Ρυθμίστε ειδοποιήσεις"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:9
+msgid "clock;alarm;wake;"
+msgstr "ρολόι;αφύπνιση;ξυπνητήρι;ειδοποίηση;clock;alarm;wake;"
+
+#: calendar/event_dialog.py:79 clocks/clocks_app.py:418
+msgid "AM"
+msgstr "πμ"
+
+#: calendar/event_dialog.py:80 clocks/clocks_app.py:419
+msgid "PM"
+msgstr "μμ"
+
+#: calendar/event_dialog.py:99
+msgid "New Event"
+msgstr "Νέο γεγονός"
+
+#: calendar/event_dialog.py:99
+msgid "Event Details"
+msgstr "Λεπτομέρειες γεγονότος"
+
+#: calendar/event_dialog.py:116 calendar/main_window.py:813
+#: calendar/main_window.py:951 calendar/main_window.py:987
+#: calendar/main_window.py:1069 clocks/clocks_app.py:361
+#: clocks/clocks_app.py:499
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: calendar/event_dialog.py:116 calendar/preferences.py:16
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: calendar/event_dialog.py:118 clocks/clocks_app.py:363
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: calendar/event_dialog.py:123 calendar/main_window.py:813
+#: clocks/clocks_app.py:365
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: calendar/event_dialog.py:139
+msgid "Birthday"
+msgstr "Γενέθλια"
+
+#: calendar/event_dialog.py:140
+msgid "Focus time"
+msgstr "Χρόνος συγκέντρωσης"
+
+#: calendar/event_dialog.py:141
+msgid "From Gmail"
+msgstr "Από το Gmail"
+
+#: calendar/event_dialog.py:142
+msgid "Out of office"
+msgstr "Εκτός γραφείου"
+
+#: calendar/event_dialog.py:143
+msgid "Working location"
+msgstr "Τοποθεσία εργασίας"
+
+#: calendar/event_dialog.py:148
+#, python-format
+msgid "This type of event (%s) cannot be edited."
+msgstr "Δεν είναι δυνατή η επεξεργασία αυτού του τύπου γεγονότος (%s)."
+
+#: calendar/event_dialog.py:172
+msgid "Title"
+msgstr "Τίτλος"
+
+#: calendar/event_dialog.py:182 calendar/main_window.py:507
+#: calendar/main_window.py:793
+msgid "Local"
+msgstr "Τοπικά"
+
+#: calendar/event_dialog.py:206 calendar/views/day_view.py:53
+#: calendar/views/day_view.py:329 calendar/views/week_view.py:61
+#: calendar/views/week_view.py:72
+msgid "All day"
+msgstr "Ολοήμερο"
+
+#: calendar/event_dialog.py:212
+msgid "Start"
+msgstr "Έναρξη"
+
+#: calendar/event_dialog.py:222
+msgid "End"
+msgstr "Λήξη"
+
+#: calendar/event_dialog.py:243
+msgid "Location"
+msgstr "Τοποθεσία"
+
+#: calendar/event_dialog.py:246
+msgid "Optional"
+msgstr "Προαιρετικό"
+
+#: calendar/event_dialog.py:249
+msgid "Notes"
+msgstr "Σημειώσεις"
+
+#: calendar/event_dialog.py:368 calendar/event_dialog.py:465
+#: calendar/main_window.py:482 calendar/backends/google.py:480
+#: calendar/views/day_view.py:328 calendar/views/month_view.py:183
+#: calendar/views/month_view.py:329 calendar/views/month_view.py:344
+#: calendar/views/week_view.py:337
+msgid "Untitled"
+msgstr "Χωρίς τίτλο"
+
+#: calendar/event_dialog.py:399 calendar/backends/google.py:291
+#, python-format
+msgid "The event dates are outside the sync range for %s."
+msgstr ""
+"Οι ημερομηνίες γεγονότος είναι εκτός του εύρους συγχρονισμού για το %s."
+
+#: calendar/event_dialog.py:400
+msgid "this calendar"
+msgstr "αυτό το ημερολόγιο"
+
+#: calendar/event_dialog.py:409
+msgid "Saving…"
+msgstr "Αποθήκευση…"
+
+#: calendar/event_dialog.py:416 calendar/event_dialog.py:453
+#: calendar/event_dialog.py:476 calendar/main_window.py:715
+#, python-format
+msgid "Error: %s"
+msgstr "Σφάλμα: %s"
+
+#: calendar/event_dialog.py:465
+#, python-format
+msgid "Delete '%s'?"
+msgstr "Διαγραφή του «%s»;"
+
+#: calendar/event_dialog.py:467
+msgid "This event will be permanently deleted."
+msgstr "Αυτό το γεγονός θα διαγραφεί οριστικά."
+
+#: calendar/main_window.py:146 calendar/main_window.py:1351
+msgid "Synchronizing online calendars…"
+msgstr "Συγχρονισμός διαδικτυακών ημερολογίων…"
+
+#: calendar/main_window.py:148 calendar/main_window.py:1353
+msgid "Synchronization finished"
+msgstr "Ο συγχρονισμός ολοκληρώθηκε"
+
+#: calendar/main_window.py:154 clocks/clocks_app.py:220
+msgid "The daemon is not running."
+msgstr "Η υπηρεσία παρασκηνίου δεν εκτελείται."
+
+#: calendar/main_window.py:155
+msgid "Synchronization and reminders may be unavailable."
+msgstr "Ο συγχρονισμός και οι υπενθυμίσεις ενδέχεται να μην είναι διαθέσιμα."
+
+#: calendar/main_window.py:158 clocks/clocks_app.py:222
+msgid "The notification agent is not running."
+msgstr "Η υπηρεσία ειδοποιήσεων δεν εκτελείται."
+
+#: calendar/main_window.py:159
+msgid "Reminders may be unavailable."
+msgstr "Οι υπενθυμίσεις ενδέχεται να μην είναι διαθέσιμες."
+
+#: calendar/main_window.py:197 calendar/main_window.py:302
+#: calendar/main_window.py:754
+msgid "Calendars"
+msgstr "Ημερολόγια"
+
+#: calendar/main_window.py:200 calendar/preferences.py:15
+msgid "Preferences"
+msgstr "Προτιμήσεις"
+
+#: calendar/main_window.py:204
+msgid "About"
+msgstr "Πληροφορίες"
+
+#: calendar/main_window.py:210
+msgid "Main menu"
+msgstr "Κύριο μενού"
+
+#: calendar/main_window.py:220 calendar/main_window.py:447
+#: clocks/clocks_app.py:687
+msgid "Today"
+msgstr "Σήμερα"
+
+#: calendar/main_window.py:230 calendar/widgets/mini_calendar.py:130
+msgid "Month"
+msgstr "Μήνας"
+
+#: calendar/main_window.py:230
+msgid "Week"
+msgstr "Εβδομάδα"
+
+#: calendar/main_window.py:231
+msgid "Day"
+msgstr "Ημέρα"
+
+#: calendar/main_window.py:239
+msgid "New event (Ctrl+N)"
+msgstr "Νέο γεγονός (Ctrl+N)"
+
+#: calendar/main_window.py:358
+msgid "A calendar application for Linux desktops"
+msgstr "Μια εφαρμογή ημερολογίου για υπολογιστές με Linux"
+
+#: calendar/main_window.py:382 calendar/main_window.py:1366
+msgid "Some online calendars are disconnected (read-only)."
+msgstr ""
+"Ορισμένα διαδικτυακά ημερολόγια έχουν αποσυνδεθεί (μόνο για ανάγνωση)."
+
+#: calendar/main_window.py:418
+#, python-format
+msgid "This date is outside the sync range for: %s. Events may be missing."
+msgstr ""
+"Αυτή η ημερομηνία είναι εκτός του εύρους συγχρονισμού για: %s. Μπορεί να "
+"λείπουν εκδηλώσεις."
+
+#: calendar/main_window.py:448 clocks/clocks_app.py:689
+msgid "Tomorrow"
+msgstr "Αύριο"
+
+#: calendar/main_window.py:449
+msgid "Coming Up"
+msgstr "Επερχόμενα"
+
+#: calendar/main_window.py:459
+msgid "No upcoming events"
+msgstr "Δεν υπάρχουν επερχόμενα γεγονότα"
+
+#: calendar/main_window.py:520
+msgid "Online"
+msgstr "Σε σύνδεση"
+
+#: calendar/main_window.py:520
+msgid "Offline, read only"
+msgstr "Εκτός σύνδεσης, μόνο για ανάγνωση"
+
+#: calendar/main_window.py:521
+msgid "Sync every 2 hours"
+msgstr "Συγχρονισμός κάθε 2 ώρες"
+
+#: calendar/main_window.py:522
+msgid "Sync every 15 minutes"
+msgstr "Συγχρονισμός κάθε 15 λεπτά"
+
+#: calendar/main_window.py:536
+msgid "Sync range"
+msgstr "Εύρος συγχρονισμού"
+
+#: calendar/main_window.py:536
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: calendar/main_window.py:537
+msgid "Reminders"
+msgstr "Υπενθυμίσεις"
+
+#: calendar/main_window.py:537
+msgid "Visible"
+msgstr "Ορατό"
+
+#: calendar/main_window.py:537
+msgid "Actions"
+msgstr "Ενέργειες"
+
+#: calendar/main_window.py:564
+#, python-format
+msgid "Disconnect %s"
+msgstr "Αποσύνδεση του «%s»"
+
+#: calendar/main_window.py:572
+msgid "Local calendars"
+msgstr "Τοπικά ημερολόγια"
+
+#: calendar/main_window.py:582
+msgid "My Calendars"
+msgstr "Τα ημερολόγιά μου"
+
+#: calendar/main_window.py:583
+msgid "Other Calendars"
+msgstr "Άλλα ημερολόγια"
+
+#: calendar/main_window.py:608
+msgid "Show this calendar"
+msgstr "Εμφάνιση ημερολογίου"
+
+#: calendar/main_window.py:622
+msgid "Already synchronized less than 5 minutes ago"
+msgstr "Συγχρονίστηκε ήδη πριν από λιγότερα από 5 λεπτά"
+
+#: calendar/main_window.py:630 calendar/main_window.py:680
+#: calendar/main_window.py:946
+msgid "Refresh this calendar"
+msgstr "Ανανέωση ημερολογίου"
+
+#: calendar/main_window.py:651 clocks/clocks_app.py:317
+#: clocks/clocks_app.py:358
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: calendar/main_window.py:660 calendar/main_window.py:870
+msgid "Remove"
+msgstr "Αφαίρεση"
+
+#: calendar/main_window.py:705 calendar/main_window.py:709
+msgid "2 years ahead"
+msgstr "2 χρόνια μπροστά"
+
+#: calendar/main_window.py:706
+msgid "1 year ahead"
+msgstr "1 χρόνο μπροστά"
+
+#: calendar/main_window.py:707
+msgid "3 months ahead"
+msgstr "3 μήνες μπροστά"
+
+#: calendar/main_window.py:708
+msgid "Too many events"
+msgstr "Πάρα πολλά γεγονότα"
+
+#: calendar/main_window.py:717
+msgid "Not synchronized"
+msgstr "Μη συγχρονισμένο"
+
+#: calendar/main_window.py:722
+msgid "just now"
+msgstr "μόλις τώρα"
+
+#: calendar/main_window.py:725
+msgid "1 minute ago"
+msgstr "πριν από 1 λεπτό"
+
+#: calendar/main_window.py:726
+#, python-format
+msgid "%d minutes ago"
+msgstr "πριν από %d λεπτά"
+
+#: calendar/main_window.py:729
+msgid "1 hour ago"
+msgstr "πριν από 1 ώρα"
+
+#: calendar/main_window.py:730
+#, python-format
+msgid "%d hours ago"
+msgstr "πριν από %d ώρες"
+
+#: calendar/main_window.py:733
+msgid "1 day ago"
+msgstr "πριν από 1 ημέρα"
+
+#: calendar/main_window.py:734
+#, python-format
+msgid "%d days ago"
+msgstr "πριν από %d ημέρες"
+
+#: calendar/main_window.py:735
+#, python-format
+msgid "Last sync: %s"
+msgstr "Τελευταίος συγχρονισμός: %s"
+
+#: calendar/main_window.py:736
+msgid "Not synced yet"
+msgstr "Δεν έχει συγχρονιστεί ακόμα"
+
+#: calendar/main_window.py:755
+msgid "Add a New Calendar…"
+msgstr "Προσθήκη νέου ημερολογίου…"
+
+#: calendar/main_window.py:795
+msgid "CalDAV (Nextcloud, Memotoo, etc.)"
+msgstr "CalDAV (Nextcloud, Memotoo κ.λπ.)"
+
+#: calendar/main_window.py:812
+msgid "Edit Calendar"
+msgstr "Επεξεργασία ημερολογίου"
+
+#: calendar/main_window.py:821 calendar/main_window.py:960
+#: clocks/clocks_app.py:382
+msgid "Name"
+msgstr "Όνομα"
+
+#: calendar/main_window.py:827 calendar/main_window.py:962
+msgid "Color"
+msgstr "Χρώμα"
+
+#: calendar/main_window.py:861 calendar/store.py:77
+msgid "At least one local calendar is required"
+msgstr "Απαιτείται τουλάχιστον ένα τοπικό ημερολόγιο"
+
+#: calendar/main_window.py:868
+#, python-format
+msgid "Remove %s?"
+msgstr "Αφαίρεση του «%s»;"
+
+#: calendar/main_window.py:871
+msgid "All the events from this calendar will be permanently removed."
+msgstr "Όλα τα συμβάντα από αυτό το ημερολόγιο θα καταργηθούν οριστικά."
+
+#: calendar/main_window.py:890 calendar/main_window.py:925
+#, python-format
+msgid "Refresh requested for %s…"
+msgstr "Απαιτείται ανανέωση του «%s»…"
+
+#: calendar/main_window.py:907
+msgid "Remind me about events in this calendar"
+msgstr "Υπενθυμίσεις για γεγονότα αυτού του ημερολογίου"
+
+#: calendar/main_window.py:924
+msgid "Refresh requested"
+msgstr "Ζητήθηκε ανανέωση"
+
+#: calendar/main_window.py:947
+#, python-format
+msgid "Could not request refresh: %s"
+msgstr "Δεν ήταν δυνατή η αίτηση ανανέωσης: %s"
+
+#: calendar/main_window.py:950
+msgid "New Calendar"
+msgstr "Νέο ημερολόγιο"
+
+#: calendar/main_window.py:951
+msgid "Create"
+msgstr "Δημιουργία"
+
+#: calendar/main_window.py:981
+msgid "No Google accounts were found in Online Accounts."
+msgstr "Δεν βρέθηκαν λογαριασμοί Google στους Διαδικτυακούς λογαριασμούς."
+
+#: calendar/main_window.py:986
+msgid "Google Account"
+msgstr "Λογαριασμός Google"
+
+#: calendar/main_window.py:988 calendar/main_window.py:1069
+msgid "Connect"
+msgstr "Σύνδεση"
+
+#: calendar/main_window.py:993
+msgid "Choose an account"
+msgstr "Επιλέξτε έναν λογαριασμό"
+
+#: calendar/main_window.py:1007 calendar/main_window.py:1011
+#: calendar/main_window.py:1088
+msgid "Connecting…"
+msgstr "Σύνδεση…"
+
+#: calendar/main_window.py:1023 calendar/main_window.py:1101
+msgid "Requesting initial synchronization…"
+msgstr "Αίτημα αρχικού συγχρονισμού…"
+
+#: calendar/main_window.py:1040
+msgid "Could not connect the Google account"
+msgstr "Δεν ήταν δυνατή η σύνδεση στον λογαριασμό Google"
+
+#: calendar/main_window.py:1056
+msgid "Could not connect to the CalDAV server"
+msgstr "Δεν ήταν δυνατή η σύνδεση στον διακομιστή CalDAV"
+
+#: calendar/main_window.py:1078
+msgid "Server URL"
+msgstr "URL διακομιστή"
+
+#: calendar/main_window.py:1078
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: calendar/main_window.py:1078
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: calendar/main_window.py:1112
+#, python-format
+msgid "Disconnect %s?"
+msgstr "Αποσύνδεση του «%s»;"
+
+#: calendar/main_window.py:1115
+msgid ""
+"This online calendar will be disconnected and removed from the application."
+msgstr ""
+"Αυτό το διαδικτυακό ημερολόγιο θα αποσυνδεθεί και θα αφαιρεθεί από την "
+"εφαρμογή."
+
+#: calendar/main_window.py:1313
+msgid "Connecting to online calendars…"
+msgstr "Σύνδεση σε διαδικτυακά ημερολόγια…"
+
+#: calendar/preferences.py:24
+msgid "First day of the week"
+msgstr "Πρώτη ημέρα της εβδομάδας"
+
+#: calendar/preferences.py:29 calendar/preferences.py:45
+msgid "Use locale default"
+msgstr "Χρήση τοπικών προεπιλογών"
+
+#: calendar/preferences.py:40
+msgid "Time format"
+msgstr "Μορφή ώρας"
+
+#: calendar/preferences.py:46
+msgid "12-hour clock"
+msgstr "12ωρο ρολόι"
+
+#: calendar/preferences.py:47
+msgid "24-hour clock"
+msgstr "24ωρο ρολόι"
+
+#: calendar/preferences.py:54
+msgid "Show week numbers"
+msgstr "Εμφάνιση αριθμών εβδομάδων"
+
+#: calendar/store.py:50
+msgid "Personal"
+msgstr "Προσωπικό"
+
+#: calendar/store.py:110
+#, python-format
+msgid "Unknown event %s"
+msgstr "Άγνωστο γεγονός «%s»"
+
+#: calendar/backends/caldav.py:58
+msgid "A username and password are required"
+msgstr "Απαιτούνται όνομα χρήστη και κωδικός πρόσβασης"
+
+#: calendar/backends/caldav.py:60
+msgid "Contacting CalDAV server…"
+msgstr "Επικοινωνία με τον διακομιστή CalDAV…"
+
+#: calendar/backends/caldav.py:96 calendar/backends/caldav.py:204
+msgid "Password not found in the keyring"
+msgstr "Δεν βρέθηκε κωδικός πρόσβασης στην κλειδοθήκη"
+
+#: calendar/backends/caldav.py:166
+msgid "The event has no CalDAV resource URL"
+msgstr "Το συμβάν δεν έχει URL πόρου CalDAV"
+
+#: calendar/backends/caldav.py:215
+msgid "This CalDAV account is offline. It is now read-only."
+msgstr ""
+"Αυτός ο λογαριασμός CalDAV είναι εκτός σύνδεσης. Τώρα είναι μόνο για "
+"ανάγνωση."
+
+#: calendar/backends/caldav.py:274
+#, python-format
+msgid "Calendar CalDAV password for %s"
+msgstr "Ο κωδικός πρόσβασης CalDAV ημερολογίου για %s"
+
+#: calendar/backends/caldav.py:276
+msgid "Could not save the password in the keyring"
+msgstr "Δεν ήταν δυνατή η αποθήκευση του κωδικού πρόσβασης στην κλειδοθήκη"
+
+#: calendar/backends/caldav.py:320
+msgid "A server URL is required"
+msgstr "Απαιτείται URL διακομιστή"
+
+#: calendar/backends/caldav.py:324
+msgid "CalDAV server URLs must use HTTP or HTTPS"
+msgstr "Τα URLs του διακομιστή CalDAV πρέπει να χρησιμοποιούν HTTP ή HTTPS"
+
+#: calendar/backends/google.py:66
+msgid "Waiting for Google authorization…"
+msgstr "Αναμονή για εξουσιοδότηση από την Google…"
+
+#: calendar/backends/google.py:73
+msgid "Authorization received • Contacting Google Calendar…"
+msgstr ""
+"Πραγματοποιήθηκε εξουσιοδότηση • Επικοινωνία με το Ημερολόγιο Google…"
+
+#: calendar/backends/google.py:76 calendar/backends/google.py:119
+msgid "Loading your Google calendars…"
+msgstr "Φόρτωση ημερολογίων Google…"
+
+#: calendar/backends/google.py:80 calendar/backends/google.py:123
+msgid "Google did not return a primary calendar"
+msgstr "Η Google δεν επέστρεψε κύριο ημερολόγιο"
+
+#: calendar/backends/google.py:116
+msgid "Requesting authorization from Online Accounts…"
+msgstr "Αίτημα εξουσιοδότησης από διαδικτυακούς λογαριασμούς…"
+
+#: calendar/backends/google.py:263 calendar/backends/google.py:274
+msgid "This Google account is offline."
+msgstr "Αυτός ο λογαριασμός Google είναι εκτός σύνδεσης."
+
+#: calendar/backends/google.py:287
+msgid "Google calendar not found."
+msgstr "Το ημερολόγιο Google δεν βρέθηκε."
+
+#: calendar/backends/google.py:319
+msgid "authorization expired"
+msgstr "η εξουσιοδότηση έληξε"
+
+#: calendar/backends/google.py:333
+msgid "The gir1.2-goa-1.0 package is missing"
+msgstr "Απουσιάζει το πακέτο gir1.2-goa-1.0"
+
+#: calendar/backends/google.py:344
+#, python-format
+msgid "Could not contact Online Accounts: %s"
+msgstr "Δεν ήταν δυνατή η επικοινωνία με τους διαδικτυακούς λογαριασμούς: %s"
+
+#: calendar/backends/google.py:351
+msgid "The selected Online Account is unavailable"
+msgstr "Ο επιλεγμένος Διαδικτυακός λογαριασμός δεν είναι διαθέσιμος"
+
+#: calendar/backends/google.py:363
+msgid "Online Accounts returned no access token"
+msgstr "Οι διαδικτυακοί λογαριασμοί δεν επέστρεψαν διακριτικό πρόσβασης"
+
+#: calendar/backends/google.py:368
+#, python-format
+msgid "Could not obtain Google authorization: %s"
+msgstr "Δεν ήταν δυνατή η λήψη εξουσιοδότησης Google: %s"
+
+#: calendar/views/month_view.py:263
+#, python-format
+msgid "+%d more"
+msgstr "+%d ακόμη"
+
+#: calendar/widgets/mini_calendar.py:136
+msgid "Year"
+msgstr "Έτος"
+
+#: clocks/clocks_app.py:108
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d ώρα"
+msgstr[1] "%d ώρες"
+
+#: clocks/clocks_app.py:110 agent/agent.py:181
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d λεπτό"
+msgstr[1] "%d λεπτά"
+
+#: clocks/clocks_app.py:111
+#, python-format
+msgid "Alarm in %s"
+msgstr "Ειδοποίηση σε %s"
+
+#: clocks/clocks_app.py:131
+msgid "Alarms"
+msgstr "Ειδοποιήσεις"
+
+#: clocks/clocks_app.py:133
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: clocks/clocks_app.py:150
+msgid "No alarms are set"
+msgstr "Δεν έχουν ρυθμιστεί ειδοποιήσεις"
+
+#: clocks/clocks_app.py:226
+msgid "Alarms will not ring."
+msgstr "Οι ειδοποιήσεις δεν θα χτυπήσουν."
+
+#: clocks/clocks_app.py:249
+#, python-format
+msgid "Could not load alarms: %s"
+msgstr "Δεν ήταν δυνατή η φόρτωση των ειδοποιήσεων: %s"
+
+#: clocks/clocks_app.py:297 agent/agent.py:98 agent/agent.py:192
+msgid "Alarm"
+msgstr "Ειδοποίηση"
+
+#: clocks/clocks_app.py:333
+msgid "Could not update alarm"
+msgstr "Δεν ήταν δυνατή η ενημέρωση της ειδοποίησης"
+
+#: clocks/clocks_app.py:358
+msgid "New Alarm"
+msgstr "Νέα ειδοποίηση"
+
+#: clocks/clocks_app.py:408
+msgid "Time"
+msgstr "Ώρα"
+
+#: clocks/clocks_app.py:448 clocks/clocks_app.py:558
+#, python-format
+msgid "Every %s"
+msgstr "Κάθε %s"
+
+#: clocks/clocks_app.py:459
+msgid "Choose a date"
+msgstr "Επιλογή ημερομηνίας"
+
+#: clocks/clocks_app.py:470
+msgid "Clear date"
+msgstr "Απαλοιφή ημερομηνίας"
+
+#: clocks/clocks_app.py:488
+msgid "Audio files"
+msgstr "Αρχεία ήχου"
+
+#: clocks/clocks_app.py:496
+msgid "Choose a sound"
+msgstr "Επιλογή ήχου"
+
+#: clocks/clocks_app.py:500
+msgid "Select"
+msgstr "Επιλογή"
+
+#: clocks/clocks_app.py:512
+msgid "Play selected sound"
+msgstr "Αναπαραγωγή επιλεγμένου ήχου"
+
+#: clocks/clocks_app.py:518
+msgid "Seconds between sounds"
+msgstr "Δευτερόλεπτα μεταξύ των ήχων"
+
+#: clocks/clocks_app.py:519
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+#: clocks/clocks_app.py:537
+msgid "Sound"
+msgstr "Ήχος"
+
+#: clocks/clocks_app.py:556 clocks/clocks_app.py:660
+msgid "Every day"
+msgstr "Κάθε μέρα"
+
+#: clocks/clocks_app.py:639
+msgid "Could not delete alarm"
+msgstr "Δεν ήταν δυνατή η διαγραφή της ειδοποίησης"
+
+#: clocks/clocks_app.py:640
+msgid "Could not save alarm"
+msgstr "Δεν ήταν δυνατή η αποθήκευση τηε ειδοποίησης"
+
+#: clocks/clocks_app.py:707
+msgid "Could not open alarm database"
+msgstr "Δεν ήταν δυνατό το άνοιγμα της βάσης δεδομένων ειδοποιήσεων"
+
+#: agent/agent.py:25
+msgid "Calendar Event"
+msgstr "Γεγονός ημερολογίου"
+
+#: agent/agent.py:123
+msgid "Mute"
+msgstr "Σίγαση"
+
+#: agent/agent.py:172
+msgid "Snooze"
+msgstr "Αναβολή"
+
+#: agent/agent.py:212
+msgid "Open Clocks"
+msgstr "Άνοιγμα ρολογιών"
+
+#: agent/agent.py:215 agent/agent.py:285
+msgid "Dismiss"
+msgstr "Απόρριψη"
+
+#: agent/agent.py:279
+msgid "Open Calendar"
+msgstr "Άνοιγμα ημερολογίου"
+
+#: agent/agent.py:548
+#, python-format
+msgid "Starts in %d minute"
+msgid_plural "Starts in %d minutes"
+msgstr[0] "Ξεκινά σε %d λεπτό"
+msgstr[1] "Ξεκινά σε %d λεπτά"
+
+#: agent/agent.py:551
+msgid "Starts now"
+msgstr "Ξεκινά τώρα"
+
+#: agent/agent.py:554
+#, python-format
+msgid "This event started %d minute ago"
+msgid_plural "This event started %d minutes ago"
+msgstr[0] "Αυτό το γεγονός ξεκίνησε πριν από %d λεπτό"
+msgstr[1] "Αυτό το γεγονός ξεκίνησε πριν από %d λεπτά"
+
+#: clockenstein/formatting.py:11
+msgid "MON"
+msgstr "ΔΕΥ"
+
+#: clockenstein/formatting.py:11
+msgid "TUE"
+msgstr "ΤΡΙ"
+
+#: clockenstein/formatting.py:11
+msgid "WED"
+msgstr "ΤΕΤ"
+
+#: clockenstein/formatting.py:11
+msgid "THU"
+msgstr "ΠΕΜ"
+
+#: clockenstein/formatting.py:11
+msgid "FRI"
+msgstr "ΠΑΡ"
+
+#: clockenstein/formatting.py:11
+msgid "SAT"
+msgstr "ΣΑΒ"
+
+#: clockenstein/formatting.py:11
+msgid "SUN"
+msgstr "ΚΥΡ"

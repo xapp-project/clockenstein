@@ -1,0 +1,833 @@
+# Chinese (Simplified) translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-09-23 13:47+0100\n"
+"PO-Revision-Date: 2026-10-10 12:19+0000\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
+#: calendar/event_dialog.py:178 calendar/event_dialog.py:185
+#: calendar/main_window.py:35 calendar/main_window.py:193 calendar/store.py:60
+#: calendar/store.py:72 calendar/backends/caldav.py:296
+#: calendar/backends/caldav.py:298
+msgid "Calendar"
+msgstr "日历"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:3
+msgid "Manage your events and appointments"
+msgstr "管理您的活动和预约"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:9
+msgid "calendar;event;appointment;Google;CalDAV;Nextcloud;"
+msgstr "日历；事件；预约；谷歌；CalDAV；Nextcloud；"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:2 clocks/clocks_app.py:116
+#: clocks/clocks_app.py:720
+msgid "Clocks"
+msgstr "时钟"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:3
+msgid "Set alarms"
+msgstr "设置闹钟"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:9
+msgid "clock;alarm;wake;"
+msgstr "时钟;闹钟;唤醒;"
+
+#: calendar/event_dialog.py:79 clocks/clocks_app.py:418
+msgid "AM"
+msgstr "上午"
+
+#: calendar/event_dialog.py:80 clocks/clocks_app.py:419
+msgid "PM"
+msgstr "下午"
+
+#: calendar/event_dialog.py:99
+msgid "New Event"
+msgstr "新建事件"
+
+#: calendar/event_dialog.py:99
+msgid "Event Details"
+msgstr "事件详情"
+
+#: calendar/event_dialog.py:116 calendar/main_window.py:813
+#: calendar/main_window.py:951 calendar/main_window.py:987
+#: calendar/main_window.py:1069 clocks/clocks_app.py:361
+#: clocks/clocks_app.py:499
+msgid "Cancel"
+msgstr "取消"
+
+#: calendar/event_dialog.py:116 calendar/preferences.py:16
+msgid "Close"
+msgstr "关闭"
+
+#: calendar/event_dialog.py:118 clocks/clocks_app.py:363
+msgid "Delete"
+msgstr "删除"
+
+#: calendar/event_dialog.py:123 calendar/main_window.py:813
+#: clocks/clocks_app.py:365
+msgid "Save"
+msgstr "保存"
+
+#: calendar/event_dialog.py:139
+msgid "Birthday"
+msgstr "生日"
+
+#: calendar/event_dialog.py:140
+msgid "Focus time"
+msgstr "专注时间"
+
+#: calendar/event_dialog.py:141
+msgid "From Gmail"
+msgstr "来自Gmail"
+
+#: calendar/event_dialog.py:142
+msgid "Out of office"
+msgstr "不在办公室"
+
+#: calendar/event_dialog.py:143
+msgid "Working location"
+msgstr "工作地点"
+
+#: calendar/event_dialog.py:148
+#, python-format
+msgid "This type of event (%s) cannot be edited."
+msgstr "这种类型的事件（%s）不能被编辑。"
+
+#: calendar/event_dialog.py:172
+msgid "Title"
+msgstr "标题"
+
+#: calendar/event_dialog.py:182 calendar/main_window.py:507
+#: calendar/main_window.py:793
+msgid "Local"
+msgstr "本地"
+
+#: calendar/event_dialog.py:206 calendar/views/day_view.py:53
+#: calendar/views/day_view.py:329 calendar/views/week_view.py:61
+#: calendar/views/week_view.py:72
+msgid "All day"
+msgstr "全天"
+
+#: calendar/event_dialog.py:212
+msgid "Start"
+msgstr "启动"
+
+#: calendar/event_dialog.py:222
+msgid "End"
+msgstr "结束"
+
+#: calendar/event_dialog.py:243
+msgid "Location"
+msgstr "地点"
+
+#: calendar/event_dialog.py:246
+msgid "Optional"
+msgstr "可选"
+
+#: calendar/event_dialog.py:249
+msgid "Notes"
+msgstr "备注"
+
+#: calendar/event_dialog.py:368 calendar/event_dialog.py:465
+#: calendar/main_window.py:482 calendar/backends/google.py:480
+#: calendar/views/day_view.py:328 calendar/views/month_view.py:183
+#: calendar/views/month_view.py:329 calendar/views/month_view.py:344
+#: calendar/views/week_view.py:337
+msgid "Untitled"
+msgstr "无标题"
+
+#: calendar/event_dialog.py:399 calendar/backends/google.py:291
+#, python-format
+msgid "The event dates are outside the sync range for %s."
+msgstr "事件日期超出了 %s 的同步范围。"
+
+#: calendar/event_dialog.py:400
+msgid "this calendar"
+msgstr "这个日历"
+
+#: calendar/event_dialog.py:409
+msgid "Saving…"
+msgstr "正在保存…"
+
+#: calendar/event_dialog.py:416 calendar/event_dialog.py:453
+#: calendar/event_dialog.py:476 calendar/main_window.py:715
+#, python-format
+msgid "Error: %s"
+msgstr "错误: %s"
+
+#: calendar/event_dialog.py:465
+#, python-format
+msgid "Delete '%s'?"
+msgstr "删除“%s”？"
+
+#: calendar/event_dialog.py:467
+msgid "This event will be permanently deleted."
+msgstr "这个活动将被永久删除。"
+
+#: calendar/main_window.py:146 calendar/main_window.py:1351
+msgid "Synchronizing online calendars…"
+msgstr "正在同步在线日历..."
+
+#: calendar/main_window.py:148 calendar/main_window.py:1353
+msgid "Synchronization finished"
+msgstr "同步已完成"
+
+#: calendar/main_window.py:154 clocks/clocks_app.py:220
+msgid "The daemon is not running."
+msgstr "守护进程没有运行。"
+
+#: calendar/main_window.py:155
+msgid "Synchronization and reminders may be unavailable."
+msgstr "同步和提醒可能无法使用。"
+
+#: calendar/main_window.py:158 clocks/clocks_app.py:222
+msgid "The notification agent is not running."
+msgstr "通知代理没有运行。"
+
+#: calendar/main_window.py:159
+msgid "Reminders may be unavailable."
+msgstr "提醒可能无法使用。"
+
+#: calendar/main_window.py:197 calendar/main_window.py:302
+#: calendar/main_window.py:754
+msgid "Calendars"
+msgstr "日历"
+
+#: calendar/main_window.py:200 calendar/preferences.py:15
+msgid "Preferences"
+msgstr "首选项"
+
+#: calendar/main_window.py:204
+msgid "About"
+msgstr "关于"
+
+#: calendar/main_window.py:210
+msgid "Main menu"
+msgstr "主菜单"
+
+#: calendar/main_window.py:220 calendar/main_window.py:447
+#: clocks/clocks_app.py:687
+msgid "Today"
+msgstr "今天"
+
+#: calendar/main_window.py:230 calendar/widgets/mini_calendar.py:130
+msgid "Month"
+msgstr "月"
+
+#: calendar/main_window.py:230
+msgid "Week"
+msgstr "周"
+
+#: calendar/main_window.py:231
+msgid "Day"
+msgstr "日"
+
+#: calendar/main_window.py:239
+msgid "New event (Ctrl+N)"
+msgstr "新建事件 (Ctrl N)"
+
+#: calendar/main_window.py:358
+msgid "A calendar application for Linux desktops"
+msgstr "一款适用于 Linux 桌面的日历应用"
+
+#: calendar/main_window.py:382 calendar/main_window.py:1366
+msgid "Some online calendars are disconnected (read-only)."
+msgstr "有些在线日历是断开连接的（只读）。"
+
+#: calendar/main_window.py:418
+#, python-format
+msgid "This date is outside the sync range for: %s. Events may be missing."
+msgstr "这个日期不在 %s 的同步范围内。活动可能会丢失。"
+
+#: calendar/main_window.py:448 clocks/clocks_app.py:689
+msgid "Tomorrow"
+msgstr "明天"
+
+#: calendar/main_window.py:449
+msgid "Coming Up"
+msgstr "即将到来"
+
+#: calendar/main_window.py:459
+msgid "No upcoming events"
+msgstr "没有即将发生的活动"
+
+#: calendar/main_window.py:520
+msgid "Online"
+msgstr "在线"
+
+#: calendar/main_window.py:520
+msgid "Offline, read only"
+msgstr "离线，只读"
+
+#: calendar/main_window.py:521
+msgid "Sync every 2 hours"
+msgstr "每2小时同步一次"
+
+#: calendar/main_window.py:522
+msgid "Sync every 15 minutes"
+msgstr "每15分钟同步一次"
+
+#: calendar/main_window.py:536
+msgid "Sync range"
+msgstr "同步范围"
+
+#: calendar/main_window.py:536
+msgid "Status"
+msgstr "状态"
+
+#: calendar/main_window.py:537
+msgid "Reminders"
+msgstr "提醒事项"
+
+#: calendar/main_window.py:537
+msgid "Visible"
+msgstr "可见"
+
+#: calendar/main_window.py:537
+msgid "Actions"
+msgstr "动作"
+
+#: calendar/main_window.py:564
+#, python-format
+msgid "Disconnect %s"
+msgstr "断开与 %s 的连接"
+
+#: calendar/main_window.py:572
+msgid "Local calendars"
+msgstr "本地日历"
+
+#: calendar/main_window.py:582
+msgid "My Calendars"
+msgstr "我的日历"
+
+#: calendar/main_window.py:583
+msgid "Other Calendars"
+msgstr "其它日历"
+
+#: calendar/main_window.py:608
+msgid "Show this calendar"
+msgstr "显示这个日历"
+
+#: calendar/main_window.py:622
+msgid "Already synchronized less than 5 minutes ago"
+msgstr "已经在5分钟之内同步过了"
+
+#: calendar/main_window.py:630 calendar/main_window.py:680
+#: calendar/main_window.py:946
+msgid "Refresh this calendar"
+msgstr "刷新这个日历"
+
+#: calendar/main_window.py:651 clocks/clocks_app.py:317
+#: clocks/clocks_app.py:358
+msgid "Edit"
+msgstr "编辑"
+
+#: calendar/main_window.py:660 calendar/main_window.py:870
+msgid "Remove"
+msgstr "移除"
+
+#: calendar/main_window.py:705 calendar/main_window.py:709
+msgid "2 years ahead"
+msgstr "2年后"
+
+#: calendar/main_window.py:706
+msgid "1 year ahead"
+msgstr "1年后"
+
+#: calendar/main_window.py:707
+msgid "3 months ahead"
+msgstr "3个月后"
+
+#: calendar/main_window.py:708
+msgid "Too many events"
+msgstr "太多活动了"
+
+#: calendar/main_window.py:717
+msgid "Not synchronized"
+msgstr "尚未同步"
+
+#: calendar/main_window.py:722
+msgid "just now"
+msgstr "刚刚"
+
+#: calendar/main_window.py:725
+msgid "1 minute ago"
+msgstr "1 分钟前"
+
+#: calendar/main_window.py:726
+#, python-format
+msgid "%d minutes ago"
+msgstr "%d 分钟之前"
+
+#: calendar/main_window.py:729
+msgid "1 hour ago"
+msgstr "1小时前"
+
+#: calendar/main_window.py:730
+#, python-format
+msgid "%d hours ago"
+msgstr "%d 小时前"
+
+#: calendar/main_window.py:733
+msgid "1 day ago"
+msgstr "1 天前"
+
+#: calendar/main_window.py:734
+#, python-format
+msgid "%d days ago"
+msgstr "%d 天前"
+
+#: calendar/main_window.py:735
+#, python-format
+msgid "Last sync: %s"
+msgstr "上次同步: %s"
+
+#: calendar/main_window.py:736
+msgid "Not synced yet"
+msgstr "尚未同步"
+
+#: calendar/main_window.py:755
+msgid "Add a New Calendar…"
+msgstr "添加一个新日历..."
+
+#: calendar/main_window.py:795
+msgid "CalDAV (Nextcloud, Memotoo, etc.)"
+msgstr "CalDAV (Nextcloud, Memotoo, 等)"
+
+#: calendar/main_window.py:812
+msgid "Edit Calendar"
+msgstr "编辑日历"
+
+#: calendar/main_window.py:821 calendar/main_window.py:960
+#: clocks/clocks_app.py:382
+msgid "Name"
+msgstr "名称"
+
+#: calendar/main_window.py:827 calendar/main_window.py:962
+msgid "Color"
+msgstr "颜色"
+
+#: calendar/main_window.py:861 calendar/store.py:77
+msgid "At least one local calendar is required"
+msgstr "至少需要有一个本地日历"
+
+#: calendar/main_window.py:868
+#, python-format
+msgid "Remove %s?"
+msgstr "移除 %s？"
+
+#: calendar/main_window.py:871
+msgid "All the events from this calendar will be permanently removed."
+msgstr "这个日历上的所有事件将被永久删除。"
+
+#: calendar/main_window.py:890 calendar/main_window.py:925
+#, python-format
+msgid "Refresh requested for %s…"
+msgstr "已为'%s'请求刷新"
+
+#: calendar/main_window.py:907
+msgid "Remind me about events in this calendar"
+msgstr "提醒我这个日历里的活动"
+
+#: calendar/main_window.py:924
+msgid "Refresh requested"
+msgstr "已请求刷新"
+
+#: calendar/main_window.py:947
+#, python-format
+msgid "Could not request refresh: %s"
+msgstr "无法请求刷新: %s"
+
+#: calendar/main_window.py:950
+msgid "New Calendar"
+msgstr "新建日历"
+
+#: calendar/main_window.py:951
+msgid "Create"
+msgstr "创建"
+
+#: calendar/main_window.py:981
+msgid "No Google accounts were found in Online Accounts."
+msgstr "在在线账户中未找到 Google 账号。"
+
+#: calendar/main_window.py:986
+msgid "Google Account"
+msgstr "谷歌账户"
+
+#: calendar/main_window.py:988 calendar/main_window.py:1069
+msgid "Connect"
+msgstr "连接"
+
+#: calendar/main_window.py:993
+msgid "Choose an account"
+msgstr "选择账户"
+
+#: calendar/main_window.py:1007 calendar/main_window.py:1011
+#: calendar/main_window.py:1088
+msgid "Connecting…"
+msgstr "正在连接…"
+
+#: calendar/main_window.py:1023 calendar/main_window.py:1101
+msgid "Requesting initial synchronization…"
+msgstr "正在请求初始同步…"
+
+#: calendar/main_window.py:1040
+msgid "Could not connect the Google account"
+msgstr "无法连接谷歌账号"
+
+#: calendar/main_window.py:1056
+msgid "Could not connect to the CalDAV server"
+msgstr "无法连接到 CalDAV 服务器"
+
+#: calendar/main_window.py:1078
+msgid "Server URL"
+msgstr "服务器 URL"
+
+#: calendar/main_window.py:1078
+msgid "Username"
+msgstr "用户名"
+
+#: calendar/main_window.py:1078
+msgid "Password"
+msgstr "密码"
+
+#: calendar/main_window.py:1112
+#, python-format
+msgid "Disconnect %s?"
+msgstr "断开'%s'？"
+
+#: calendar/main_window.py:1115
+msgid ""
+"This online calendar will be disconnected and removed from the application."
+msgstr "这个在线日历将会被断开连接并从应用中移除。"
+
+#: calendar/main_window.py:1313
+msgid "Connecting to online calendars…"
+msgstr "正在连接在线日历…"
+
+#: calendar/preferences.py:24
+msgid "First day of the week"
+msgstr "每周首日"
+
+#: calendar/preferences.py:29 calendar/preferences.py:45
+msgid "Use locale default"
+msgstr "使用默认语言环境"
+
+#: calendar/preferences.py:40
+msgid "Time format"
+msgstr "时间格式"
+
+#: calendar/preferences.py:46
+msgid "12-hour clock"
+msgstr "12小时制"
+
+#: calendar/preferences.py:47
+msgid "24-hour clock"
+msgstr "24小时制"
+
+#: calendar/preferences.py:54
+msgid "Show week numbers"
+msgstr "显示周数"
+
+#: calendar/store.py:50
+msgid "Personal"
+msgstr "个人"
+
+#: calendar/store.py:110
+#, python-format
+msgid "Unknown event %s"
+msgstr "未知活动'%s'"
+
+#: calendar/backends/caldav.py:58
+msgid "A username and password are required"
+msgstr "需要用户名和密码"
+
+#: calendar/backends/caldav.py:60
+msgid "Contacting CalDAV server…"
+msgstr "正在联系 CalDAV 服务器…"
+
+#: calendar/backends/caldav.py:96 calendar/backends/caldav.py:204
+msgid "Password not found in the keyring"
+msgstr "在钥匙串中未找到密码"
+
+#: calendar/backends/caldav.py:166
+msgid "The event has no CalDAV resource URL"
+msgstr "该活动没有 CalDAV 资源 URL"
+
+#: calendar/backends/caldav.py:215
+msgid "This CalDAV account is offline. It is now read-only."
+msgstr "这个 CalDAV 账户已离线，现在只能读取。"
+
+#: calendar/backends/caldav.py:274
+#, python-format
+msgid "Calendar CalDAV password for %s"
+msgstr "'%s'的日历 CalDAV 密码"
+
+#: calendar/backends/caldav.py:276
+msgid "Could not save the password in the keyring"
+msgstr "无法将密码保存在钥匙串中"
+
+#: calendar/backends/caldav.py:320
+msgid "A server URL is required"
+msgstr "需要服务器网址"
+
+#: calendar/backends/caldav.py:324
+msgid "CalDAV server URLs must use HTTP or HTTPS"
+msgstr "CalDAV 服务器的 URL 必须使用 HTTP 或 HTTPS"
+
+#: calendar/backends/google.py:66
+msgid "Waiting for Google authorization…"
+msgstr "正在等待谷歌授权…"
+
+#: calendar/backends/google.py:73
+msgid "Authorization received • Contacting Google Calendar…"
+msgstr "授权已接收 • 正在联系谷歌日历…"
+
+#: calendar/backends/google.py:76 calendar/backends/google.py:119
+msgid "Loading your Google calendars…"
+msgstr "正在加载你的谷歌日历…"
+
+#: calendar/backends/google.py:80 calendar/backends/google.py:123
+msgid "Google did not return a primary calendar"
+msgstr "谷歌没有返回主日历"
+
+#: calendar/backends/google.py:116
+msgid "Requesting authorization from Online Accounts…"
+msgstr "正在请求在线账户授权…"
+
+#: calendar/backends/google.py:263 calendar/backends/google.py:274
+msgid "This Google account is offline."
+msgstr "这个谷歌账号已离线。"
+
+#: calendar/backends/google.py:287
+msgid "Google calendar not found."
+msgstr "找不到谷歌日历。"
+
+#: calendar/backends/google.py:319
+msgid "authorization expired"
+msgstr "授权已过期"
+
+#: calendar/backends/google.py:333
+msgid "The gir1.2-goa-1.0 package is missing"
+msgstr "未找到'gir1.2-goa-1.0'软件包"
+
+#: calendar/backends/google.py:344
+#, python-format
+msgid "Could not contact Online Accounts: %s"
+msgstr "无法联系在线账户：%s"
+
+#: calendar/backends/google.py:351
+msgid "The selected Online Account is unavailable"
+msgstr "所选的在线账户不可用"
+
+#: calendar/backends/google.py:363
+msgid "Online Accounts returned no access token"
+msgstr "在线账户没有返回访问令牌"
+
+#: calendar/backends/google.py:368
+#, python-format
+msgid "Could not obtain Google authorization: %s"
+msgstr "无法获取谷歌授权：%s"
+
+#: calendar/views/month_view.py:263
+#, python-format
+msgid "+%d more"
+msgstr "还有 %d 个"
+
+#: calendar/widgets/mini_calendar.py:136
+msgid "Year"
+msgstr "年"
+
+#: clocks/clocks_app.py:108
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d 小时"
+
+#: clocks/clocks_app.py:110 agent/agent.py:181
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d 分钟"
+
+#: clocks/clocks_app.py:111
+#, python-format
+msgid "Alarm in %s"
+msgstr "%s 的闹钟"
+
+#: clocks/clocks_app.py:131
+msgid "Alarms"
+msgstr "闹钟"
+
+#: clocks/clocks_app.py:133
+msgid "Add"
+msgstr "添加"
+
+#: clocks/clocks_app.py:150
+msgid "No alarms are set"
+msgstr "没有设置闹钟"
+
+#: clocks/clocks_app.py:226
+msgid "Alarms will not ring."
+msgstr "闹钟不会响。"
+
+#: clocks/clocks_app.py:249
+#, python-format
+msgid "Could not load alarms: %s"
+msgstr "无法加载闹钟：%s"
+
+#: clocks/clocks_app.py:297 agent/agent.py:98 agent/agent.py:192
+msgid "Alarm"
+msgstr "闹钟"
+
+#: clocks/clocks_app.py:333
+msgid "Could not update alarm"
+msgstr "无法更新闹钟"
+
+#: clocks/clocks_app.py:358
+msgid "New Alarm"
+msgstr "新建闹钟"
+
+#: clocks/clocks_app.py:408
+msgid "Time"
+msgstr "时间"
+
+#: clocks/clocks_app.py:448 clocks/clocks_app.py:558
+#, python-format
+msgid "Every %s"
+msgstr "每隔 %s"
+
+#: clocks/clocks_app.py:459
+msgid "Choose a date"
+msgstr "选择日期"
+
+#: clocks/clocks_app.py:470
+msgid "Clear date"
+msgstr "清除日期"
+
+#: clocks/clocks_app.py:488
+msgid "Audio files"
+msgstr "音频文件"
+
+#: clocks/clocks_app.py:496
+msgid "Choose a sound"
+msgstr "选择声音"
+
+#: clocks/clocks_app.py:500
+msgid "Select"
+msgstr "选择"
+
+#: clocks/clocks_app.py:512
+msgid "Play selected sound"
+msgstr "播放所选声音"
+
+#: clocks/clocks_app.py:518
+msgid "Seconds between sounds"
+msgstr "声音之间的秒数"
+
+#: clocks/clocks_app.py:519
+msgid "seconds"
+msgstr "秒"
+
+#: clocks/clocks_app.py:537
+msgid "Sound"
+msgstr "声音"
+
+#: clocks/clocks_app.py:556 clocks/clocks_app.py:660
+msgid "Every day"
+msgstr "每天"
+
+#: clocks/clocks_app.py:639
+msgid "Could not delete alarm"
+msgstr "无法删除闹钟"
+
+#: clocks/clocks_app.py:640
+msgid "Could not save alarm"
+msgstr "无法保存闹钟"
+
+#: clocks/clocks_app.py:707
+msgid "Could not open alarm database"
+msgstr "无法打开闹钟数据库"
+
+#: agent/agent.py:25
+msgid "Calendar Event"
+msgstr "日历活动"
+
+#: agent/agent.py:123
+msgid "Mute"
+msgstr "静音"
+
+#: agent/agent.py:172
+msgid "Snooze"
+msgstr "稍后提醒"
+
+#: agent/agent.py:212
+msgid "Open Clocks"
+msgstr "打开时钟"
+
+#: agent/agent.py:215 agent/agent.py:285
+msgid "Dismiss"
+msgstr "忽略"
+
+#: agent/agent.py:279
+msgid "Open Calendar"
+msgstr "打开日历"
+
+#: agent/agent.py:548
+#, python-format
+msgid "Starts in %d minute"
+msgid_plural "Starts in %d minutes"
+msgstr[0] "%d分钟后开始"
+
+#: agent/agent.py:551
+msgid "Starts now"
+msgstr "现在开始"
+
+#: agent/agent.py:554
+#, python-format
+msgid "This event started %d minute ago"
+msgid_plural "This event started %d minutes ago"
+msgstr[0] "这个活动在 %d 分钟前开始"
+
+#: clockenstein/formatting.py:11
+msgid "MON"
+msgstr "周一"
+
+#: clockenstein/formatting.py:11
+msgid "TUE"
+msgstr "周二"
+
+#: clockenstein/formatting.py:11
+msgid "WED"
+msgstr "周三"
+
+#: clockenstein/formatting.py:11
+msgid "THU"
+msgstr "周四"
+
+#: clockenstein/formatting.py:11
+msgid "FRI"
+msgstr "周五"
+
+#: clockenstein/formatting.py:11
+msgid "SAT"
+msgstr "周六"
+
+#: clockenstein/formatting.py:11
+msgid "SUN"
+msgstr "周日"

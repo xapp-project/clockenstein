@@ -1,0 +1,839 @@
+# Kazakh translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-09-23 13:47+0100\n"
+"PO-Revision-Date: 2026-10-15 20:57+0000\n"
+"Last-Translator: Baurzhan Muftakhidinov <Unknown>\n"
+"Language-Team: Kazakh <kk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+"Language: kk\n"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
+#: calendar/event_dialog.py:178 calendar/event_dialog.py:185
+#: calendar/main_window.py:35 calendar/main_window.py:193 calendar/store.py:60
+#: calendar/store.py:72 calendar/backends/caldav.py:296
+#: calendar/backends/caldav.py:298
+msgid "Calendar"
+msgstr "Күнтізбе"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:3
+msgid "Manage your events and appointments"
+msgstr "Оқиғалар мен кездесулерді басқару"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:9
+msgid "calendar;event;appointment;Google;CalDAV;Nextcloud;"
+msgstr "күнтізбе;оқиға;кездесу;Google;CalDAV;Nextcloud;"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:2 clocks/clocks_app.py:116
+#: clocks/clocks_app.py:720
+msgid "Clocks"
+msgstr "Сағаттар"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:3
+msgid "Set alarms"
+msgstr "Оятқыштарды орнату"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:9
+msgid "clock;alarm;wake;"
+msgstr "сағат;оятқыш;ояту;"
+
+#: calendar/event_dialog.py:79 clocks/clocks_app.py:418
+msgid "AM"
+msgstr "AM"
+
+#: calendar/event_dialog.py:80 clocks/clocks_app.py:419
+msgid "PM"
+msgstr "PM"
+
+#: calendar/event_dialog.py:99
+msgid "New Event"
+msgstr "Жаңа оқиға"
+
+#: calendar/event_dialog.py:99
+msgid "Event Details"
+msgstr "Оқиға туралы толық ақпарат"
+
+#: calendar/event_dialog.py:116 calendar/main_window.py:813
+#: calendar/main_window.py:951 calendar/main_window.py:987
+#: calendar/main_window.py:1069 clocks/clocks_app.py:361
+#: clocks/clocks_app.py:499
+msgid "Cancel"
+msgstr "Бас тарту"
+
+#: calendar/event_dialog.py:116 calendar/preferences.py:16
+msgid "Close"
+msgstr "Жабу"
+
+#: calendar/event_dialog.py:118 clocks/clocks_app.py:363
+msgid "Delete"
+msgstr "Өшіру"
+
+#: calendar/event_dialog.py:123 calendar/main_window.py:813
+#: clocks/clocks_app.py:365
+msgid "Save"
+msgstr "Сақтау"
+
+#: calendar/event_dialog.py:139
+msgid "Birthday"
+msgstr "Туған күн"
+
+#: calendar/event_dialog.py:140
+msgid "Focus time"
+msgstr "Фокус уақыты"
+
+#: calendar/event_dialog.py:141
+msgid "From Gmail"
+msgstr "Gmail-ден"
+
+#: calendar/event_dialog.py:142
+msgid "Out of office"
+msgstr "Кеңседе емес"
+
+#: calendar/event_dialog.py:143
+msgid "Working location"
+msgstr "Жұмыс орны"
+
+#: calendar/event_dialog.py:148
+#, python-format
+msgid "This type of event (%s) cannot be edited."
+msgstr "Оқиғаның бұл түрін (%s) түзету мүмкін емес."
+
+#: calendar/event_dialog.py:172
+msgid "Title"
+msgstr "Атауы"
+
+#: calendar/event_dialog.py:182 calendar/main_window.py:507
+#: calendar/main_window.py:793
+msgid "Local"
+msgstr "Жергілікті"
+
+#: calendar/event_dialog.py:206 calendar/views/day_view.py:53
+#: calendar/views/day_view.py:329 calendar/views/week_view.py:61
+#: calendar/views/week_view.py:72
+msgid "All day"
+msgstr "Күні бойы"
+
+#: calendar/event_dialog.py:212
+msgid "Start"
+msgstr "Басталуы"
+
+#: calendar/event_dialog.py:222
+msgid "End"
+msgstr "Аяқталуы"
+
+#: calendar/event_dialog.py:243
+msgid "Location"
+msgstr "Орналасуы"
+
+#: calendar/event_dialog.py:246
+msgid "Optional"
+msgstr "Міндетті емес"
+
+#: calendar/event_dialog.py:249
+msgid "Notes"
+msgstr "Ескертпелер"
+
+#: calendar/event_dialog.py:368 calendar/event_dialog.py:465
+#: calendar/main_window.py:482 calendar/backends/google.py:480
+#: calendar/views/day_view.py:328 calendar/views/month_view.py:183
+#: calendar/views/month_view.py:329 calendar/views/month_view.py:344
+#: calendar/views/week_view.py:337
+msgid "Untitled"
+msgstr "Атаусыз"
+
+#: calendar/event_dialog.py:399 calendar/backends/google.py:291
+#, python-format
+msgid "The event dates are outside the sync range for %s."
+msgstr "Оқиға күндері %s үшін синхрондау ауқымынан тыс."
+
+#: calendar/event_dialog.py:400
+msgid "this calendar"
+msgstr "бұл күнтізбе"
+
+#: calendar/event_dialog.py:409
+msgid "Saving…"
+msgstr "Сақталуда…"
+
+#: calendar/event_dialog.py:416 calendar/event_dialog.py:453
+#: calendar/event_dialog.py:476 calendar/main_window.py:715
+#, python-format
+msgid "Error: %s"
+msgstr "Қате: %s"
+
+#: calendar/event_dialog.py:465
+#, python-format
+msgid "Delete '%s'?"
+msgstr "«%s» өшіру керек пе?"
+
+#: calendar/event_dialog.py:467
+msgid "This event will be permanently deleted."
+msgstr "Бұл оқиға толығымен өшіріледі."
+
+#: calendar/main_window.py:146 calendar/main_window.py:1351
+msgid "Synchronizing online calendars…"
+msgstr "Онлайн күнтізбелерді синхрондау…"
+
+#: calendar/main_window.py:148 calendar/main_window.py:1353
+msgid "Synchronization finished"
+msgstr "Синхрондау аяқталды"
+
+#: calendar/main_window.py:154 clocks/clocks_app.py:220
+msgid "The daemon is not running."
+msgstr "Қызмет орындалмай тұр."
+
+#: calendar/main_window.py:155
+msgid "Synchronization and reminders may be unavailable."
+msgstr "Синхрондау мен еске салғыштар қолжетімсіз болуы мүмкін."
+
+#: calendar/main_window.py:158 clocks/clocks_app.py:222
+msgid "The notification agent is not running."
+msgstr "Хабарландыру агенті орындалмай тұр."
+
+#: calendar/main_window.py:159
+msgid "Reminders may be unavailable."
+msgstr "Еске салғыштар қолжетімсіз болуы мүмкін."
+
+#: calendar/main_window.py:197 calendar/main_window.py:302
+#: calendar/main_window.py:754
+msgid "Calendars"
+msgstr "Күнтізбелер"
+
+#: calendar/main_window.py:200 calendar/preferences.py:15
+msgid "Preferences"
+msgstr "Баптаулар"
+
+#: calendar/main_window.py:204
+msgid "About"
+msgstr "Туралы"
+
+#: calendar/main_window.py:210
+msgid "Main menu"
+msgstr "Негізгі мәзір"
+
+#: calendar/main_window.py:220 calendar/main_window.py:447
+#: clocks/clocks_app.py:687
+msgid "Today"
+msgstr "Бүгін"
+
+#: calendar/main_window.py:230 calendar/widgets/mini_calendar.py:130
+msgid "Month"
+msgstr "Ай"
+
+#: calendar/main_window.py:230
+msgid "Week"
+msgstr "Апта"
+
+#: calendar/main_window.py:231
+msgid "Day"
+msgstr "Күн"
+
+#: calendar/main_window.py:239
+msgid "New event (Ctrl+N)"
+msgstr "Жаңа оқиға (Ctrl+N)"
+
+#: calendar/main_window.py:358
+msgid "A calendar application for Linux desktops"
+msgstr "Linux жұмыс үстелдеріне арналған күнтізбе қолданбасы"
+
+#: calendar/main_window.py:382 calendar/main_window.py:1366
+msgid "Some online calendars are disconnected (read-only)."
+msgstr "Кейбір онлайн күнтізбелер ажыратылған (тек оқуға арналған)."
+
+#: calendar/main_window.py:418
+#, python-format
+msgid "This date is outside the sync range for: %s. Events may be missing."
+msgstr ""
+"Бұл күн %s үшін синхрондау ауқымынан тыс. Кейбір оқиғалар болмауы мүмкін."
+
+#: calendar/main_window.py:448 clocks/clocks_app.py:689
+msgid "Tomorrow"
+msgstr "Ертең"
+
+#: calendar/main_window.py:449
+msgid "Coming Up"
+msgstr "Жақында"
+
+#: calendar/main_window.py:459
+msgid "No upcoming events"
+msgstr "Алдағы оқиғалар жоқ"
+
+#: calendar/main_window.py:520
+msgid "Online"
+msgstr "Онлайн"
+
+#: calendar/main_window.py:520
+msgid "Offline, read only"
+msgstr "Офлайн, тек оқу үшін"
+
+#: calendar/main_window.py:521
+msgid "Sync every 2 hours"
+msgstr "Әр 2 сағат сайын синхрондау"
+
+#: calendar/main_window.py:522
+msgid "Sync every 15 minutes"
+msgstr "Әр 15 минут сайын синхрондау"
+
+#: calendar/main_window.py:536
+msgid "Sync range"
+msgstr "Синхрондау ауқымы"
+
+#: calendar/main_window.py:536
+msgid "Status"
+msgstr "Қалып-күйі"
+
+#: calendar/main_window.py:537
+msgid "Reminders"
+msgstr "Еске салғыштар"
+
+#: calendar/main_window.py:537
+msgid "Visible"
+msgstr "Көрінетін"
+
+#: calendar/main_window.py:537
+msgid "Actions"
+msgstr "Әрекеттер"
+
+#: calendar/main_window.py:564
+#, python-format
+msgid "Disconnect %s"
+msgstr "%s ажырату"
+
+#: calendar/main_window.py:572
+msgid "Local calendars"
+msgstr "Жергілікті күнтізбелер"
+
+#: calendar/main_window.py:582
+msgid "My Calendars"
+msgstr "Менің күнтізбелерім"
+
+#: calendar/main_window.py:583
+msgid "Other Calendars"
+msgstr "Басқа күнтізбелер"
+
+#: calendar/main_window.py:608
+msgid "Show this calendar"
+msgstr "Бұл күнтізбені көрсету"
+
+#: calendar/main_window.py:622
+msgid "Already synchronized less than 5 minutes ago"
+msgstr "5 минуттан аз уақыт бұрын синхрондалған"
+
+#: calendar/main_window.py:630 calendar/main_window.py:680
+#: calendar/main_window.py:946
+msgid "Refresh this calendar"
+msgstr "Бұл күнтізбені жаңарту"
+
+#: calendar/main_window.py:651 clocks/clocks_app.py:317
+#: clocks/clocks_app.py:358
+msgid "Edit"
+msgstr "Түзету"
+
+#: calendar/main_window.py:660 calendar/main_window.py:870
+msgid "Remove"
+msgstr "Өшіру"
+
+#: calendar/main_window.py:705 calendar/main_window.py:709
+msgid "2 years ahead"
+msgstr "2 жыл алға"
+
+#: calendar/main_window.py:706
+msgid "1 year ahead"
+msgstr "1 жыл алға"
+
+#: calendar/main_window.py:707
+msgid "3 months ahead"
+msgstr "3 ай алға"
+
+#: calendar/main_window.py:708
+msgid "Too many events"
+msgstr "Тым көп оқиға"
+
+#: calendar/main_window.py:717
+msgid "Not synchronized"
+msgstr "Синхрондалмаған"
+
+#: calendar/main_window.py:722
+msgid "just now"
+msgstr "жаңа ғана"
+
+#: calendar/main_window.py:725
+msgid "1 minute ago"
+msgstr "1 минут бұрын"
+
+#: calendar/main_window.py:726
+#, python-format
+msgid "%d minutes ago"
+msgstr "%d минут бұрын"
+
+#: calendar/main_window.py:729
+msgid "1 hour ago"
+msgstr "1 сағат бұрын"
+
+#: calendar/main_window.py:730
+#, python-format
+msgid "%d hours ago"
+msgstr "%d сағат бұрын"
+
+#: calendar/main_window.py:733
+msgid "1 day ago"
+msgstr "1 күн бұрын"
+
+#: calendar/main_window.py:734
+#, python-format
+msgid "%d days ago"
+msgstr "%d күн бұрын"
+
+#: calendar/main_window.py:735
+#, python-format
+msgid "Last sync: %s"
+msgstr "Соңғы синхрондау: %s"
+
+#: calendar/main_window.py:736
+msgid "Not synced yet"
+msgstr "Әлі синхрондалмаған"
+
+#: calendar/main_window.py:755
+msgid "Add a New Calendar…"
+msgstr "Жаңа күнтізбені қосу…"
+
+#: calendar/main_window.py:795
+msgid "CalDAV (Nextcloud, Memotoo, etc.)"
+msgstr "CalDAV (Nextcloud, Memotoo, т.б.)"
+
+#: calendar/main_window.py:812
+msgid "Edit Calendar"
+msgstr "Күнтізбені түзету"
+
+#: calendar/main_window.py:821 calendar/main_window.py:960
+#: clocks/clocks_app.py:382
+msgid "Name"
+msgstr "Аты"
+
+#: calendar/main_window.py:827 calendar/main_window.py:962
+msgid "Color"
+msgstr "Түсі"
+
+#: calendar/main_window.py:861 calendar/store.py:77
+msgid "At least one local calendar is required"
+msgstr "Кемінде бір жергілікті күнтізбе қажет"
+
+#: calendar/main_window.py:868
+#, python-format
+msgid "Remove %s?"
+msgstr "«%s» өшіру керек пе?"
+
+#: calendar/main_window.py:871
+msgid "All the events from this calendar will be permanently removed."
+msgstr "Бұл күнтізбедегі барлық оқиғалар толығымен өшіріледі."
+
+#: calendar/main_window.py:890 calendar/main_window.py:925
+#, python-format
+msgid "Refresh requested for %s…"
+msgstr "%s үшін жаңарту сұралды…"
+
+#: calendar/main_window.py:907
+msgid "Remind me about events in this calendar"
+msgstr "Бұл күнтізбедегі оқиғалар туралы еске салу"
+
+#: calendar/main_window.py:924
+msgid "Refresh requested"
+msgstr "Жаңарту сұралды"
+
+#: calendar/main_window.py:947
+#, python-format
+msgid "Could not request refresh: %s"
+msgstr "Жаңартуды сұрау мүмкін болмады: %s"
+
+#: calendar/main_window.py:950
+msgid "New Calendar"
+msgstr "Жаңа күнтізбе"
+
+#: calendar/main_window.py:951
+msgid "Create"
+msgstr "Жасау"
+
+#: calendar/main_window.py:981
+msgid "No Google accounts were found in Online Accounts."
+msgstr "«Онлайн тіркелгілер» ішінен Google тіркелгілері табылмады."
+
+#: calendar/main_window.py:986
+msgid "Google Account"
+msgstr "Google тіркелгісі"
+
+#: calendar/main_window.py:988 calendar/main_window.py:1069
+msgid "Connect"
+msgstr "Қосылу"
+
+#: calendar/main_window.py:993
+msgid "Choose an account"
+msgstr "Тіркелгіні таңдаңыз"
+
+#: calendar/main_window.py:1007 calendar/main_window.py:1011
+#: calendar/main_window.py:1088
+msgid "Connecting…"
+msgstr "Қосылуда…"
+
+#: calendar/main_window.py:1023 calendar/main_window.py:1101
+msgid "Requesting initial synchronization…"
+msgstr "Бастапқы синхрондау сұралуда…"
+
+#: calendar/main_window.py:1040
+msgid "Could not connect the Google account"
+msgstr "Google тіркелгісіне қосылу мүмкін болмады"
+
+#: calendar/main_window.py:1056
+msgid "Could not connect to the CalDAV server"
+msgstr "CalDAV серверіне қосылу мүмкін болмады"
+
+#: calendar/main_window.py:1078
+msgid "Server URL"
+msgstr "Сервер URL-і"
+
+#: calendar/main_window.py:1078
+msgid "Username"
+msgstr "Пайдаланушы аты"
+
+#: calendar/main_window.py:1078
+msgid "Password"
+msgstr "Пароль"
+
+#: calendar/main_window.py:1112
+#, python-format
+msgid "Disconnect %s?"
+msgstr "«%s» ажырату керек пе?"
+
+#: calendar/main_window.py:1115
+msgid ""
+"This online calendar will be disconnected and removed from the application."
+msgstr "Бұл онлайн күнтізбе ажыратылып, қолданбадан өшіріледі."
+
+#: calendar/main_window.py:1313
+msgid "Connecting to online calendars…"
+msgstr "Онлайн күнтізбелерге қосылуда…"
+
+#: calendar/preferences.py:24
+msgid "First day of the week"
+msgstr "Аптаның бірінші күні"
+
+#: calendar/preferences.py:29 calendar/preferences.py:45
+msgid "Use locale default"
+msgstr "Локальдің үнсіз келісімін қолдану"
+
+#: calendar/preferences.py:40
+msgid "Time format"
+msgstr "Уақыт пішімі"
+
+#: calendar/preferences.py:46
+msgid "12-hour clock"
+msgstr "12 сағаттық уақыт"
+
+#: calendar/preferences.py:47
+msgid "24-hour clock"
+msgstr "24 сағаттық уақыт"
+
+#: calendar/preferences.py:54
+msgid "Show week numbers"
+msgstr "Апта нөмірлерін көрсету"
+
+#: calendar/store.py:50
+msgid "Personal"
+msgstr "Жеке"
+
+#: calendar/store.py:110
+#, python-format
+msgid "Unknown event %s"
+msgstr "Белгісіз %s оқиғасы"
+
+#: calendar/backends/caldav.py:58
+msgid "A username and password are required"
+msgstr "Пайдаланушы аты мен пароль қажет"
+
+#: calendar/backends/caldav.py:60
+msgid "Contacting CalDAV server…"
+msgstr "CalDAV серверімен байланысуда…"
+
+#: calendar/backends/caldav.py:96 calendar/backends/caldav.py:204
+msgid "Password not found in the keyring"
+msgstr "Пароль кілттер бауынан табылмады"
+
+#: calendar/backends/caldav.py:166
+msgid "The event has no CalDAV resource URL"
+msgstr "Оқиғада CalDAV ресурс URL адресі жоқ"
+
+#: calendar/backends/caldav.py:215
+msgid "This CalDAV account is offline. It is now read-only."
+msgstr "Бұл CalDAV тіркелгісі офлайн күйінде. Ол енді тек оқуға арналған."
+
+#: calendar/backends/caldav.py:274
+#, python-format
+msgid "Calendar CalDAV password for %s"
+msgstr "%s үшін Күнтізбе CalDAV паролі"
+
+#: calendar/backends/caldav.py:276
+msgid "Could not save the password in the keyring"
+msgstr "Парольді кілттер бауында сақтау мүмкін болмады"
+
+#: calendar/backends/caldav.py:320
+msgid "A server URL is required"
+msgstr "Сервер URL-і қажет"
+
+#: calendar/backends/caldav.py:324
+msgid "CalDAV server URLs must use HTTP or HTTPS"
+msgstr "CalDAV серверінің URL адрестері HTTP немесе HTTPS пайдалануы керек"
+
+#: calendar/backends/google.py:66
+msgid "Waiting for Google authorization…"
+msgstr "Google авторизациясын күтуде…"
+
+#: calendar/backends/google.py:73
+msgid "Authorization received • Contacting Google Calendar…"
+msgstr "Авторизация алынды • Google Calendar-мен байланысуда…"
+
+#: calendar/backends/google.py:76 calendar/backends/google.py:119
+msgid "Loading your Google calendars…"
+msgstr "Google күнтізбелеріңіз жүктелуде…"
+
+#: calendar/backends/google.py:80 calendar/backends/google.py:123
+msgid "Google did not return a primary calendar"
+msgstr "Google негізгі күнтізбені қайтармады"
+
+#: calendar/backends/google.py:116
+msgid "Requesting authorization from Online Accounts…"
+msgstr "«Онлайн тіркелгілер» қызметінен авторизация сұралуда…"
+
+#: calendar/backends/google.py:263 calendar/backends/google.py:274
+msgid "This Google account is offline."
+msgstr "Бұл Google тіркелгісі офлайн күйінде."
+
+#: calendar/backends/google.py:287
+msgid "Google calendar not found."
+msgstr "Google күнтізбесі табылмады."
+
+#: calendar/backends/google.py:319
+msgid "authorization expired"
+msgstr "авторизация мерзімі аяқталды"
+
+#: calendar/backends/google.py:333
+msgid "The gir1.2-goa-1.0 package is missing"
+msgstr "gir1.2-goa-1.0 дестесі жоқ"
+
+#: calendar/backends/google.py:344
+#, python-format
+msgid "Could not contact Online Accounts: %s"
+msgstr "«Онлайн тіркелгілер» қызметімен байланысу мүмкін болмады: %s"
+
+#: calendar/backends/google.py:351
+msgid "The selected Online Account is unavailable"
+msgstr "Таңдалған онлайн тіркелгі қолжетімсіз"
+
+#: calendar/backends/google.py:363
+msgid "Online Accounts returned no access token"
+msgstr "«Онлайн тіркелгілер» қатынау токенін қайтармады"
+
+#: calendar/backends/google.py:368
+#, python-format
+msgid "Could not obtain Google authorization: %s"
+msgstr "Google авторизациясын алу мүмкін болмады: %s"
+
+#: calendar/views/month_view.py:263
+#, python-format
+msgid "+%d more"
+msgstr "+%d тағы"
+
+#: calendar/widgets/mini_calendar.py:136
+msgid "Year"
+msgstr "Жыл"
+
+#: clocks/clocks_app.py:108
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d сағат"
+msgstr[1] "%d сағат"
+
+#: clocks/clocks_app.py:110 agent/agent.py:181
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d минут"
+msgstr[1] "%d минут"
+
+#: clocks/clocks_app.py:111
+#, python-format
+msgid "Alarm in %s"
+msgstr "Оятқыш %s кейін"
+
+#: clocks/clocks_app.py:131
+msgid "Alarms"
+msgstr "Оятқыштар"
+
+#: clocks/clocks_app.py:133
+msgid "Add"
+msgstr "Қосу"
+
+#: clocks/clocks_app.py:150
+msgid "No alarms are set"
+msgstr "Оятқыштар орнатылмаған"
+
+#: clocks/clocks_app.py:226
+msgid "Alarms will not ring."
+msgstr "Оятқыштар шырылдамайды."
+
+#: clocks/clocks_app.py:249
+#, python-format
+msgid "Could not load alarms: %s"
+msgstr "Оятқыштарды жүктеу мүмкін болмады: %s"
+
+#: clocks/clocks_app.py:297 agent/agent.py:98 agent/agent.py:192
+msgid "Alarm"
+msgstr "Оятқыш"
+
+#: clocks/clocks_app.py:333
+msgid "Could not update alarm"
+msgstr "Оятқышты жаңарту мүмкін болмады"
+
+#: clocks/clocks_app.py:358
+msgid "New Alarm"
+msgstr "Жаңа оятқыш"
+
+#: clocks/clocks_app.py:408
+msgid "Time"
+msgstr "Уақыт"
+
+#: clocks/clocks_app.py:448 clocks/clocks_app.py:558
+#, python-format
+msgid "Every %s"
+msgstr "Әр %s сайын"
+
+#: clocks/clocks_app.py:459
+msgid "Choose a date"
+msgstr "Күнді таңдаңыз"
+
+#: clocks/clocks_app.py:470
+msgid "Clear date"
+msgstr "Күнді тазарту"
+
+#: clocks/clocks_app.py:488
+msgid "Audio files"
+msgstr "Аудио файлдары"
+
+#: clocks/clocks_app.py:496
+msgid "Choose a sound"
+msgstr "Дыбысты таңдаңыз"
+
+#: clocks/clocks_app.py:500
+msgid "Select"
+msgstr "Таңдау"
+
+#: clocks/clocks_app.py:512
+msgid "Play selected sound"
+msgstr "Таңдалған дыбысты ойнату"
+
+#: clocks/clocks_app.py:518
+msgid "Seconds between sounds"
+msgstr "Дыбыстар арасындағы секундтар"
+
+#: clocks/clocks_app.py:519
+msgid "seconds"
+msgstr "секунд"
+
+#: clocks/clocks_app.py:537
+msgid "Sound"
+msgstr "Дыбыс"
+
+#: clocks/clocks_app.py:556 clocks/clocks_app.py:660
+msgid "Every day"
+msgstr "Күн сайын"
+
+#: clocks/clocks_app.py:639
+msgid "Could not delete alarm"
+msgstr "Оятқышты өшіру мүмкін болмады"
+
+#: clocks/clocks_app.py:640
+msgid "Could not save alarm"
+msgstr "Оятқышты сақтау мүмкін болмады"
+
+#: clocks/clocks_app.py:707
+msgid "Could not open alarm database"
+msgstr "Оятқыштар дерекқорын ашу мүмкін болмады"
+
+#: agent/agent.py:25
+msgid "Calendar Event"
+msgstr "Күнтізбе оқиғасы"
+
+#: agent/agent.py:123
+msgid "Mute"
+msgstr "Дыбысты сөндіру"
+
+#: agent/agent.py:172
+msgid "Snooze"
+msgstr "Кейінге қалдыру"
+
+#: agent/agent.py:212
+msgid "Open Clocks"
+msgstr "«Сағаттарды» ашу"
+
+#: agent/agent.py:215 agent/agent.py:285
+msgid "Dismiss"
+msgstr "Тайдыру"
+
+#: agent/agent.py:279
+msgid "Open Calendar"
+msgstr "«Күнтізбені» ашу"
+
+#: agent/agent.py:548
+#, python-format
+msgid "Starts in %d minute"
+msgid_plural "Starts in %d minutes"
+msgstr[0] "%d минуттан кейін басталады"
+msgstr[1] "%d минуттан кейін басталады"
+
+#: agent/agent.py:551
+msgid "Starts now"
+msgstr "Қазір басталады"
+
+#: agent/agent.py:554
+#, python-format
+msgid "This event started %d minute ago"
+msgid_plural "This event started %d minutes ago"
+msgstr[0] "Бұл оқиға %d минут бұрын басталды"
+msgstr[1] "Бұл оқиға %d минут бұрын басталды"
+
+#: clockenstein/formatting.py:11
+msgid "MON"
+msgstr "ДҮЙ"
+
+#: clockenstein/formatting.py:11
+msgid "TUE"
+msgstr "СЕЙ"
+
+#: clockenstein/formatting.py:11
+msgid "WED"
+msgstr "СӘР"
+
+#: clockenstein/formatting.py:11
+msgid "THU"
+msgstr "БЕЙ"
+
+#: clockenstein/formatting.py:11
+msgid "FRI"
+msgstr "ЖҰМ"
+
+#: clockenstein/formatting.py:11
+msgid "SAT"
+msgstr "СЕН"
+
+#: clockenstein/formatting.py:11
+msgid "SUN"
+msgstr "ЖЕК"

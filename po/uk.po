@@ -1,0 +1,845 @@
+# Ukrainian translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-09-23 13:47+0100\n"
+"PO-Revision-Date: 2026-09-25 11:33+0000\n"
+"Last-Translator: Rostyslav Haitkulov <Unknown>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
+#: calendar/event_dialog.py:178 calendar/event_dialog.py:185
+#: calendar/main_window.py:35 calendar/main_window.py:193 calendar/store.py:60
+#: calendar/store.py:72 calendar/backends/caldav.py:296
+#: calendar/backends/caldav.py:298
+msgid "Calendar"
+msgstr "Календар"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:3
+msgid "Manage your events and appointments"
+msgstr "Керуйте своїми подіями та зустрічами"
+
+#: data/org.x.clockenstein.Calendar.desktop.in:9
+msgid "calendar;event;appointment;Google;CalDAV;Nextcloud;"
+msgstr "календар;подія;зустріч;Google;CalDAV;Nextcloud;"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:2 clocks/clocks_app.py:116
+#: clocks/clocks_app.py:720
+msgid "Clocks"
+msgstr "Годинники"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:3
+msgid "Set alarms"
+msgstr "Встановити будильники"
+
+#: data/org.x.clockenstein.Clocks.desktop.in:9
+msgid "clock;alarm;wake;"
+msgstr "годинник;будильник;пробудження;"
+
+#: calendar/event_dialog.py:79 clocks/clocks_app.py:418
+msgid "AM"
+msgstr "AM"
+
+#: calendar/event_dialog.py:80 clocks/clocks_app.py:419
+msgid "PM"
+msgstr "PM"
+
+#: calendar/event_dialog.py:99
+msgid "New Event"
+msgstr "Нова подія"
+
+#: calendar/event_dialog.py:99
+msgid "Event Details"
+msgstr "Подробиці події"
+
+#: calendar/event_dialog.py:116 calendar/main_window.py:813
+#: calendar/main_window.py:951 calendar/main_window.py:987
+#: calendar/main_window.py:1069 clocks/clocks_app.py:361
+#: clocks/clocks_app.py:499
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: calendar/event_dialog.py:116 calendar/preferences.py:16
+msgid "Close"
+msgstr "Закрити"
+
+#: calendar/event_dialog.py:118 clocks/clocks_app.py:363
+msgid "Delete"
+msgstr "Видалити"
+
+#: calendar/event_dialog.py:123 calendar/main_window.py:813
+#: clocks/clocks_app.py:365
+msgid "Save"
+msgstr "Зберегти"
+
+#: calendar/event_dialog.py:139
+msgid "Birthday"
+msgstr "День народження"
+
+#: calendar/event_dialog.py:140
+msgid "Focus time"
+msgstr "Час зосередження"
+
+#: calendar/event_dialog.py:141
+msgid "From Gmail"
+msgstr "З Gmail"
+
+#: calendar/event_dialog.py:142
+msgid "Out of office"
+msgstr "Не на місці"
+
+#: calendar/event_dialog.py:143
+msgid "Working location"
+msgstr "Місце роботи"
+
+#: calendar/event_dialog.py:148
+#, python-format
+msgid "This type of event (%s) cannot be edited."
+msgstr "Цей тип події (%s) не можна редагувати."
+
+#: calendar/event_dialog.py:172
+msgid "Title"
+msgstr "Заголовок"
+
+#: calendar/event_dialog.py:182 calendar/main_window.py:507
+#: calendar/main_window.py:793
+msgid "Local"
+msgstr "Локально"
+
+#: calendar/event_dialog.py:206 calendar/views/day_view.py:53
+#: calendar/views/day_view.py:329 calendar/views/week_view.py:61
+#: calendar/views/week_view.py:72
+msgid "All day"
+msgstr "Увесь день"
+
+#: calendar/event_dialog.py:212
+msgid "Start"
+msgstr "Початок"
+
+#: calendar/event_dialog.py:222
+msgid "End"
+msgstr "Кінець"
+
+#: calendar/event_dialog.py:243
+msgid "Location"
+msgstr "Локація"
+
+#: calendar/event_dialog.py:246
+msgid "Optional"
+msgstr "Додатково"
+
+#: calendar/event_dialog.py:249
+msgid "Notes"
+msgstr "Примітки"
+
+#: calendar/event_dialog.py:368 calendar/event_dialog.py:465
+#: calendar/main_window.py:482 calendar/backends/google.py:480
+#: calendar/views/day_view.py:328 calendar/views/month_view.py:183
+#: calendar/views/month_view.py:329 calendar/views/month_view.py:344
+#: calendar/views/week_view.py:337
+msgid "Untitled"
+msgstr "Без назви"
+
+#: calendar/event_dialog.py:399 calendar/backends/google.py:291
+#, python-format
+msgid "The event dates are outside the sync range for %s."
+msgstr "Дати події виходять за межі діапазону синхронізації для %s."
+
+#: calendar/event_dialog.py:400
+msgid "this calendar"
+msgstr "цей календар"
+
+#: calendar/event_dialog.py:409
+msgid "Saving…"
+msgstr "Зберігання…"
+
+#: calendar/event_dialog.py:416 calendar/event_dialog.py:453
+#: calendar/event_dialog.py:476 calendar/main_window.py:715
+#, python-format
+msgid "Error: %s"
+msgstr "Помилка: %s"
+
+#: calendar/event_dialog.py:465
+#, python-format
+msgid "Delete '%s'?"
+msgstr "Видалити '%s'?"
+
+#: calendar/event_dialog.py:467
+msgid "This event will be permanently deleted."
+msgstr "Цю подію буде видалено безповоротньо."
+
+#: calendar/main_window.py:146 calendar/main_window.py:1351
+msgid "Synchronizing online calendars…"
+msgstr "Синхронізація онлайн-календарів…"
+
+#: calendar/main_window.py:148 calendar/main_window.py:1353
+msgid "Synchronization finished"
+msgstr "Синхронізацію завершено"
+
+#: calendar/main_window.py:154 clocks/clocks_app.py:220
+msgid "The daemon is not running."
+msgstr "Демон не запущено."
+
+#: calendar/main_window.py:155
+msgid "Synchronization and reminders may be unavailable."
+msgstr "Функції синхронізації та нагадувань можуть бути недоступними."
+
+#: calendar/main_window.py:158 clocks/clocks_app.py:222
+msgid "The notification agent is not running."
+msgstr "Агент сповіщень не запущено."
+
+#: calendar/main_window.py:159
+msgid "Reminders may be unavailable."
+msgstr "Нагадування можуть бути недоступними."
+
+#: calendar/main_window.py:197 calendar/main_window.py:302
+#: calendar/main_window.py:754
+msgid "Calendars"
+msgstr "Календарі"
+
+#: calendar/main_window.py:200 calendar/preferences.py:15
+msgid "Preferences"
+msgstr "Налаштування"
+
+#: calendar/main_window.py:204
+msgid "About"
+msgstr "Про програму"
+
+#: calendar/main_window.py:210
+msgid "Main menu"
+msgstr "Головне меню"
+
+#: calendar/main_window.py:220 calendar/main_window.py:447
+#: clocks/clocks_app.py:687
+msgid "Today"
+msgstr "Нині"
+
+#: calendar/main_window.py:230 calendar/widgets/mini_calendar.py:130
+msgid "Month"
+msgstr "Місяць"
+
+#: calendar/main_window.py:230
+msgid "Week"
+msgstr "Тиждень"
+
+#: calendar/main_window.py:231
+msgid "Day"
+msgstr "День"
+
+#: calendar/main_window.py:239
+msgid "New event (Ctrl+N)"
+msgstr "Нова подія (Ctrl+N)"
+
+#: calendar/main_window.py:358
+msgid "A calendar application for Linux desktops"
+msgstr "Календар для Linux стільниць"
+
+#: calendar/main_window.py:382 calendar/main_window.py:1366
+msgid "Some online calendars are disconnected (read-only)."
+msgstr "Деякі онлайн-календарі від'єднано (лише для перегляду)."
+
+#: calendar/main_window.py:418
+#, python-format
+msgid "This date is outside the sync range for: %s. Events may be missing."
+msgstr ""
+"Ця дата виходить за межі діапазону синхронізації для: %s. Деякі події можуть "
+"бути відсутні."
+
+#: calendar/main_window.py:448 clocks/clocks_app.py:689
+msgid "Tomorrow"
+msgstr "Завтра"
+
+#: calendar/main_window.py:449
+msgid "Coming Up"
+msgstr "Найближчим часом"
+
+#: calendar/main_window.py:459
+msgid "No upcoming events"
+msgstr "Наразі немає запланованих подій"
+
+#: calendar/main_window.py:520
+msgid "Online"
+msgstr "Онлайн"
+
+#: calendar/main_window.py:520
+msgid "Offline, read only"
+msgstr "Оффлайн, тільки для читання"
+
+#: calendar/main_window.py:521
+msgid "Sync every 2 hours"
+msgstr "Синхронізувати кожні 2 години"
+
+#: calendar/main_window.py:522
+msgid "Sync every 15 minutes"
+msgstr "Синхронізувати кожних 15 хвилин"
+
+#: calendar/main_window.py:536
+msgid "Sync range"
+msgstr "Діапазон синхронізації"
+
+#: calendar/main_window.py:536
+msgid "Status"
+msgstr "Стан"
+
+#: calendar/main_window.py:537
+msgid "Reminders"
+msgstr "Нагадування"
+
+#: calendar/main_window.py:537
+msgid "Visible"
+msgstr "Видимий"
+
+#: calendar/main_window.py:537
+msgid "Actions"
+msgstr "Дії"
+
+#: calendar/main_window.py:564
+#, python-format
+msgid "Disconnect %s"
+msgstr "Від'єднати %s"
+
+#: calendar/main_window.py:572
+msgid "Local calendars"
+msgstr "Локальні календарі"
+
+#: calendar/main_window.py:582
+msgid "My Calendars"
+msgstr "Мої Календарі"
+
+#: calendar/main_window.py:583
+msgid "Other Calendars"
+msgstr "Інші календарі"
+
+#: calendar/main_window.py:608
+msgid "Show this calendar"
+msgstr "Показати цей календар"
+
+#: calendar/main_window.py:622
+msgid "Already synchronized less than 5 minutes ago"
+msgstr "Синхронізовано менш ніж 5 хвилин тому"
+
+#: calendar/main_window.py:630 calendar/main_window.py:680
+#: calendar/main_window.py:946
+msgid "Refresh this calendar"
+msgstr "Оновити цей календар"
+
+#: calendar/main_window.py:651 clocks/clocks_app.py:317
+#: clocks/clocks_app.py:358
+msgid "Edit"
+msgstr "Змінити"
+
+#: calendar/main_window.py:660 calendar/main_window.py:870
+msgid "Remove"
+msgstr "Видалити"
+
+#: calendar/main_window.py:705 calendar/main_window.py:709
+msgid "2 years ahead"
+msgstr "на 2 роки вперед"
+
+#: calendar/main_window.py:706
+msgid "1 year ahead"
+msgstr "на 1 рік вперед"
+
+#: calendar/main_window.py:707
+msgid "3 months ahead"
+msgstr "на 3 місяці вперед"
+
+#: calendar/main_window.py:708
+msgid "Too many events"
+msgstr "Надто багато подій"
+
+#: calendar/main_window.py:717
+msgid "Not synchronized"
+msgstr "Не синхронізовано"
+
+#: calendar/main_window.py:722
+msgid "just now"
+msgstr "щойно"
+
+#: calendar/main_window.py:725
+msgid "1 minute ago"
+msgstr "хвилину тому"
+
+#: calendar/main_window.py:726
+#, python-format
+msgid "%d minutes ago"
+msgstr "%d хвилин тому"
+
+#: calendar/main_window.py:729
+msgid "1 hour ago"
+msgstr "1 годину тому"
+
+#: calendar/main_window.py:730
+#, python-format
+msgid "%d hours ago"
+msgstr "%d годин тому"
+
+#: calendar/main_window.py:733
+msgid "1 day ago"
+msgstr "1 день тому"
+
+#: calendar/main_window.py:734
+#, python-format
+msgid "%d days ago"
+msgstr "%d днів тому"
+
+#: calendar/main_window.py:735
+#, python-format
+msgid "Last sync: %s"
+msgstr "Востаннє синхронізовано: %s"
+
+#: calendar/main_window.py:736
+msgid "Not synced yet"
+msgstr "Ще не синхронізовано"
+
+#: calendar/main_window.py:755
+msgid "Add a New Calendar…"
+msgstr "Додати новий Календар..."
+
+#: calendar/main_window.py:795
+msgid "CalDAV (Nextcloud, Memotoo, etc.)"
+msgstr "CalDAV (Nextcloud, Memotoo, тощо.)"
+
+#: calendar/main_window.py:812
+msgid "Edit Calendar"
+msgstr "Редагувати Календар"
+
+#: calendar/main_window.py:821 calendar/main_window.py:960
+#: clocks/clocks_app.py:382
+msgid "Name"
+msgstr "Ім’я"
+
+#: calendar/main_window.py:827 calendar/main_window.py:962
+msgid "Color"
+msgstr "Колір"
+
+#: calendar/main_window.py:861 calendar/store.py:77
+msgid "At least one local calendar is required"
+msgstr "Потрібен принаймні один локальний календар"
+
+#: calendar/main_window.py:868
+#, python-format
+msgid "Remove %s?"
+msgstr "Видалити %s?"
+
+#: calendar/main_window.py:871
+msgid "All the events from this calendar will be permanently removed."
+msgstr "Усі події з цього календаря будуть безповоротно видалені."
+
+#: calendar/main_window.py:890 calendar/main_window.py:925
+#, python-format
+msgid "Refresh requested for %s…"
+msgstr "Запит на оновлення для %s…"
+
+#: calendar/main_window.py:907
+msgid "Remind me about events in this calendar"
+msgstr "Нагадувати мені про події в цьому календарі"
+
+#: calendar/main_window.py:924
+msgid "Refresh requested"
+msgstr "Запит на оновлення"
+
+#: calendar/main_window.py:947
+#, python-format
+msgid "Could not request refresh: %s"
+msgstr "Не вдалося виконати запит на оновлення: %s"
+
+#: calendar/main_window.py:950
+msgid "New Calendar"
+msgstr "Новий Календар"
+
+#: calendar/main_window.py:951
+msgid "Create"
+msgstr "Створити"
+
+#: calendar/main_window.py:981
+msgid "No Google accounts were found in Online Accounts."
+msgstr "В облікових записах, не знайдено жодного облікового запису Google."
+
+#: calendar/main_window.py:986
+msgid "Google Account"
+msgstr "Обліковий запис Google"
+
+#: calendar/main_window.py:988 calendar/main_window.py:1069
+msgid "Connect"
+msgstr "З'єднання"
+
+#: calendar/main_window.py:993
+msgid "Choose an account"
+msgstr "Виберіть обліковий запис"
+
+#: calendar/main_window.py:1007 calendar/main_window.py:1011
+#: calendar/main_window.py:1088
+msgid "Connecting…"
+msgstr "З'єднання…"
+
+#: calendar/main_window.py:1023 calendar/main_window.py:1101
+msgid "Requesting initial synchronization…"
+msgstr "Виконується початкова синхронізація…"
+
+#: calendar/main_window.py:1040
+msgid "Could not connect the Google account"
+msgstr "Не вдалось підключитись до облікового запису Google"
+
+#: calendar/main_window.py:1056
+msgid "Could not connect to the CalDAV server"
+msgstr "Не вдалось з’єднатись з сервером CalDAV"
+
+#: calendar/main_window.py:1078
+msgid "Server URL"
+msgstr "URL сервера"
+
+#: calendar/main_window.py:1078
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: calendar/main_window.py:1078
+msgid "Password"
+msgstr "Пароль"
+
+#: calendar/main_window.py:1112
+#, python-format
+msgid "Disconnect %s?"
+msgstr "Від'єднати %s?"
+
+#: calendar/main_window.py:1115
+msgid ""
+"This online calendar will be disconnected and removed from the application."
+msgstr "Цей онлайн-календар буде відключено та видалено з програми."
+
+#: calendar/main_window.py:1313
+msgid "Connecting to online calendars…"
+msgstr "Підключення до онлайн-календарів…"
+
+#: calendar/preferences.py:24
+msgid "First day of the week"
+msgstr "Перший день тижня"
+
+#: calendar/preferences.py:29 calendar/preferences.py:45
+msgid "Use locale default"
+msgstr "Використовувати типовий локалі"
+
+#: calendar/preferences.py:40
+msgid "Time format"
+msgstr "Формат часу"
+
+#: calendar/preferences.py:46
+msgid "12-hour clock"
+msgstr "12-годинний годинник"
+
+#: calendar/preferences.py:47
+msgid "24-hour clock"
+msgstr "24-годинний годинник"
+
+#: calendar/preferences.py:54
+msgid "Show week numbers"
+msgstr "Показувати номери тижнів"
+
+#: calendar/store.py:50
+msgid "Personal"
+msgstr "Особисте"
+
+#: calendar/store.py:110
+#, python-format
+msgid "Unknown event %s"
+msgstr "Невідома подія %s"
+
+#: calendar/backends/caldav.py:58
+msgid "A username and password are required"
+msgstr "Необхідно ввести ім’я користувача та пароль"
+
+#: calendar/backends/caldav.py:60
+msgid "Contacting CalDAV server…"
+msgstr "Підключення до сервера CalDAV…"
+
+#: calendar/backends/caldav.py:96 calendar/backends/caldav.py:204
+msgid "Password not found in the keyring"
+msgstr "Пароль не знайдено у в'язці ключів"
+
+#: calendar/backends/caldav.py:166
+msgid "The event has no CalDAV resource URL"
+msgstr "У події немає URL ресурсу CalDAV"
+
+#: calendar/backends/caldav.py:215
+msgid "This CalDAV account is offline. It is now read-only."
+msgstr ""
+"Цей обліковий запис CalDAV офлайн. Зараз він доступний тільки для читання."
+
+#: calendar/backends/caldav.py:274
+#, python-format
+msgid "Calendar CalDAV password for %s"
+msgstr "Пароль календаря CalDAV для %s"
+
+#: calendar/backends/caldav.py:276
+msgid "Could not save the password in the keyring"
+msgstr "Не вдалося зберегти пароль у в'язці ключів"
+
+#: calendar/backends/caldav.py:320
+msgid "A server URL is required"
+msgstr "Необхідно вказати URL сервера"
+
+#: calendar/backends/caldav.py:324
+msgid "CalDAV server URLs must use HTTP or HTTPS"
+msgstr "URL сервера CalDAV повинні використовувати протоколи HTTP чи HTTPS"
+
+#: calendar/backends/google.py:66
+msgid "Waiting for Google authorization…"
+msgstr "Очікування авторизації Google…"
+
+#: calendar/backends/google.py:73
+msgid "Authorization received • Contacting Google Calendar…"
+msgstr "Авторизацію отримано • Здійснюється підключення до Google Calendar…"
+
+#: calendar/backends/google.py:76 calendar/backends/google.py:119
+msgid "Loading your Google calendars…"
+msgstr "Завантаження ваших календарів Google…"
+
+#: calendar/backends/google.py:80 calendar/backends/google.py:123
+msgid "Google did not return a primary calendar"
+msgstr "Google не знайшов основного календаря"
+
+#: calendar/backends/google.py:116
+msgid "Requesting authorization from Online Accounts…"
+msgstr "Отримання дозволу від Облікових записів онлайн…"
+
+#: calendar/backends/google.py:263 calendar/backends/google.py:274
+msgid "This Google account is offline."
+msgstr "Цей обліковий запис Google зараз офлайн"
+
+#: calendar/backends/google.py:287
+msgid "Google calendar not found."
+msgstr "Календар Google не знайдено."
+
+#: calendar/backends/google.py:319
+msgid "authorization expired"
+msgstr "час авторизації сплив"
+
+#: calendar/backends/google.py:333
+msgid "The gir1.2-goa-1.0 package is missing"
+msgstr "Пакунок gir1.2-goa-1.0 відсутній"
+
+#: calendar/backends/google.py:344
+#, python-format
+msgid "Could not contact Online Accounts: %s"
+msgstr "Не вдалось з'єднатись з Обліковими записами: %s"
+
+#: calendar/backends/google.py:351
+msgid "The selected Online Account is unavailable"
+msgstr "Вибраний Обліковий Запис недоступний"
+
+#: calendar/backends/google.py:363
+msgid "Online Accounts returned no access token"
+msgstr "Облікові записи не повернули токен доступу"
+
+#: calendar/backends/google.py:368
+#, python-format
+msgid "Could not obtain Google authorization: %s"
+msgstr "Не вдалося отримати авторизацію від Google: %s"
+
+#: calendar/views/month_view.py:263
+#, python-format
+msgid "+%d more"
+msgstr "+%d ще"
+
+#: calendar/widgets/mini_calendar.py:136
+msgid "Year"
+msgstr "Рік"
+
+#: clocks/clocks_app.py:108
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d година"
+msgstr[1] "%d години"
+msgstr[2] "%d годин"
+
+#: clocks/clocks_app.py:110 agent/agent.py:181
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d хвилина"
+msgstr[1] "%d хвилини"
+msgstr[2] "%d хвилин"
+
+#: clocks/clocks_app.py:111
+#, python-format
+msgid "Alarm in %s"
+msgstr "Будильник через %s"
+
+#: clocks/clocks_app.py:131
+msgid "Alarms"
+msgstr "Будильники"
+
+#: clocks/clocks_app.py:133
+msgid "Add"
+msgstr "Додати"
+
+#: clocks/clocks_app.py:150
+msgid "No alarms are set"
+msgstr "Жодних будильників не встановлено"
+
+#: clocks/clocks_app.py:226
+msgid "Alarms will not ring."
+msgstr "Будильники не дзвонитимуть."
+
+#: clocks/clocks_app.py:249
+#, python-format
+msgid "Could not load alarms: %s"
+msgstr "Не вдалося завантажити будильники: %s"
+
+#: clocks/clocks_app.py:297 agent/agent.py:98 agent/agent.py:192
+msgid "Alarm"
+msgstr "Будильник"
+
+#: clocks/clocks_app.py:333
+msgid "Could not update alarm"
+msgstr "Не вдалося оновити будильник"
+
+#: clocks/clocks_app.py:358
+msgid "New Alarm"
+msgstr "Новий будильник"
+
+#: clocks/clocks_app.py:408
+msgid "Time"
+msgstr "Час"
+
+#: clocks/clocks_app.py:448 clocks/clocks_app.py:558
+#, python-format
+msgid "Every %s"
+msgstr "Кожних %s"
+
+#: clocks/clocks_app.py:459
+msgid "Choose a date"
+msgstr "Оберіть дату"
+
+#: clocks/clocks_app.py:470
+msgid "Clear date"
+msgstr "Очистити дату"
+
+#: clocks/clocks_app.py:488
+msgid "Audio files"
+msgstr "Звукові файли"
+
+#: clocks/clocks_app.py:496
+msgid "Choose a sound"
+msgstr "Обрати звук"
+
+#: clocks/clocks_app.py:500
+msgid "Select"
+msgstr "Обрати"
+
+#: clocks/clocks_app.py:512
+msgid "Play selected sound"
+msgstr "Відтворити вибраний звук"
+
+#: clocks/clocks_app.py:518
+msgid "Seconds between sounds"
+msgstr "Секунди між звуками"
+
+#: clocks/clocks_app.py:519
+msgid "seconds"
+msgstr "секунд"
+
+#: clocks/clocks_app.py:537
+msgid "Sound"
+msgstr "Звук"
+
+#: clocks/clocks_app.py:556 clocks/clocks_app.py:660
+msgid "Every day"
+msgstr "Щодня"
+
+#: clocks/clocks_app.py:639
+msgid "Could not delete alarm"
+msgstr "Не вдалося видалити будильник"
+
+#: clocks/clocks_app.py:640
+msgid "Could not save alarm"
+msgstr "Не вдалося зберегти будильник"
+
+#: clocks/clocks_app.py:707
+msgid "Could not open alarm database"
+msgstr "Не вдалося відкрити базу даних будильників"
+
+#: agent/agent.py:25
+msgid "Calendar Event"
+msgstr "Подія календаря"
+
+#: agent/agent.py:123
+msgid "Mute"
+msgstr "Вимкнути звук"
+
+#: agent/agent.py:172
+msgid "Snooze"
+msgstr "Нагадати пізніше"
+
+#: agent/agent.py:212
+msgid "Open Clocks"
+msgstr "Відчинити годинники"
+
+#: agent/agent.py:215 agent/agent.py:285
+msgid "Dismiss"
+msgstr "Відхилити"
+
+#: agent/agent.py:279
+msgid "Open Calendar"
+msgstr "Відкрити Календар"
+
+#: agent/agent.py:548
+#, python-format
+msgid "Starts in %d minute"
+msgid_plural "Starts in %d minutes"
+msgstr[0] "Почнеться через %d хвилину"
+msgstr[1] "Почнеться через %d хвилин"
+msgstr[2] "Почнеться через %d хвилин"
+
+#: agent/agent.py:551
+msgid "Starts now"
+msgstr "Почнеться зараз"
+
+#: agent/agent.py:554
+#, python-format
+msgid "This event started %d minute ago"
+msgid_plural "This event started %d minutes ago"
+msgstr[0] "Ця подія почалась %d хвилину тому"
+msgstr[1] "Ця подія почалась %d хвилин тому"
+msgstr[2] "Ця подія почалась %d хвилин тому"
+
+#: clockenstein/formatting.py:11
+msgid "MON"
+msgstr "ПН"
+
+#: clockenstein/formatting.py:11
+msgid "TUE"
+msgstr "ВТ"
+
+#: clockenstein/formatting.py:11
+msgid "WED"
+msgstr "СР"
+
+#: clockenstein/formatting.py:11
+msgid "THU"
+msgstr "ЧТ"
+
+#: clockenstein/formatting.py:11
+msgid "FRI"
+msgstr "ПТ"
+
+#: clockenstein/formatting.py:11
+msgid "SAT"
+msgstr "СБ"
+
+#: clockenstein/formatting.py:11
+msgid "SUN"
+msgstr "НД"
