@@ -20,13 +20,10 @@ from clockenstein import BUS_INTERFACE, BUS_NAME, BUS_PATH, DEFAULT_COLOR, SETTI
 from clockenstein.alarms import AlarmStore, due_alarms
 from clockenstein.logging import Logger
 from clockenstein.misc import get_calendar_key, get_event_last_day, is_event_all_day
+from backends import CALDAV_CONFIG, GOOGLE_CONFIG, REMOTE_PROVIDERS, get_refresh_schedule
 from backends.google import LIMITED_RANGE, NORMAL_RANGE, RESTRICTED_RANGE
 from store import CalendarManager, local_timezone, watch_timezone_changes
 
-# ICS subscriptions are refreshed together with CalDAV.
-CALDAV_REFRESH_INTERVAL_SECONDS = 15 * 60
-GOOGLE_REFRESH_INTERVAL_SECONDS = 2 * 60 * 60
-GOOGLE_REFRESH_EVERY = GOOGLE_REFRESH_INTERVAL_SECONDS // CALDAV_REFRESH_INTERVAL_SECONDS
 REMINDER_CHECK_INTERVAL_SECONDS = 30
 REMINDER_MINUTES_KEY = "reminder-minutes"
 VERSION = "__PROJECT_VERSION__"
@@ -93,8 +90,6 @@ class ClockensteinDaemon:
         self.connection = None
         self.registration_id = 0
         self.refreshing = False
-        self.refresh_ticks = 0
-        self.google_refresh_due = False
         self.refresh_queue = []
         self.last_reminder_check = None
         self.reminder_events = []
@@ -150,8 +145,9 @@ class ClockensteinDaemon:
         GLib.timeout_add_seconds(
             REMINDER_CHECK_INTERVAL_SECONDS, self._reminder_timeout
         )
-        GLib.timeout_add_seconds(CALDAV_REFRESH_INTERVAL_SECONDS, self._refresh_timeout)
-        self._request_refresh(refresh_google=True, refresh_caldav=True)
+        for interval, providers in get_refresh_schedule().items():
+            GLib.timeout_add_seconds(interval, self._refresh_timeout, providers)
+        self._request_refresh(frozenset(REMOTE_PROVIDERS))
 
     def _name_lost(self, _connection, _name):
         self.logger.warning(
@@ -175,35 +171,28 @@ class ClockensteinDaemon:
             invocation.return_value(None)
         elif method == "RefreshCalendar":
             provider, account_id, calendar_id = parameters.unpack()
-            if provider not in ("google", "caldav", "ics"):
+            if provider not in REMOTE_PROVIDERS:
                 invocation.return_dbus_error(
                     f"{BUS_INTERFACE}.InvalidProvider", "Unsupported calendar provider"
                 )
                 return
             self.logger.log(f"RefreshCalendar({provider}, {account_id}, {calendar_id})")
-            self._request_refresh(
-                refresh_google=provider == "google",
-                refresh_caldav=provider in ("caldav", "ics"),
-                target=(provider, account_id, calendar_id),
-            )
+            self._request_refresh(frozenset({provider}),
+                                  target=(provider, account_id, calendar_id))
             invocation.return_value(None)
         elif method == "RefreshAccount":
             provider, account_id = parameters.unpack()
-            if provider not in ("google", "caldav", "ics"):
+            if provider not in REMOTE_PROVIDERS:
                 invocation.return_dbus_error(
                     f"{BUS_INTERFACE}.InvalidProvider", "Unsupported calendar provider"
                 )
                 return
             self.logger.log(f"RefreshAccount({provider}, {account_id})")
-            self._request_refresh(
-                refresh_google=provider == "google",
-                refresh_caldav=provider in ("caldav", "ics"),
-                target=(provider, account_id, None),
-            )
+            self._request_refresh(frozenset({provider}), target=(provider, account_id, None))
             invocation.return_value(None)
         elif method == "RefreshRange":
             provider, since, until = parameters.unpack()
-            if provider != "caldav":
+            if provider != CALDAV_CONFIG.provider:
                 invocation.return_dbus_error(
                     f"{BUS_INTERFACE}.InvalidProvider",
                     "Date-range refreshes are only supported for CalDAV",
@@ -212,7 +201,8 @@ class ClockensteinDaemon:
             date_range = (datetime.datetime.fromtimestamp(since, self.timezone).date(),
                           datetime.datetime.fromtimestamp(until, self.timezone).date())
             self.logger.log(f"RefreshRange({provider}, {date_range[0]}, {date_range[1]})")
-            self._request_refresh(refresh_google=False, refresh_caldav=True,
+            # Google keeps its own sync ranges, so it is left out of date-range refreshes.
+            self._request_refresh(frozenset(REMOTE_PROVIDERS) - {GOOGLE_CONFIG.provider},
                                   date_range=date_range)
             invocation.return_value(None)
         elif method == "NotifyAlarmsChanged":
@@ -246,12 +236,8 @@ class ClockensteinDaemon:
                 event.get("summary", ""), all_day,
                 int(start.timestamp()), int(end.timestamp()), event.get("modified") or 0)
 
-    def _refresh_timeout(self):
-        self.refresh_ticks += 1
-        if self.refresh_ticks % GOOGLE_REFRESH_EVERY == 0:
-            self.google_refresh_due = True
-        self._request_refresh(refresh_google=self.google_refresh_due,
-                              refresh_caldav=True)
+    def _refresh_timeout(self, providers):
+        self._request_refresh(providers)
         return GLib.SOURCE_CONTINUE
 
     def _reminder_timeout(self):
@@ -312,23 +298,19 @@ class ClockensteinDaemon:
             ),
         )
 
-    def _request_refresh(self, refresh_google=False, refresh_caldav=True,
-                         target=None, date_range=None):
+    def _request_refresh(self, providers, target=None, date_range=None):
         if self.refreshing:
-            request = (refresh_google, refresh_caldav, target, date_range)
+            request = (providers, target, date_range)
             if request not in self.refresh_queue:
                 self.refresh_queue.append(request)
             self.logger.log("Queued refresh because one is already running")
             return
         self.refreshing = True
         self._emit_sync_state()
-        if refresh_google:
-            self.google_refresh_due = False
-        self._refresh_remote(refresh_google, refresh_caldav, target, date_range)
+        self._refresh_remote(providers, target, date_range)
 
     @run_async
-    def _refresh_remote(self, refresh_google=False, refresh_caldav=True,
-                        target=None, date_range=None):
+    def _refresh_remote(self, providers, target=None, date_range=None):
         try:
             store = CalendarManager(self.timezone)
             if not store.has_remote_accounts:
@@ -343,29 +325,25 @@ class ClockensteinDaemon:
             limited_end = today + datetime.timedelta(days=LIMITED_RANGE[1])
             restricted_start = today - datetime.timedelta(days=RESTRICTED_RANGE[0])
             restricted_end = today + datetime.timedelta(days=RESTRICTED_RANGE[1])
-            providers = (target[0] if target else
-                         "Google, CalDAV and ICS" if refresh_google and refresh_caldav
-                         else "Google" if refresh_google else "CalDAV and ICS")
-            self.logger.log(f"Refreshing {providers} calendars from {start} through {end}")
+            backends = [backend for backend in store.remote_backends
+                        if backend.provider in providers
+                        and (not target or target[0] == backend.provider)]
+            names = ", ".join(backend.provider for backend in backends)
+            self.logger.log(f"Refreshing {names} calendars from {start} through {end}")
             errors = []
-            if refresh_google:
-                errors.extend(store.google.refresh(
-                    start, end,
-                    limited_range=(limited_start, limited_end),
-                    restricted_range=(restricted_start, restricted_end),
-                    target_account_id=target[1] if target else None,
-                    target_calendar_id=target[2] if target else None,
-                ))
-            for backend in (store.caldav, store.ics):
-                if not refresh_caldav or (target and target[0] != backend.provider):
-                    continue
+            for backend in backends:
+                options = {}
+                if backend is store.google:
+                    options = {"limited_range": (limited_start, limited_end),
+                               "restricted_range": (restricted_start, restricted_end)}
                 errors.extend(backend.refresh(
                     start, end,
                     target_account_id=target[1] if target else None,
                     target_calendar_id=target[2] if target else None,
+                    **options,
                 ))
             stats = store.google.last_refresh_stats
-            if refresh_google and stats.get("accounts"):
+            if store.google in backends and stats.get("accounts"):
                 self.logger.log(
                     "Google refresh: "
                     f"page size {stats['page_size']}, "
@@ -392,8 +370,7 @@ class ClockensteinDaemon:
         self._reload_reminder_events()
         self._emit_changed()
         if self.refresh_queue:
-            refresh_google, refresh_caldav, target, date_range = self.refresh_queue.pop(0)
-            self._request_refresh(refresh_google, refresh_caldav, target, date_range)
+            self._request_refresh(*self.refresh_queue.pop(0))
         else:
             self._emit_sync_state()
 

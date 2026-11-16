@@ -14,6 +14,7 @@ gi.require_version("Secret", "1")
 from gi.repository import Secret
 from icalendar import Calendar, Event
 from xapp.util import l10n
+from backends import CALDAV_CONFIG
 from backends.remote import RemoteBackend
 from clockenstein.networking import CalDAVAdapter
 from clockenstein.sync import SyncDownload
@@ -28,7 +29,8 @@ class CalDAVUnavailable(RuntimeError):
 
 
 class CalDAVBackend(RemoteBackend):
-    provider = "caldav"
+    config = CALDAV_CONFIG
+    provider = config.provider
 
     SECRET_SCHEMA = "org.x.clockenstein.CalDAV"
     REQUEST_TIMEOUT_SECONDS = 20

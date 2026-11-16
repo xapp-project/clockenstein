@@ -89,9 +89,11 @@ install_data(
 )
 
 install_data(
+  'calendar/backends/__init__.py',
   'calendar/backends/google.py',
   'calendar/backends/remote.py',
   'calendar/backends/caldav.py',
+  'calendar/backends/ics.py',
   install_dir: join_paths(calendar_dir, 'backends'),
 )
 

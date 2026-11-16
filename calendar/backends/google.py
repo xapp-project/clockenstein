@@ -11,6 +11,7 @@ from google_auth_httplib2 import AuthorizedHttp
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from xapp.util import l10n
+from backends import GOOGLE_CONFIG
 from backends.remote import RemoteBackend
 from clockenstein.networking import GoogleHttp
 from clockenstein.sync import SyncDownload, write_private_json
@@ -38,7 +39,8 @@ class GoogleUnavailable(RuntimeError):
 
 
 class GoogleBackend(RemoteBackend):
-    provider = "google"
+    config = GOOGLE_CONFIG
+    provider = config.provider
 
     def __init__(self, data_dir: Path, timezone: datetime.tzinfo):
         super().__init__(data_dir, timezone)
@@ -482,7 +484,7 @@ def google_event_to_dict(raw, calendar, account, online, timezone):
             "modified": int(_parse_datetime(updated).timestamp()) if updated else None,
             "location": raw.get("location", ""), "description": raw.get("description", ""),
             "all_day": all_day, "date_start": date_start, "date_end": date_end,
-            "time_start": time_start, "time_end": time_end, "provider": "google",
+            "time_start": time_start, "time_end": time_end, "provider": GOOGLE_CONFIG.provider,
             "account_id": account["id"], "calendar_id": calendar["id"],
             "calendar_name": calendar.get("name", calendar["id"]),
             "calendar_color": calendar.get("color", "#4285f4"),

@@ -12,6 +12,7 @@ import recurring_ical_events
 import requests
 from icalendar import Calendar
 from xapp.util import l10n
+from backends import ICS_CONFIG
 from backends.remote import RemoteBackend
 from clockenstein.networking import CalDAVAdapter
 from clockenstein.sync import SyncDownload
@@ -28,7 +29,8 @@ class IcsUnavailable(RuntimeError):
 class IcsBackend(RemoteBackend):
     """Read-only subscription to an iCalendar (.ics) link."""
 
-    provider = "ics"
+    config = ICS_CONFIG
+    provider = config.provider
     calendar_id = "feed"
 
     SECRET_SCHEMA = "org.x.clockenstein.ICS"
