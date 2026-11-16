@@ -11,6 +11,8 @@ _ = l10n("clockenstein")
 
 from event_dialog import EventDialog
 from preferences import PreferencesDialog
+from backends import (BACKENDS, CALDAV_CONFIG, GOOGLE_CONFIG, ICS_CONFIG, LOCAL_CONFIG,
+                      REMOTE_PROVIDERS, format_sync_interval)
 from backends.google import LIMITED_RANGE, NORMAL_RANGE, RESTRICTED_RANGE
 from clockenstein import (AGENT_BUS_NAME, BUS_INTERFACE, BUS_NAME, BUS_PATH,
                           DEFAULT_COLOR, SETTINGS_SCHEMA)
@@ -29,6 +31,13 @@ from widgets.mini_calendar import MiniCalendar
 ADD_LOCAL_CALENDAR_RESPONSE = 1
 CONNECT_GOOGLE_RESPONSE = 2
 CONNECT_CALDAV_RESPONSE = 3
+CONNECT_ICS_RESPONSE = 4
+ADD_CALENDAR_RESPONSES = {
+    LOCAL_CONFIG.provider: ADD_LOCAL_CALENDAR_RESPONSE,
+    GOOGLE_CONFIG.provider: CONNECT_GOOGLE_RESPONSE,
+    CALDAV_CONFIG.provider: CONNECT_CALDAV_RESPONSE,
+    ICS_CONFIG.provider: CONNECT_ICS_RESPONSE,
+}
 
 
 class MainWindow(Gtk.Window):
@@ -506,22 +515,21 @@ class MainWindow(Gtk.Window):
         for calendar_info in calendars:
             if calendar_info["provider"] == "local":
                 local_calendars.append(calendar_info)
-        accounts = [(_("Local"), "local", local_calendars, None, None)]
+        accounts = [(_(LOCAL_CONFIG.label), "local", local_calendars, None, None)]
         account_keys = []
         for calendar_info in calendars:
             key = (calendar_info["provider"], calendar_info.get("account_id"))
             if calendar_info["provider"] != "local" and key not in account_keys:
                 account_keys.append(key)
         states = {}
-        for backend in (self.store.google, self.store.caldav):
+        for backend in self.store.remote_backends:
             for state in backend.get_account_states():
                 states[(backend.provider, state["id"])] = state
         for provider, account_id in account_keys:
             state = states.get((provider, account_id), {})
             label = state.get("name", account_id)
             status = _("Online") if state.get("online") else _("Offline, read only")
-            frequency = (_("Sync every 2 hours") if provider == "google"
-                         else _("Sync every 15 minutes"))
+            frequency = format_sync_interval(BACKENDS[provider].sync_interval)
             account_calendars = []
             for calendar_info in calendars:
                 if (calendar_info["provider"] == provider
@@ -684,16 +692,16 @@ class MainWindow(Gtk.Window):
 
     def _get_sorted_calendars(self):
         calendars = self.store.list_calendars()
-        local = [calendar_info for calendar_info in calendars if calendar_info["provider"] == "local"]
-        google = [calendar_info for calendar_info in calendars if calendar_info["provider"] == "google"]
+        by_provider = {provider: [] for provider in BACKENDS}
+        for calendar_info in calendars:
+            by_provider.setdefault(calendar_info["provider"], []).append(calendar_info)
         account_order = {state["id"]: index for index, state in enumerate(
                          self.store.google.get_account_states())}
-        google.sort(key=lambda calendar_info: (
+        by_provider[GOOGLE_CONFIG.provider].sort(key=lambda calendar_info: (
             account_order.get(calendar_info.get("account_id"), len(account_order)),
             *self._get_google_calendar_sort_key(calendar_info),
         ))
-        caldav = [calendar_info for calendar_info in calendars if calendar_info["provider"] == "caldav"]
-        return local + google + caldav
+        return [calendar_info for group in by_provider.values() for calendar_info in group]
 
     @staticmethod
     def _get_google_calendar_sort_key(calendar_info):
@@ -782,6 +790,11 @@ class MainWindow(Gtk.Window):
                 dialog.destroy()
                 self._connect_caldav()
                 return
+            elif response == CONNECT_ICS_RESPONSE:
+                self._calendar_dialog_box = None
+                dialog.destroy()
+                self._connect_ics()
+                return
             else:
                 break
         self._calendar_dialog_box = None
@@ -791,11 +804,8 @@ class MainWindow(Gtk.Window):
         popover = Gtk.Popover.new(relative_to)
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
         box.set_border_width(6)
-        choices = (
-            (_("Local"), ADD_LOCAL_CALENDAR_RESPONSE),
-            ("Google", CONNECT_GOOGLE_RESPONSE),
-            (_("CalDAV (Nextcloud, Memotoo, etc.)"), CONNECT_CALDAV_RESPONSE),
-        )
+        choices = [(_(config.label), ADD_CALENDAR_RESPONSES[provider])
+                   for provider, config in BACKENDS.items()]
         for label, response in choices:
             button = Gtk.ModelButton(text=label)
             button.connect("clicked", self._calendar_type_selected,
@@ -1108,6 +1118,60 @@ class MainWindow(Gtk.Window):
         except Exception as exc:
             self._remote_done([str(exc)])
 
+    @run_idle
+    def _ics_connection_failed(self, error):
+        self._set_refreshing(False)
+        self._set_status(error)
+        dialog = Gtk.MessageDialog(
+            transient_for=self,
+            modal=True,
+            message_type=Gtk.MessageType.ERROR,
+            buttons=Gtk.ButtonsType.CLOSE,
+            text=_("Could not subscribe to the calendar"),
+        )
+        dialog.format_secondary_text(error)
+        dialog.run()
+        dialog.destroy()
+        return False
+
+    def _connect_ics(self):
+        dialog = Gtk.Dialog(title=_("Internet Calendar"), transient_for=self, modal=True)
+        dialog.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL, _("Subscribe"), Gtk.ResponseType.OK)
+        box = dialog.get_content_area()
+        box.set_spacing(8)
+        box.set_border_width(12)
+        url = Gtk.Entry(placeholder_text="https://example.com/calendar.ics")
+        url.set_input_purpose(Gtk.InputPurpose.URL)
+        name = Gtk.Entry(placeholder_text=_("Use the name from the calendar"))
+        for label, entry in ((_("Calendar link"), url), (_("Name (optional)"), name)):
+            box.pack_start(Gtk.Label(label=label, xalign=0), False, False, 0)
+            box.pack_start(entry, False, False, 0)
+        box.show_all()
+        response = dialog.run()
+        values = (url.get_text().strip(), name.get_text().strip())
+        dialog.destroy()
+        if response != Gtk.ResponseType.OK:
+            return
+        self._set_refreshing(True)
+        self._set_status(_("Connecting…"))
+        self._connect_ics_worker(*values)
+
+    @run_async
+    def _connect_ics_worker(self, url, name):
+        try:
+            account_id = self.store.ics.connect(url, name, self._connection_progress)
+        except Exception as exc:
+            self._ics_connection_failed(str(exc))
+            return
+        try:
+            self._connection_progress(_("Requesting initial synchronization…"))
+            self._call_daemon("RefreshAccount", GLib.Variant(
+                "(ss)", ("ics", account_id)
+            ))
+            self._sync_request_accepted()
+        except Exception as exc:
+            self._remote_done([str(exc)])
+
     def _disconnect_remote(self, button, provider, account_id):
         dialog = Gtk.MessageDialog(
             transient_for=self, message_type=Gtk.MessageType.QUESTION,
@@ -1121,6 +1185,8 @@ class MainWindow(Gtk.Window):
         if response == Gtk.ResponseType.YES:
             if provider == "google":
                 self.store.google.disconnect(account_id)
+            elif provider == "ics":
+                self.store.ics.disconnect(account_id)
             else:
                 self.store.caldav.disconnect(account_id)
             notify_changed()
@@ -1321,7 +1387,7 @@ class MainWindow(Gtk.Window):
     def _refresh_worker(self, start, end, refresh_all=True):
         try:
             if refresh_all:
-                for provider in ("google", "caldav"):
+                for provider in REMOTE_PROVIDERS:
                     self._call_daemon("RefreshAccount", GLib.Variant(
                         "(ss)", (provider, "")
                     ))
@@ -1333,7 +1399,7 @@ class MainWindow(Gtk.Window):
                     end, datetime.time.max, self.timezone
                 ).timestamp())
                 self._call_daemon("RefreshRange", GLib.Variant(
-                    "(sxx)", ("caldav", since, until)
+                    "(sxx)", (CALDAV_CONFIG.provider, since, until)
                 ))
             self._sync_request_accepted()
         except GLib.Error as exc:
@@ -1397,6 +1463,7 @@ class MainWindow(Gtk.Window):
             return True
         provider = calendar.get("provider")
         states = (self.store.google.get_account_states() if provider == "google" else
+                  self.store.ics.get_account_states() if provider == "ics" else
                   self.store.caldav.get_account_states())
         return (not self._refreshing and
                 any(state["id"] == calendar.get("account_id") and state.get("online")
