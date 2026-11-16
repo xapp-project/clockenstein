@@ -128,18 +128,21 @@ class CalendarManager:
         self.local = LocalStore(timezone, data_dir)
         from backends.google import GoogleBackend
         from backends.caldav import CalDAVBackend
+        from backends.ics import IcsBackend
         self.google = GoogleBackend(self.local.data_dir, timezone)
         self.caldav = CalDAVBackend(self.local.data_dir, timezone)
+        self.ics = IcsBackend(self.local.data_dir, timezone)
 
     def list_calendars(self):
         return (self.local.list_calendars() + self.google.list_calendars()
-                + self.caldav.list_calendars())
+                + self.caldav.list_calendars() + self.ics.list_calendars())
 
     def get_events(self, start=None, end=None, include_hidden=False):
         return sorted(
             self.local.get_events(start, end, include_hidden)
             + self.google.get_events(start, end, include_hidden)
-            + self.caldav.get_events(start, end, include_hidden),
+            + self.caldav.get_events(start, end, include_hidden)
+            + self.ics.get_events(start, end, include_hidden),
             key=_get_event_sort_key,
         )
 
@@ -177,17 +180,19 @@ class CalendarManager:
         return self._get_backend(provider).delete_event(uid, calendar_id, account_id)
 
     def _get_backend(self, provider):
-        return {"local": self.local, "google": self.google, "caldav": self.caldav}[provider]
+        return {"local": self.local, "google": self.google, "caldav": self.caldav,
+                "ics": self.ics}[provider]
 
     @property
     def has_remote_accounts(self):
-        return self.google.has_accounts or self.caldav.has_accounts
+        return self.google.has_accounts or self.caldav.has_accounts or self.ics.has_accounts
 
     def refresh_remote(self, start, end, google_limited_range=None,
                        google_restricted_range=None):
         return (self.google.refresh(start, end, google_limited_range,
                                     google_restricted_range)
-                + self.caldav.refresh(start, end))
+                + self.caldav.refresh(start, end)
+                + self.ics.refresh(start, end))
 
 
 def _get_event_sort_key(event):

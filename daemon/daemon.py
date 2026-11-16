@@ -23,6 +23,7 @@ from clockenstein.misc import get_calendar_key, get_event_last_day, is_event_all
 from backends.google import LIMITED_RANGE, NORMAL_RANGE, RESTRICTED_RANGE
 from store import CalendarManager, local_timezone, watch_timezone_changes
 
+# ICS subscriptions are refreshed together with CalDAV.
 CALDAV_REFRESH_INTERVAL_SECONDS = 15 * 60
 GOOGLE_REFRESH_INTERVAL_SECONDS = 2 * 60 * 60
 GOOGLE_REFRESH_EVERY = GOOGLE_REFRESH_INTERVAL_SECONDS // CALDAV_REFRESH_INTERVAL_SECONDS
@@ -174,7 +175,7 @@ class ClockensteinDaemon:
             invocation.return_value(None)
         elif method == "RefreshCalendar":
             provider, account_id, calendar_id = parameters.unpack()
-            if provider not in ("google", "caldav"):
+            if provider not in ("google", "caldav", "ics"):
                 invocation.return_dbus_error(
                     f"{BUS_INTERFACE}.InvalidProvider", "Unsupported calendar provider"
                 )
@@ -182,13 +183,13 @@ class ClockensteinDaemon:
             self.logger.log(f"RefreshCalendar({provider}, {account_id}, {calendar_id})")
             self._request_refresh(
                 refresh_google=provider == "google",
-                refresh_caldav=provider == "caldav",
+                refresh_caldav=provider in ("caldav", "ics"),
                 target=(provider, account_id, calendar_id),
             )
             invocation.return_value(None)
         elif method == "RefreshAccount":
             provider, account_id = parameters.unpack()
-            if provider not in ("google", "caldav"):
+            if provider not in ("google", "caldav", "ics"):
                 invocation.return_dbus_error(
                     f"{BUS_INTERFACE}.InvalidProvider", "Unsupported calendar provider"
                 )
@@ -196,7 +197,7 @@ class ClockensteinDaemon:
             self.logger.log(f"RefreshAccount({provider}, {account_id})")
             self._request_refresh(
                 refresh_google=provider == "google",
-                refresh_caldav=provider == "caldav",
+                refresh_caldav=provider in ("caldav", "ics"),
                 target=(provider, account_id, None),
             )
             invocation.return_value(None)
@@ -343,8 +344,8 @@ class ClockensteinDaemon:
             restricted_start = today - datetime.timedelta(days=RESTRICTED_RANGE[0])
             restricted_end = today + datetime.timedelta(days=RESTRICTED_RANGE[1])
             providers = (target[0] if target else
-                         "Google and CalDAV" if refresh_google and refresh_caldav
-                         else "Google" if refresh_google else "CalDAV")
+                         "Google, CalDAV and ICS" if refresh_google and refresh_caldav
+                         else "Google" if refresh_google else "CalDAV and ICS")
             self.logger.log(f"Refreshing {providers} calendars from {start} through {end}")
             errors = []
             if refresh_google:
@@ -355,8 +356,10 @@ class ClockensteinDaemon:
                     target_account_id=target[1] if target else None,
                     target_calendar_id=target[2] if target else None,
                 ))
-            if refresh_caldav:
-                errors.extend(store.caldav.refresh(
+            for backend in (store.caldav, store.ics):
+                if not refresh_caldav or (target and target[0] != backend.provider):
+                    continue
+                errors.extend(backend.refresh(
                     start, end,
                     target_account_id=target[1] if target else None,
                     target_calendar_id=target[2] if target else None,

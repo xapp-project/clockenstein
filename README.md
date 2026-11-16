@@ -9,6 +9,8 @@ Clock and Calendar applications for Linux desktops.
 - Local calendars.
 - Google calendars
 - CalDAV calendars (Nextcloud, Memotoo, etc)
+- Internet calendars: read-only subscriptions to an iCalendar link
+  (`https://`, `http://` or `webcal://` URL of a `.ics` file)
 
 Remote events are read-only when disconnected or offline.
 
@@ -19,6 +21,9 @@ doesn't change the colors on the server, and later syncs don't change your color
 Recurring CalDAV events share the same UID for all their instances. So
 in Clockenstein, these are read-only to prevent CRUD operations from
 affecting all instances at once.
+
+Internet calendars are always read-only. Clockenstein downloads the whole `.ics`
+file and expands recurring events locally.
 
 ## Architecture and synchronization
 
@@ -59,11 +64,13 @@ Database contents can include personal event details, so review output before sh
 Clockenstein stores its data in `~/.local/share/clockenstein`:
 
 - Alarms are stored in `alarms.db`, a SQLite database shared by Clocks and the daemon.
-- Local calendars, Google and CalDAV accounts, calendar preferences and events
+- Local calendars, Google, CalDAV and Internet calendar accounts, calendar preferences and events
   are stored in `calendars.db`, a SQLite database shared by Calendar and the daemon.
 - Google OAuth credentials are stored separately in `google/`. Accounts connected
   through Online Accounts use its credentials instead. CalDAV passwords are kept
   in the desktop keyring.
+- Internet calendar links often contain an access token, so the full link is kept
+  in the desktop keyring. `calendars.db` only records the server name.
 
 Calendar and the daemon update individual database records. A remote sync updates
 the fetched calendar's events and sync status without rewriting account settings
@@ -76,7 +83,8 @@ local database is updated.
 completed event download for each remote calendar. The file identifies the account
 and calendar, when it was fetched and the requested date ranges. Google responses
 are saved as returned JSON pages; CalDAV responses contain each resource's URL and
-original iCalendar text. These are the libraries' responses, not HTTP traffic.
+original iCalendar text; Internet calendar responses contain the downloaded `.ics`
+file. These are the libraries' responses, not HTTP traffic.
 No authorization headers or OAuth credentials are included.
 
 Downloads are saved before conversion to the shared event model, so data that
@@ -114,6 +122,9 @@ We sync it every 15 minutes for a range of 2 years.
 
 When we navigate outside the range, in the case of Google no events are shown, in the case of
 CalDav we sync extra ranges from the remote.
+
+Internet calendars are downloaded every 15 minutes, together with CalDAV, and when
+navigating outside the synced range. Each refresh downloads the whole `.ics` file.
 
 ## Building from source
 
@@ -191,6 +202,7 @@ python3-googleapi
 python3-httplib2
 python3-icalendar
 python3-pycurl
+python3-recurring-ical-events
 python3-requests
 python3-setproctitle
 python3-xapp (>= 3.0.0)
@@ -211,7 +223,7 @@ A D-Bus session bus and a systemd user session are also required.
 Optional:
 
 ```text
-gnome-keyring (or another Secret Service provider, to store CalDAV passwords)
+gnome-keyring (or another Secret Service provider, to store CalDAV passwords and Internet calendar links)
 gir1.2-goa-1.0 and gnome-online-accounts-gtk (to use Google accounts from Online Accounts)
 ```
 

@@ -321,11 +321,6 @@ class CalDAVBackend(RemoteBackend):
             raise CalDAVUnavailable(_("CalDAV server URLs must use HTTP or HTTPS"))
         return url.rstrip("/") + "/"
 
-    @staticmethod
-    def _color(value):
-        colors = ("#3584e4", "#33d17a", "#e5a50a", "#e66100", "#c061cb", "#1c71d8")
-        return colors[int(hashlib.sha256(value.encode()).hexdigest()[:4], 16) % len(colors)]
-
 
 def _get_event_ical(data, timezone: datetime.tzinfo, uid=None):
     calendar = Calendar()

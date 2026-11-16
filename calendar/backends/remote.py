@@ -1,3 +1,5 @@
+import hashlib
+
 from clockenstein.calendars import CalendarDatabase
 from clockenstein.sync import SyncDownload
 
@@ -53,3 +55,8 @@ class RemoteBackend:
                     download = SyncDownload(self.database.data_dir, self.provider, account_id,
                                             calendar["id"], start, end)
                     download.finish(error)
+
+    @staticmethod
+    def _color(value):
+        colors = ("#3584e4", "#33d17a", "#e5a50a", "#e66100", "#c061cb", "#1c71d8")
+        return colors[int(hashlib.sha256(value.encode()).hexdigest()[:4], 16) % len(colors)]
