@@ -30,11 +30,11 @@
       <description>Use the system locale, a 12-hour clock, or a 24-hour clock.</description>
     </key>
     <key name="calendar-window-width" type="i">
-      <default>1100</default>
+      <default>900</default>
       <range min="640" max="32768"/>
     </key>
     <key name="calendar-window-height" type="i">
-      <default>750</default>
+      <default>550</default>
       <range min="460" max="32768"/>
     </key>
     <key name="last-calendar-used" type="s">
