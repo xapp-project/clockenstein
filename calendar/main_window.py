@@ -65,7 +65,7 @@ class MainWindow(Gtk.Window):
         self._refresh_pending = False
         self._daemon_refreshing = False
         self._service_running = {BUS_NAME: False, AGENT_BUS_NAME: False}
-        self.connect("destroy", self._save_window_size)
+        self.connect("delete-event", self._save_window_size)
         self._build_ui()
         # Keep the monitor alive; otherwise it may be garbage-collected.
         self.timezone_monitor = watch_timezone_changes(self.timezone_changed)
@@ -1213,15 +1213,16 @@ class MainWindow(Gtk.Window):
         self.stack.set_visible_child_name(name)
         self._refresh(refresh_remote=False)
 
-    def _save_window_size(self, _window):
+    def _save_window_size(self, _window, _event):
         window = self.get_window()
         if not window or window.get_state() & Gdk.WindowState.MAXIMIZED:
-            return
+            return False
         width, height = self.get_size()
         if self.settings.get_int("calendar-window-width") != width:
             self.settings.set_int("calendar-window-width", width)
         if self.settings.get_int("calendar-window-height") != height:
             self.settings.set_int("calendar-window-height", height)
+        return False
 
     def _on_event_activated(self, event):
         calendars = self._get_editable_calendars(event)
