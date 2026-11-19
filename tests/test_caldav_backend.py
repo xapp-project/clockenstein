@@ -7,7 +7,7 @@ import sys
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "calendar"))
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 from icalendar import Event
 
 from backends.caldav import CalDAVBackend, CalDAVUnavailable, _get_event_ical
@@ -43,6 +43,25 @@ class CalDAVBackendTests(unittest.TestCase):
             self.assertEqual(backend.get_events(include_hidden=True), [])
             backend.set_visible("hidden", True, "account")
             self.assertEqual(backend.get_events(), [])
+
+    def test_task_lists_are_not_listed_as_calendars(self):
+        class Calendar(FakeCalendar):
+            def __init__(self, url, components):
+                super().__init__(url, url)
+                self.components = components
+
+            def get_supported_components(self):
+                if self.components is None:
+                    raise KeyError("supported-calendar-component-set")
+                return self.components
+
+        remote = [Calendar("events", ["VEVENT"]), Calendar("tasks", ["VTODO"]),
+                  Calendar("both", ["VEVENT", "VTODO"]), Calendar("unknown", None)]
+        principal = Mock(**{"calendars.return_value": remote})
+        with patch("backends.caldav.caldav.DAVClient") as client:
+            client.return_value.principal.return_value = principal
+            _client, calendars = CalDAVBackend._open("https://example.test/", "me", "pw")
+        self.assertEqual([c.url for c in calendars], ["events", "both", "unknown"])
 
     def test_timed_events_are_displayed_in_the_computer_timezone(self):
         event = Event()
