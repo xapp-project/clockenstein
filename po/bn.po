@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2026-09-23 13:47+0100\n"
-"PO-Revision-Date: 2026-10-31 19:27+0000\n"
+"PO-Revision-Date: 2026-11-20 16:57+0000\n"
 "Last-Translator: Itmam <Unknown>\n"
 "Language-Team: Bengali <bn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
-"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+"X-Launchpad-Export-Date: 2026-11-24 12:02+0000\n"
+"X-Generator: Launchpad (build 012091084314157d19ae714f55ef4c582ff0feb5)\n"
 
 #: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
 #: calendar/event_dialog.py:178 calendar/event_dialog.py:185
@@ -164,13 +164,13 @@ msgstr ""
 
 #: calendar/event_dialog.py:409
 msgid "Saving…"
-msgstr ""
+msgstr "সংরক্ষণ চলমান...."
 
 #: calendar/event_dialog.py:416 calendar/event_dialog.py:453
 #: calendar/event_dialog.py:476 calendar/main_window.py:715
 #, python-format
 msgid "Error: %s"
-msgstr ""
+msgstr "ত্রুটি: %s"
 
 #: calendar/event_dialog.py:465
 #, python-format

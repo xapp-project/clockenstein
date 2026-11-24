@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2026-09-23 13:47+0100\n"
-"PO-Revision-Date: 2026-10-28 12:15+0000\n"
-"Last-Translator: n.e.yoseph <Unknown>\n"
+"PO-Revision-Date: 2026-11-18 17:00+0000\n"
+"Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
-"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+"X-Launchpad-Export-Date: 2026-11-24 12:02+0000\n"
+"X-Generator: Launchpad (build 012091084314157d19ae714f55ef4c582ff0feb5)\n"
 
 #: data/org.x.clockenstein.Calendar.desktop.in:2 calendar/calendar_app.py:74
 #: calendar/event_dialog.py:178 calendar/event_dialog.py:185
@@ -28,11 +28,11 @@ msgstr "달력"
 
 #: data/org.x.clockenstein.Calendar.desktop.in:3
 msgid "Manage your events and appointments"
-msgstr ""
+msgstr "일정과 행사를 관리하세요"
 
 #: data/org.x.clockenstein.Calendar.desktop.in:9
 msgid "calendar;event;appointment;Google;CalDAV;Nextcloud;"
-msgstr ""
+msgstr "달력;행사;일정;Google;CalDAV;Nextcloud;"
 
 #: data/org.x.clockenstein.Clocks.desktop.in:2 clocks/clocks_app.py:116
 #: clocks/clocks_app.py:720
@@ -93,7 +93,7 @@ msgstr "집중 시간"
 
 #: calendar/event_dialog.py:141
 msgid "From Gmail"
-msgstr ""
+msgstr "Gmail에서 가져오기"
 
 #: calendar/event_dialog.py:142
 msgid "Out of office"
@@ -624,7 +624,7 @@ msgstr "인증 만료됨"
 
 #: calendar/backends/google.py:333
 msgid "The gir1.2-goa-1.0 package is missing"
-msgstr ""
+msgstr "gir1.2-goa-1.0 패키지가 빠졌습니다"
 
 #: calendar/backends/google.py:344
 #, python-format
@@ -637,12 +637,12 @@ msgstr "선택된 온라인 계정을 사용할 수 없음"
 
 #: calendar/backends/google.py:363
 msgid "Online Accounts returned no access token"
-msgstr ""
+msgstr "온라인 계정에서 액세스 토큰을 반환하지 않았습니다"
 
 #: calendar/backends/google.py:368
 #, python-format
 msgid "Could not obtain Google authorization: %s"
-msgstr ""
+msgstr "Google 인증을 가져올 수 없습니다: %s"
 
 #: calendar/views/month_view.py:263
 #, python-format
@@ -668,168 +668,166 @@ msgstr[0] "%d분"
 #: clocks/clocks_app.py:111
 #, python-format
 msgid "Alarm in %s"
-msgstr ""
+msgstr "%s 뒤 알람"
 
 #: clocks/clocks_app.py:131
 msgid "Alarms"
-msgstr ""
+msgstr "알람"
 
 #: clocks/clocks_app.py:133
 msgid "Add"
-msgstr ""
+msgstr "추가"
 
 #: clocks/clocks_app.py:150
 msgid "No alarms are set"
-msgstr ""
+msgstr "설정한 알람 없음"
 
 #: clocks/clocks_app.py:226
 msgid "Alarms will not ring."
-msgstr ""
+msgstr "알람이 울리지 않을 겁니다."
 
 #: clocks/clocks_app.py:249
 #, python-format
 msgid "Could not load alarms: %s"
-msgstr ""
+msgstr "알람을 불러올 수 없습니다: %s"
 
 #: clocks/clocks_app.py:297 agent/agent.py:98 agent/agent.py:192
 msgid "Alarm"
-msgstr ""
+msgstr "알람"
 
 #: clocks/clocks_app.py:333
 msgid "Could not update alarm"
-msgstr ""
+msgstr "알람을 업데이트할 수 없습니다"
 
 #: clocks/clocks_app.py:358
 msgid "New Alarm"
-msgstr ""
+msgstr "새 알람"
 
 #: clocks/clocks_app.py:408
 msgid "Time"
-msgstr ""
+msgstr "시간"
 
 #: clocks/clocks_app.py:448 clocks/clocks_app.py:558
 #, python-format
 msgid "Every %s"
-msgstr ""
+msgstr "매 %s"
 
 #: clocks/clocks_app.py:459
 msgid "Choose a date"
-msgstr ""
+msgstr "날짜 선택"
 
 #: clocks/clocks_app.py:470
 msgid "Clear date"
-msgstr ""
+msgstr "날짜 초기화"
 
 #: clocks/clocks_app.py:488
 msgid "Audio files"
-msgstr ""
+msgstr "오디오 파일"
 
 #: clocks/clocks_app.py:496
 msgid "Choose a sound"
-msgstr ""
+msgstr "소리를 고르세요"
 
 #: clocks/clocks_app.py:500
 msgid "Select"
-msgstr ""
+msgstr "선택"
 
 #: clocks/clocks_app.py:512
 msgid "Play selected sound"
-msgstr ""
+msgstr "선택한 소리 재생"
 
 #: clocks/clocks_app.py:518
 msgid "Seconds between sounds"
-msgstr ""
+msgstr "알림음 간격(초)"
 
 #: clocks/clocks_app.py:519
 msgid "seconds"
-msgstr ""
+msgstr "초"
 
 #: clocks/clocks_app.py:537
 msgid "Sound"
-msgstr ""
+msgstr "알림음"
 
 #: clocks/clocks_app.py:556 clocks/clocks_app.py:660
 msgid "Every day"
-msgstr ""
+msgstr "매일"
 
 #: clocks/clocks_app.py:639
 msgid "Could not delete alarm"
-msgstr ""
+msgstr "알람을 지울 수 없습니다"
 
 #: clocks/clocks_app.py:640
 msgid "Could not save alarm"
-msgstr ""
+msgstr "알람을 저장할 수 없습니다"
 
 #: clocks/clocks_app.py:707
 msgid "Could not open alarm database"
-msgstr ""
+msgstr "알람 데이터 베이스를 열 수 없습니다"
 
 #: agent/agent.py:25
 msgid "Calendar Event"
-msgstr ""
+msgstr "캘린더 일정"
 
 #: agent/agent.py:123
 msgid "Mute"
-msgstr ""
+msgstr "무음"
 
 #: agent/agent.py:172
 msgid "Snooze"
-msgstr ""
+msgstr "다시 울림"
 
 #: agent/agent.py:212
 msgid "Open Clocks"
-msgstr ""
+msgstr "시계 열기"
 
 #: agent/agent.py:215 agent/agent.py:285
 msgid "Dismiss"
-msgstr ""
+msgstr "해제"
 
 #: agent/agent.py:279
 msgid "Open Calendar"
-msgstr ""
+msgstr "캘린더 열기"
 
 #: agent/agent.py:548
 #, python-format
 msgid "Starts in %d minute"
 msgid_plural "Starts in %d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d분 뒤 시작"
 
 #: agent/agent.py:551
 msgid "Starts now"
-msgstr ""
+msgstr "지금 시작"
 
 #: agent/agent.py:554
 #, python-format
 msgid "This event started %d minute ago"
 msgid_plural "This event started %d minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "이 일정은 %d분 전 시작되었습니다"
 
 #: clockenstein/formatting.py:11
 msgid "MON"
-msgstr ""
+msgstr "월"
 
 #: clockenstein/formatting.py:11
 msgid "TUE"
-msgstr ""
+msgstr "화"
 
 #: clockenstein/formatting.py:11
 msgid "WED"
-msgstr ""
+msgstr "수"
 
 #: clockenstein/formatting.py:11
 msgid "THU"
-msgstr ""
+msgstr "목"
 
 #: clockenstein/formatting.py:11
 msgid "FRI"
-msgstr ""
+msgstr "금"
 
 #: clockenstein/formatting.py:11
 msgid "SAT"
-msgstr ""
+msgstr "토"
 
 #: clockenstein/formatting.py:11
 msgid "SUN"
-msgstr ""
+msgstr "일"
