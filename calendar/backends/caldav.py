@@ -259,7 +259,19 @@ class CalDAVBackend(RemoteBackend):
         adapter = CalDAVAdapter()
         client.session.mount("http://", adapter)
         client.session.mount("https://", adapter)
-        return client, client.principal().calendars()
+        return client, [calendar for calendar in client.principal().calendars()
+                        if cls._supports_events(calendar)]
+
+    @staticmethod
+    def _supports_events(calendar):
+        # Task lists (e.g. iCloud Reminders) are calendar collections too, but
+        # they cannot hold events.
+        try:
+            components = calendar.get_supported_components()
+        except Exception:
+            # The property is optional; without it, all components are allowed.
+            return True
+        return not components or "VEVENT" in components
 
     @classmethod
     def _get_password_schema(cls):
