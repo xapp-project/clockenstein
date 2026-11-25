@@ -62,6 +62,7 @@ class MainWindow(Gtk.Window):
         view_names = {"month": "Month", "week": "Week", "day": "Day"}
         self._active_view = view_names.get(saved_view, "Month")
         self._refreshing = False
+        self._hidden_calendars = set()
         self._refresh_pending = False
         self._daemon_refreshing = False
         self._service_running = {BUS_NAME: False, AGENT_BUS_NAME: False}
@@ -369,9 +370,13 @@ class MainWindow(Gtk.Window):
         for calendar_info in self._get_sorted_calendars():
             if calendar_info.get("visible", True):
                 label = self._calendar_label(calendar_info)
-                if not self._calendar_available(calendar_info):
+                key = (calendar_info["provider"], calendar_info["id"])
+                if key in self._hidden_calendars or not self._calendar_available(calendar_info):
                     label.set_opacity(0.5)
-                self.visible_calendar_box.pack_start(label, False, False, 0)
+                row = Gtk.EventBox()
+                row.add(label)
+                row.connect("button-press-event", self._on_sidebar_calendar_clicked, key)
+                self.visible_calendar_box.pack_start(row, False, False, 0)
         self.visible_calendar_box.show_all()
         self._populate_upcoming(events)
 
@@ -385,6 +390,13 @@ class MainWindow(Gtk.Window):
         else:
             self._set_status("")
         self._update_range_infobar()
+
+    def _on_sidebar_calendar_clicked(self, _widget, event, key):
+        if event.button != Gdk.BUTTON_PRIMARY:
+            return False
+        self._hidden_calendars.symmetric_difference_update({key})
+        self._update_views()
+        return True
 
     def _get_google_calendars_out_of_range(self):
         start, end = self._get_date_range()
@@ -1403,7 +1415,8 @@ class MainWindow(Gtk.Window):
                     for state in states))
 
     def _get_available_events(self):
-        events = self.store.get_events()
+        events = [event for event in self.store.get_events()
+                  if (event.get("provider", "local"), event.get("calendar_id")) not in self._hidden_calendars]
         if self._refreshing:
             return [event if event.get("provider") == "local" else
                     {**event, "editable": False} for event in events]
