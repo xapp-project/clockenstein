@@ -28,7 +28,7 @@ class NotificationSchedulerTests(unittest.TestCase):
         daemon._reload_reminder_events = Mock()
         daemon._emit_changed = Mock()
         with patch.object(DAEMON, "CalendarManager", side_effect=OSError("unreadable store")):
-            worker = daemon._refresh_remote()
+            worker = daemon._refresh_remote(frozenset(DAEMON.REMOTE_PROVIDERS))
             worker.join(timeout=5)
             self.assertFalse(worker.is_alive())
             context = DAEMON.GLib.MainContext.default()

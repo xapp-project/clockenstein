@@ -4,6 +4,7 @@ sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 sudo cp clockenstein/calendars.py clockenstein/sync.py clockenstein/networking.py /usr/lib/python3/dist-packages/clockenstein/
 sudo rm -rf /usr/share/clockenstein/calendar
 sudo cp -R calendar /usr/share/clockenstein/
+sed "s/__PROJECT_VERSION__/$(git describe --tags --always)-dev/" daemon/daemon.py | sudo tee /usr/share/clockenstein/daemon/daemon.py > /dev/null
 systemctl --user restart clockenstein-daemon.service
 killall clockenstein-calendar 2>/dev/null
 clockenstein-calendar &
